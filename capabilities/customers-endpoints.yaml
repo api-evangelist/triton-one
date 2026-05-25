@@ -1,0 +1,172 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Triton One Customers API — Endpoints
+  description: 'Triton One Customers API — Endpoints. Provision and manage RPC endpoints (URLs, rate tiers, allowed origins) under subscriptions.'
+  tags:
+    - Triton One
+    - Endpoints
+    - RPC
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+  - namespace: env
+    keys:
+      TRITON_CUSTOMERS_TOKEN: TRITON_CUSTOMERS_TOKEN
+capability:
+  consumes:
+    - type: http
+      namespace: customers-endpoints
+      baseUri: https://customers.triton.one
+      description: Triton One Customers API — Endpoints business capability.
+      resources:
+        - name: endpoints
+          path: /api/v1/endpoints
+          operations:
+            - name: listEndpoints
+              method: GET
+              description: List Endpoints
+              outputRawFormat: json
+              inputParameters:
+                - name: account_uuid
+                  in: query
+                  type: string
+                - name: subscription_uuid
+                  in: query
+                  type: string
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: subscription-endpoints
+          path: /api/v1/subscriptions/{subscriptionUuid}/endpoints
+          operations:
+            - name: createEndpoint
+              method: POST
+              description: Create Endpoint
+              outputRawFormat: json
+              inputParameters:
+                - name: subscriptionUuid
+                  in: path
+                  type: string
+                  required: true
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: endpoint
+          path: /api/v1/endpoints/{endpointUuid}
+          operations:
+            - name: updateEndpoint
+              method: PUT
+              description: Update Endpoint
+              outputRawFormat: json
+              inputParameters:
+                - name: endpointUuid
+                  in: path
+                  type: string
+                  required: true
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: endpoint-activate
+          path: /api/v1/endpoints/{endpointUuid}/activate
+          operations:
+            - name: activateEndpoint
+              method: PUT
+              description: Activate Endpoint
+              inputParameters:
+                - name: endpointUuid
+                  in: path
+                  type: string
+                  required: true
+        - name: endpoint-deactivate
+          path: /api/v1/endpoints/{endpointUuid}/deactivate
+          operations:
+            - name: deactivateEndpoint
+              method: PUT
+              description: Deactivate Endpoint
+              inputParameters:
+                - name: endpointUuid
+                  in: path
+                  type: string
+                  required: true
+                - name: body
+                  in: body
+                  type: object
+      authentication:
+        type: bearer
+        value: '{{env.TRITON_CUSTOMERS_TOKEN}}'
+  exposes:
+    - type: mcp
+      namespace: customers-endpoints-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Triton Endpoints.
+      tools:
+        - name: triton-list-endpoints
+          description: List Triton RPC endpoints.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: customers-endpoints.listEndpoints
+          with:
+            account_uuid: tools.account_uuid
+            subscription_uuid: tools.subscription_uuid
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: triton-create-endpoint
+          description: Create a Triton RPC endpoint. Reseller role only.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: customers-endpoints.createEndpoint
+          with:
+            subscriptionUuid: tools.subscriptionUuid
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: triton-update-endpoint
+          description: Update a Triton RPC endpoint.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: true
+          call: customers-endpoints.updateEndpoint
+          with:
+            endpointUuid: tools.endpointUuid
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: triton-activate-endpoint
+          description: Activate a Triton RPC endpoint.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: true
+          call: customers-endpoints.activateEndpoint
+          with:
+            endpointUuid: tools.endpointUuid
+        - name: triton-deactivate-endpoint
+          description: Deactivate a Triton RPC endpoint.
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: customers-endpoints.deactivateEndpoint
+          with:
+            endpointUuid: tools.endpointUuid
+            body: tools.body

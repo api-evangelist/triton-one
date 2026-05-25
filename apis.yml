@@ -1,0 +1,348 @@
+aid: triton-one
+url: https://raw.githubusercontent.com/api-evangelist/triton-one/refs/heads/main/apis.yml
+apis:
+- aid: triton-one:triton-one-customers-api
+  name: Triton One Customers API
+  tags:
+  - Solana
+  - RPC
+  - Account Management
+  - Customers
+  humanURL: https://docs.triton.one/account-management/api-access/introduction
+  baseURL: https://customers.triton.one/api/v1
+  properties:
+  - url: https://docs.triton.one/account-management/api-access/introduction
+    type: Documentation
+  - url: https://docs.triton.one/account-management/api-access/auth-and-headers
+    type: Authentication
+  - url: https://docs.triton.one/account-management/api-access/accounts
+    type: Documentation
+  - url: https://docs.triton.one/account-management/api-access/subscriptions
+    type: Documentation
+  - url: https://docs.triton.one/account-management/api-access/endpoints
+    type: Documentation
+  - url: https://docs.triton.one/account-management/api-access/tokens
+    type: Documentation
+  - url: https://docs.triton.one/account-management/api-access/address-watch-lists
+    type: Documentation
+  - url: https://docs.triton.one/account-management/api-access/rate-tiers
+    type: Documentation
+  - url: https://docs.triton.one/account-management/api-access/subscription-types
+    type: Documentation
+  - url: openapi/triton-one-customers-api-openapi.yml
+    type: OpenAPI
+  - url: json-schema/triton-one-account-schema.json
+    type: JSONSchema
+  - url: json-schema/triton-one-subscription-schema.json
+    type: JSONSchema
+  - url: json-schema/triton-one-endpoint-schema.json
+    type: JSONSchema
+  - url: json-schema/triton-one-token-schema.json
+    type: JSONSchema
+  - url: json-ld/triton-one-context.jsonld
+    type: JSONLD
+  - type: NaftikoCapability
+    url: capabilities/customers-accounts.yaml
+  - type: NaftikoCapability
+    url: capabilities/customers-subscriptions.yaml
+  - type: NaftikoCapability
+    url: capabilities/customers-endpoints.yaml
+  - type: NaftikoCapability
+    url: capabilities/customers-tokens.yaml
+  - type: NaftikoCapability
+    url: capabilities/customers-address-watch-lists.yaml
+  description: REST API for managing Triton One customer accounts, subscriptions (Developer, Mainnet-Shared,
+    Mainnet-Dedicated), RPC endpoints, RPC consumption tokens, address watch lists, and rate tiers. Token-based
+    authentication via the Authorization header; tokens scope to reseller, operator, or read-only roles. Hosted
+    at customers.triton.one/api/v1.
+- aid: triton-one:triton-one-solana-rpc-api
+  name: Triton One Solana RPC API
+  tags:
+  - Solana
+  - RPC
+  - JSON-RPC
+  - Priority Fees
+  - Streaming
+  humanURL: https://docs.triton.one/chains/solana
+  baseURL: https://${endpoint}.rpcpool.com
+  properties:
+  - url: https://docs.triton.one/chains/solana
+    type: Documentation
+  - url: https://docs.triton.one/chains/solana/improved-priority-fees-api
+    type: Documentation
+  - url: https://docs.triton.one/chains/solana/gettransactionsforaddress
+    type: Documentation
+  - url: https://docs.triton.one/chains/solana/streaming
+    type: Documentation
+  - url: https://docs.triton.one/chains/solana/geyser
+    type: Documentation
+  - url: https://docs.triton.one/chains/solana/cascade
+    type: Documentation
+  - url: https://docs.triton.one/chains/solana/token-program
+    type: Documentation
+  - url: openapi/triton-one-solana-rpc-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/solana-rpc.yaml
+  description: Triton's enhanced Solana JSON-RPC interface. Exposes the full Solana JSON-RPC surface plus
+    Triton's custom extensions — getTransactionsForAddress (single-call address history with slot, blockTime,
+    status, and tokenAccounts filters and pagination) and the percentile-aware getRecentPrioritizationFees.
+    Backed by global bare-metal nodes with GeoDNS routing.
+- aid: triton-one:triton-one-digital-assets-api
+  name: Triton One Digital Assets API
+  tags:
+  - Solana
+  - Digital Assets
+  - Metaplex
+  - NFT
+  - DAS
+  humanURL: https://docs.triton.one/digital-assets-api/introduction
+  baseURL: https://${endpoint}.rpcpool.com
+  properties:
+  - url: https://docs.triton.one/digital-assets-api/introduction
+    type: Documentation
+  - url: https://docs.triton.one/digital-assets-api/metaplex-digital-assets-api
+    type: Documentation
+  - url: https://docs.triton.one/digital-assets-api/fungible-assets
+    type: Documentation
+  - url: openapi/triton-one-digital-assets-api-openapi.yml
+    type: OpenAPI
+  - type: NaftikoCapability
+    url: capabilities/digital-assets-rpc.yaml
+  description: Hosted Metaplex Digital Assets Standard (DAS) implementation served from the same Triton RPC
+    endpoint. Read methods for compressed and standard NFTs (getAsset, getAssets, getAssetProof(s),
+    getAssetSignatures, searchAssets, getAssetsBy{Owner,Creator,Authority}, getNftEditions) plus SPL token
+    introspection (getTokenAccounts, getTokenLargestAccounts). Powered by Triton's Photon indexer.
+- aid: triton-one:triton-one-yellowstone-grpc
+  name: Triton One Yellowstone gRPC (Dragon's Mouth)
+  tags:
+  - Solana
+  - gRPC
+  - Streaming
+  - Yellowstone
+  humanURL: https://docs.triton.one/project-yellowstone/dragons-mouth-grpc-subscriptions
+  properties:
+  - url: https://docs.triton.one/project-yellowstone/introduction
+    type: Documentation
+  - url: https://docs.triton.one/project-yellowstone/dragons-mouth-grpc-subscriptions
+    type: Documentation
+  - url: https://github.com/rpcpool/yellowstone-grpc
+    type: SourceCode
+  - url: https://github.com/rpcpool/yellowstone-grpc
+    name: yellowstone-grpc
+    type: SDK
+  description: Dragon's Mouth — Triton's high-performance Solana streaming gRPC service. Subscribe to slots,
+    blocks, transactions, accounts, and blockmeta updates over a single bidirectional gRPC stream. Open-source
+    server reference at github.com/rpcpool/yellowstone-grpc (Rust, AGPL-3.0).
+- aid: triton-one:triton-one-fumarole
+  name: Triton One Fumarole Persistent Streams
+  tags:
+  - Solana
+  - Streaming
+  - Yellowstone
+  - Fumarole
+  humanURL: https://docs.triton.one/project-yellowstone/fumarole
+  properties:
+  - url: https://docs.triton.one/project-yellowstone/fumarole
+    type: Documentation
+  - url: https://github.com/rpcpool/yellowstone-fumarole
+    type: SourceCode
+  description: Fumarole — persistent Yellowstone streams with gap-free reconnect and 4-day server-side cache.
+    Built for consumers that must not miss events across client restarts or network blips.
+- aid: triton-one:triton-one-whirligig-websockets
+  name: Triton One Whirligig WebSockets
+  tags:
+  - Solana
+  - WebSocket
+  - Streaming
+  - Yellowstone
+  humanURL: https://docs.triton.one/project-yellowstone/whirligig-websockets
+  properties:
+  - url: https://docs.triton.one/project-yellowstone/whirligig-websockets
+    type: Documentation
+  description: Whirligig — Triton's enhanced WebSocket layer over Solana RPC. Adds the missing
+    transactionSubscribe stream and hardened account/slot subscribe behaviour with stable backpressure.
+- aid: triton-one:triton-one-old-faithful
+  name: Triton One Old Faithful Historical Archive
+  tags:
+  - Solana
+  - Archive
+  - Historical Data
+  - Yellowstone
+  humanURL: https://docs.triton.one/project-yellowstone/old-faithful-historical-archive
+  properties:
+  - url: https://docs.triton.one/project-yellowstone/old-faithful-historical-archive
+    type: Documentation
+  - url: https://docs.triton.one/chains/solana/old-faithful-historical-archive-1
+    type: Documentation
+  - url: https://github.com/rpcpool/yellowstone-faithful
+    type: SourceCode
+  description: Old Faithful — content-addressable, queryable archive of all Solana history from genesis.
+    Complete-ledger queries in milliseconds, flat-rate pricing across all epochs and methods. Open-source
+    server at github.com/rpcpool/yellowstone-faithful (Go, AGPL-3.0).
+- aid: triton-one:triton-one-cascade
+  name: Triton One Cascade Transaction Delivery
+  tags:
+  - Solana
+  - Transactions
+  - SWQoS
+  - Cascade
+  humanURL: https://docs.triton.one/chains/solana/cascade
+  properties:
+  - url: https://docs.triton.one/chains/solana/cascade
+    type: Documentation
+  - url: https://docs.triton.one/chains/solana/cascade/sending-txs
+    type: Documentation
+  - url: https://docs.triton.one/chains/solana/cascade/buying-transaction-bandwidth
+    type: Documentation
+  - url: https://docs.triton.one/chains/solana/cascade/providing-transaction-bandwidth
+    type: Documentation
+  - url: https://github.com/rpcpool/yellowstone-jet
+    type: SourceCode
+  description: Cascade — high-performance transaction delivery network leveraging Solana's Stake-Weighted
+    Quality of Service (SWQoS). Routes transactions through reserved, private connection pools of staked
+    validators instead of congested public ports. Integrates with Yellowstone Shield for on-chain transaction
+    policies. Open-source sender at github.com/rpcpool/yellowstone-jet.
+- aid: triton-one:triton-one-trading-apis
+  name: Triton One Trading APIs
+  tags:
+  - Solana
+  - Trading
+  - Swap
+  - Pyth
+  - Jito
+  humanURL: https://docs.triton.one/trading-apis/introduction
+  properties:
+  - url: https://docs.triton.one/trading-apis/introduction
+    type: Documentation
+  - url: https://docs.triton.one/trading-apis/hermes
+    type: Documentation
+  - url: https://docs.triton.one/trading-apis/bundle-simulation-with-jito
+    type: Documentation
+  - url: https://docs.triton.one/trading-apis/metis-swap-api
+    type: Documentation
+  - url: https://docs.triton.one/trading-apis/titan-swap-api
+    type: Documentation
+  description: Hosted trading APIs available on the Triton platform — Pyth Hermes price feeds, Jito bundle
+    simulation, Metis Swap, and Titan Swap. Metered separately under the unified PAYG pricing model.
+name: Triton One
+tags:
+- Solana
+- RPC
+- Blockchain
+- Web3
+- Streaming
+- Yellowstone
+- Validator
+- gRPC
+- Pythnet
+- Sui
+- Monad
+kind: contract
+image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+access: 3rd-Party
+common:
+- type: Portal
+  url: https://triton.one
+- type: Documentation
+  url: https://docs.triton.one
+- type: Pricing
+  url: https://triton.one/pricing
+- type: StatusPage
+  url: https://status.triton.one
+- type: GitHubOrganization
+  url: https://github.com/rpcpool
+- type: LinkedIn
+  url: https://www.linkedin.com/company/triton-one
+- type: Twitter
+  url: https://twitter.com/triton_one
+- type: Support
+  url: mailto:support@triton.one
+- type: GettingStarted
+  url: https://docs.triton.one/getting-started
+- type: TermsOfService
+  url: https://triton.one/terms
+- type: PrivacyPolicy
+  url: https://docs.triton.one/core-features/privacy-and-security
+- type: RateLimits
+  url: https://docs.triton.one/core-features/ratelimits
+- type: Authentication
+  url: https://docs.triton.one/account-management/api-access/auth-and-headers
+- type: Tiers
+  url: https://docs.triton.one/account-management/api-access/rate-tiers
+- url: https://github.com/rpcpool/yellowstone-grpc
+  name: Yellowstone gRPC
+  type: SDK
+- url: https://github.com/rpcpool/yellowstone-vixen
+  name: Yellowstone Vixen
+  type: SDK
+- url: https://github.com/rpcpool/yellowstone-jet
+  name: Yellowstone Jet
+  type: SDK
+- url: https://github.com/rpcpool/yellowstone-fumarole
+  name: Yellowstone Fumarole
+  type: SDK
+- url: https://github.com/rpcpool/yellowstone-faithful
+  name: Yellowstone Faithful
+  type: SDK
+- url: https://github.com/rpcpool/solana-rpc-ansible
+  name: Solana RPC Ansible Playbooks
+  type: Tools
+- url: https://plans/triton-one-plans-pricing.yml
+  type: Plans
+- url: https://rate-limits/triton-one-rate-limits.yml
+  type: RateLimits
+- url: https://finops/triton-one-finops.yml
+  type: FinOps
+- type: Features
+  data:
+  - Global bare-metal node network across 10+ tier-one data centers with GeoDNS routing and auto-failover
+  - Multi-chain coverage Solana, Pythnet (1,700+ price feeds), Sui, and Monad
+  - Three subscription types Developer (devnet/testnet), Mainnet-Shared, and Mainnet-Dedicated
+  - Five rate tiers free, tier1, tier2, tier3, and dedi (dedicated)
+  - Yellowstone Dragon's Mouth gRPC streaming for slots/blocks/transactions/accounts/blockmeta
+  - Whirligig WebSocket with transactionSubscribe — the missing Solana subscription
+  - Fumarole persistent streams with gap-free reconnect and 4-day cache
+  - Old Faithful complete-ledger archive queryable in milliseconds from genesis
+  - Submillisecond reads from head cache for recent history
+  - Steamboat custom indexes built automatically from query patterns
+  - Vixen Solana program parsing toolkit with Codama parser generation
+  - getTransactionsForAddress — single-call consolidated address history with slot/blockTime/status/tokenAccounts filters
+  - Improved getRecentPrioritizationFees with percentile parameter (1-10000)
+  - Cascade transaction delivery with Stake-Weighted Quality of Service routing
+  - Shield on-chain transaction policy enforcement
+  - Metaplex Digital Assets API hosted via the Photon indexer
+  - Trading APIs Pyth Hermes, Jito bundle simulation, Metis Swap, Titan Swap, Titan Prime
+  - Validator services vote account setup, node identity protection, NGINX proxy guidance
+  - Customers REST API at customers.triton.one for accounts, subscriptions, endpoints, tokens, watch lists
+  - Token-scoped role model reseller, operator, read-only
+  - Address watch lists for collections and Merkle trees
+  - Unified PAYG pricing — no tiers, no feature gating, no overage premiums
+  - $125 USD minimum prepaid deposit valid for 12 months
+  - $0.08/GB bandwidth across all services
+  - 1-1 senior engineer support included on every account
+  - Open-source Yellowstone components on github.com/rpcpool under AGPL-3.0 / Apache-2.0 / MIT
+  sources:
+  - https://triton.one
+  - https://triton.one/pricing
+  - https://docs.triton.one
+  - https://github.com/rpcpool
+  updated: '2026-05-25'
+created: '2026-05-25'
+modified: '2026-05-25'
+position: Consuming
+description: Triton One is a high-performance Solana RPC and blockchain infrastructure provider operating
+  globally distributed bare-metal node networks for Solana, Pythnet, Sui, and Monad. Beyond standard Solana
+  JSON-RPC, Triton ships the Yellowstone ecosystem — Dragon's Mouth gRPC streaming, Whirligig WebSockets,
+  Fumarole persistent streams, Old Faithful historical archive, Steamboat custom indexes, Vixen program
+  parsing, Jet QUIC transaction sending, and Shield transaction policies — plus the hosted Metaplex
+  Digital Assets API, Cascade SWQoS transaction delivery, and trading APIs (Pyth Hermes, Jito bundles,
+  Metis, Titan). The Customers REST API at customers.triton.one programmatically manages accounts,
+  subscriptions, endpoints, tokens, address watch lists, and rate tiers. Pricing is a single unified
+  pay-as-you-go model with a $125 prepaid deposit and no tier gating.
+maintainers:
+- FN: Kin Lane
+  email: info@apievangelist.com
+  X: apievangelist
+  url: https://apievangelist.com
+specificationVersion: '0.16'

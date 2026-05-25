@@ -1,0 +1,188 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Triton One Customers API — Subscriptions
+  description: 'Triton One Customers API — Subscriptions. CRUD + activate/deactivate operations for Triton subscriptions across Developer, Mainnet-Shared, and Mainnet-Dedicated tiers.'
+  tags:
+    - Triton One
+    - Subscriptions
+    - Customers
+  created: '2026-05-25'
+  modified: '2026-05-25'
+binds:
+  - namespace: env
+    keys:
+      TRITON_CUSTOMERS_TOKEN: TRITON_CUSTOMERS_TOKEN
+capability:
+  consumes:
+    - type: http
+      namespace: customers-subscriptions
+      baseUri: https://customers.triton.one
+      description: Triton One Customers API — Subscriptions business capability.
+      resources:
+        - name: subscriptions
+          path: /api/v1/subscriptions
+          operations:
+            - name: listSubscriptions
+              method: GET
+              description: List Subscriptions
+              outputRawFormat: json
+              inputParameters:
+                - name: subscription_type
+                  in: query
+                  type: string
+                - name: account_uuid
+                  in: query
+                  type: string
+                - name: user_uuid
+                  in: query
+                  type: string
+                - name: per
+                  in: query
+                  type: integer
+                - name: page
+                  in: query
+                  type: integer
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+            - name: createSubscription
+              method: POST
+              description: Create Subscription
+              outputRawFormat: json
+              inputParameters:
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: subscription
+          path: /api/v1/subscriptions/{subscriptionUuid}
+          operations:
+            - name: getSubscription
+              method: GET
+              description: Get Subscription
+              outputRawFormat: json
+              inputParameters:
+                - name: subscriptionUuid
+                  in: path
+                  type: string
+                  required: true
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+            - name: updateSubscription
+              method: PUT
+              description: Update Subscription
+              outputRawFormat: json
+              inputParameters:
+                - name: subscriptionUuid
+                  in: path
+                  type: string
+                  required: true
+                - name: body
+                  in: body
+                  type: object
+                  required: true
+              outputParameters:
+                - name: result
+                  type: object
+                  value: $.
+        - name: subscription-activate
+          path: /api/v1/subscriptions/{subscriptionUuid}/activate
+          operations:
+            - name: activateSubscription
+              method: PUT
+              description: Activate Subscription
+              inputParameters:
+                - name: subscriptionUuid
+                  in: path
+                  type: string
+                  required: true
+        - name: subscription-deactivate
+          path: /api/v1/subscriptions/{subscriptionUuid}/deactivate
+          operations:
+            - name: deactivateSubscription
+              method: PUT
+              description: Deactivate Subscription
+              inputParameters:
+                - name: subscriptionUuid
+                  in: path
+                  type: string
+                  required: true
+                - name: body
+                  in: body
+                  type: object
+      authentication:
+        type: bearer
+        value: '{{env.TRITON_CUSTOMERS_TOKEN}}'
+  exposes:
+    - type: mcp
+      namespace: customers-subscriptions-mcp
+      port: 9090
+      transport: http
+      description: MCP adapter for Triton Subscriptions.
+      tools:
+        - name: triton-list-subscriptions
+          description: List Triton subscriptions.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: customers-subscriptions.listSubscriptions
+          with:
+            subscription_type: tools.subscription_type
+            account_uuid: tools.account_uuid
+            user_uuid: tools.user_uuid
+            per: tools.per
+            page: tools.page
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: triton-get-subscription
+          description: Get a Triton subscription by UUID.
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: customers-subscriptions.getSubscription
+          with:
+            subscriptionUuid: tools.subscriptionUuid
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: triton-create-subscription
+          description: Create a Triton subscription. Reseller role only.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: false
+          call: customers-subscriptions.createSubscription
+          with:
+            body: tools.body
+          outputParameters:
+            - type: object
+              mapping: $.
+        - name: triton-activate-subscription
+          description: Activate a Triton subscription.
+          hints:
+            readOnly: false
+            destructive: false
+            idempotent: true
+          call: customers-subscriptions.activateSubscription
+          with:
+            subscriptionUuid: tools.subscriptionUuid
+        - name: triton-deactivate-subscription
+          description: Deactivate a Triton subscription.
+          hints:
+            readOnly: false
+            destructive: true
+            idempotent: true
+          call: customers-subscriptions.deactivateSubscription
+          with:
+            subscriptionUuid: tools.subscriptionUuid
+            body: tools.body

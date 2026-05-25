@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/triton-one/main/json-schema/triton-one-endpoint-schema.json",
+  "title": "Triton One RPC Endpoint",
+  "description": "An RPC endpoint provisioned under a subscription.",
+  "type": "object",
+  "required": ["uuid", "name", "rate_tier"],
+  "properties": {
+    "uuid": { "type": "string", "format": "uuid" },
+    "name": { "type": "string" },
+    "slug": { "type": "string" },
+    "rate_tier": {
+      "type": "string",
+      "enum": ["free", "tier1", "tier2", "tier3", "dedi"]
+    },
+    "is_active": { "type": "boolean" },
+    "values": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Endpoint URL values (e.g. rpcpool subdomains)."
+    },
+    "allowed_origins": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "value": { "type": "string" },
+          "is_active": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}

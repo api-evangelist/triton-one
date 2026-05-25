@@ -1,0 +1,110 @@
+specification: API Commons FinOps
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/FinOps
+provider: Triton One
+providerId: triton-one
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: true
+tags:
+  - Solana
+  - RPC
+  - FinOps
+description: >
+  FinOps surface for Triton One's pay-as-you-go RPC offering. Triton bills two
+  primary metric families: bandwidth (GB) and call volume (millions of calls).
+  Pricing varies by service class (standard RPC, streaming, Metaplex DAS /
+  Photon, Metis). Customers prepay a non-refundable $125 USD deposit and draw
+  down usage against it; overages bill at base rates with no premiums. Aligns
+  to the FinOps Framework / FOCUS data spec for cost reporting.
+sources:
+  - https://triton.one/pricing
+  - https://docs.triton.one/account-management/payments.md
+  - https://docs.triton.one/account-management/api-access/endpoints.md
+billing:
+  currency: USD
+  model: prepaid-then-metered
+  cycle: usage
+  prepaidDeposit:
+    amount: 125.00
+    currency: USD
+    refundable: false
+    validity: 12-months
+  paymentMethods:
+    - HelioWeb3
+    - Wire
+    - CreditCard
+metrics:
+  - id: triton-standard-rpc-bandwidth
+    name: Standard RPC Bandwidth
+    category: bandwidth
+    unit: gigabytes
+    serviceClass: standard-rpc
+    rate: 0.08
+    rateUnit: per-GB
+    rateCurrency: USD
+    description: Bandwidth consumed by getAccountInfo, getProgramAccounts, getBlock, getTransaction, ledger queries, and indexed-account methods.
+  - id: triton-standard-rpc-calls
+    name: Standard RPC Calls
+    category: calls
+    unit: count
+    serviceClass: standard-rpc
+    rate: 10.00
+    rateUnit: per-million-calls
+    rateCurrency: USD
+  - id: triton-streaming-bandwidth
+    name: Streaming Bandwidth
+    category: bandwidth
+    unit: gigabytes
+    serviceClass: streaming
+    rate: 0.08
+    rateUnit: per-GB
+    rateCurrency: USD
+    description: Bandwidth consumed by Yellowstone gRPC, Whirligig WebSocket, Fumarole streams, and Titan Prime API.
+  - id: triton-metaplex-photon-bandwidth
+    name: Metaplex DAS / Photon Bandwidth
+    category: bandwidth
+    unit: gigabytes
+    serviceClass: digital-assets
+    rate: 0.08
+    rateUnit: per-GB
+    rateCurrency: USD
+  - id: triton-metaplex-photon-calls
+    name: Metaplex DAS / Photon Calls
+    category: calls
+    unit: count
+    serviceClass: digital-assets
+    rate: 50.00
+    rateUnit: per-million-calls
+    rateCurrency: USD
+  - id: triton-metis-bandwidth
+    name: Metis API Bandwidth
+    category: bandwidth
+    unit: gigabytes
+    serviceClass: metis
+    rate: 0.08
+    rateUnit: per-GB
+    rateCurrency: USD
+  - id: triton-metis-calls
+    name: Metis API Calls
+    category: calls
+    unit: count
+    serviceClass: metis
+    rate: 80.00
+    rateUnit: per-million-calls
+    rateCurrency: USD
+focusMapping:
+  ChargeCategory: Usage
+  PricingCategory: Standard
+  CommitmentDiscountCategory: None
+  BillingPeriodStart: usage-window-start
+  BillingPeriodEnd: usage-window-end
+  ServiceName: Triton One Solana RPC
+  ServiceCategory: Developer-Tools
+  ChargeFrequency: Usage-Based
+  PricingUnit:
+    - gigabyte
+    - million-calls
+  ConsumedUnit:
+    - gigabyte
+    - count

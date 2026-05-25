@@ -1,0 +1,184 @@
+openapi: 3.1.0
+info:
+  title: Triton One Solana RPC API
+  description: >
+    Triton's enhanced Solana JSON-RPC interface. Exposes the full Solana JSON-RPC
+    surface plus Triton's custom extensions including getTransactionsForAddress
+    (consolidated address history), the improved getRecentPrioritizationFees
+    percentile-aware priority fees API, and the Whirligig WebSocket
+    transactionSubscribe stream. All calls share the standard Solana JSON-RPC
+    request envelope ({jsonrpc, id, method, params}).
+  version: '1.0'
+  contact:
+    name: Triton One Support
+    url: https://triton.one
+    email: support@triton.one
+
+servers:
+  - url: https://{endpoint}.rpcpool.com
+    description: Triton RPC endpoint (replace {endpoint} with your endpoint slug).
+    variables:
+      endpoint:
+        default: mainnet-beta
+
+security:
+  - TokenAuth: []
+
+tags:
+  - name: PriorityFees
+    description: Improved getRecentPrioritizationFees with percentile parameter.
+  - name: AddressHistory
+    description: Triton's getTransactionsForAddress consolidated address history method.
+  - name: Standard
+    description: Standard Solana JSON-RPC methods accepted at the same endpoint.
+
+paths:
+  /:
+    post:
+      summary: Solana JSON-RPC Call
+      description: >
+        Single JSON-RPC entrypoint. Set the `method` field to one of Triton's
+        supported methods. See operation examples for Triton's custom methods.
+      operationId: callRpc
+      tags: [Standard]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JsonRpcRequest'
+            examples:
+              getRecentPrioritizationFees:
+                summary: Improved priority fees with percentile
+                value:
+                  jsonrpc: '2.0'
+                  id: 1
+                  method: getRecentPrioritizationFees
+                  params:
+                    - []
+                    - { percentile: 5000 }
+              getTransactionsForAddress:
+                summary: Consolidated address history (Triton extension)
+                value:
+                  jsonrpc: '2.0'
+                  id: 1
+                  method: getTransactionsForAddress
+                  params:
+                    - "VinesnNPRzZBnTGzzybjJM1qZmxF8aQB6FA9P2J2TYP"
+                    - transactionDetails: full
+                      sortOrder: desc
+                      limit: 100
+                      commitment: finalized
+                      encoding: jsonParsed
+                      filters:
+                        slot: { gte: 200000000 }
+                        status: succeeded
+                        tokenAccounts: balanceChanged
+      responses:
+        '200':
+          description: JSON-RPC response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonRpcResponse'
+
+components:
+  securitySchemes:
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: RPC consumption token from Customers API.
+  schemas:
+    JsonRpcRequest:
+      type: object
+      required: [jsonrpc, method]
+      properties:
+        jsonrpc: { type: string, enum: ['2.0'] }
+        id: { type: [integer, string] }
+        method: { type: string }
+        params: { type: array }
+    JsonRpcResponse:
+      type: object
+      properties:
+        jsonrpc: { type: string }
+        id: { type: [integer, string] }
+        result: {}
+        error:
+          type: object
+          properties:
+            code: { type: integer }
+            message: { type: string }
+            data: {}
+    PrioritizationFee:
+      type: object
+      properties:
+        slot: { type: integer, description: Block slot number. }
+        prioritizationFee:
+          type: integer
+          description: Fee value (micro-lamports) at the requested percentile.
+    AddressHistoryOptions:
+      type: object
+      properties:
+        transactionDetails:
+          type: string
+          enum: [signatures, full]
+          default: signatures
+        sortOrder:
+          type: string
+          enum: [asc, desc]
+          default: desc
+        limit:
+          type: integer
+          description: Default 1000 for signatures, 100 for full.
+        paginationToken:
+          type: string
+          description: Cursor from a previous response for continued scanning.
+        commitment:
+          type: string
+          enum: [confirmed, finalized]
+          default: finalized
+        encoding:
+          type: string
+          enum: [json, jsonParsed, base58, base64]
+        filters:
+          type: object
+          properties:
+            slot:
+              type: object
+              properties:
+                gte: { type: integer }
+                gt: { type: integer }
+                lte: { type: integer }
+                lt: { type: integer }
+            blockTime:
+              type: object
+              properties:
+                gte: { type: integer }
+                gt: { type: integer }
+                lte: { type: integer }
+                lt: { type: integer }
+            status:
+              type: string
+              enum: [any, succeeded, failed]
+            tokenAccounts:
+              type: string
+              enum: [none, balanceChanged, all]
+    AddressHistorySignaturesResult:
+      type: object
+      properties:
+        signature: { type: string }
+        slot: { type: integer }
+        transactionIndex: { type: integer }
+        err: {}
+        memo: { type: [string, "null"] }
+        blockTime: { type: [integer, "null"] }
+        confirmationStatus: { type: string }
+    AddressHistoryFullResult:
+      type: object
+      properties:
+        slot: { type: integer }
+        transactionIndex: { type: integer }
+        blockTime: { type: [integer, "null"] }
+        transaction: {}
+        meta: {}

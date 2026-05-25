@@ -1,0 +1,137 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Triton One
+providerId: triton-one
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: true
+tags:
+  - Solana
+  - RPC
+  - Blockchain
+  - Streaming
+description: >
+  Triton One offers a single unified pay-as-you-go pricing model — no tiers, no
+  feature gating. Every Triton product is included on every account. Customers
+  prepay a non-refundable $125 USD deposit valid for 12 months and then consume
+  services metered by GB of bandwidth and millions of calls. Source:
+  triton.one/pricing.
+sources:
+  - https://triton.one
+  - https://triton.one/pricing
+  - https://docs.triton.one/account-management/payments.md
+  - https://docs.triton.one/account-management/api-access/rate-tiers.md
+plans:
+  - id: triton-payg
+    name: Triton One Pay-As-You-Go
+    type: usage-based
+    description: >
+      Unified PAYG plan covering all Triton products — Solana, Pythnet, Sui, and
+      Monad RPC, Yellowstone gRPC/WebSocket streaming, Old Faithful archival,
+      Metaplex DAS, Photon, Metis, Titan, Cascade transaction delivery, and
+      Shield policies. No tier gating. Overages bill at base rates.
+    entries:
+      - label: Minimum deposit
+        name: minimum_deposit
+        type: prepaid
+        metric: usd
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: '125.00'
+        userMultiplied: false
+        description: >
+          Non-refundable prepaid deposit. Required to activate account.
+          Valid for 12 months from purchase.
+      - label: Standard RPC / indexed accounts / ledger queries — bandwidth
+        name: standard_rpc_bandwidth
+        type: metered
+        metric: gigabytes
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0.08'
+        userMultiplied: false
+      - label: Standard RPC / indexed accounts / ledger queries — calls
+        name: standard_rpc_calls
+        type: metered
+        metric: calls
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1000000
+        price: '10.00'
+        userMultiplied: false
+      - label: Streaming services / Titan Prime — bandwidth
+        name: streaming_bandwidth
+        type: metered
+        metric: gigabytes
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0.08'
+        userMultiplied: false
+        description: Yellowstone gRPC, Whirligig WebSocket, Fumarole, Titan Prime API.
+      - label: Metaplex DAS / Photon — bandwidth
+        name: metaplex_photon_bandwidth
+        type: metered
+        metric: gigabytes
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0.08'
+        userMultiplied: false
+      - label: Metaplex DAS / Photon — calls
+        name: metaplex_photon_calls
+        type: metered
+        metric: calls
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1000000
+        price: '50.00'
+        userMultiplied: false
+      - label: Metis API — bandwidth
+        name: metis_bandwidth
+        type: metered
+        metric: gigabytes
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1
+        price: '0.08'
+        userMultiplied: false
+      - label: Metis API — calls
+        name: metis_calls
+        type: metered
+        metric: calls
+        limit: -1
+        timeFrame: usage
+        geo: global
+        unit: 1000000
+        price: '80.00'
+        userMultiplied: false
+    elements:
+      - name: Global bare metal node network
+      - name: GeoDNS routing and auto-failover
+      - name: 1-1 senior engineer support
+      - name: Yellowstone gRPC streaming (Dragon's Mouth)
+      - name: Whirligig WebSocket streaming (transactionSubscribe)
+      - name: Fumarole persistent streams with gap-free reconnect
+      - name: Old Faithful complete-ledger queries from genesis
+      - name: Steamboat custom indexes
+      - name: Vixen program parsing framework
+      - name: Cascade transaction delivery with SWQoS routing
+      - name: Shield transaction policies
+      - name: Metaplex Digital Assets API
+      - name: Photon indexer
+      - name: Metis and Titan swap APIs
+      - name: Pyth Hermes integration
+      - name: Solana, Pythnet, Sui, Monad network coverage
+      - name: No tier gating — every feature on every plan
+      - name: No overage premiums — overages bill at base rate

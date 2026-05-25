@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/triton-one/main/json-schema/triton-one-account-schema.json",
+  "title": "Triton One Account",
+  "description": "Customer account in the Triton One Customers API.",
+  "type": "object",
+  "required": ["uuid", "name"],
+  "properties": {
+    "uuid": { "type": "string", "format": "uuid" },
+    "name": { "type": "string" },
+    "billing_address1": { "type": "string" },
+    "billing_address2": { "type": "string" },
+    "billing_address3": { "type": "string" },
+    "billing_city": { "type": "string" },
+    "billing_state_or_province": { "type": "string" },
+    "billing_postal_code": { "type": "string" },
+    "billing_country_code": { "type": "string" },
+    "telephone_country_code": { "type": "string" },
+    "telephone": { "type": "string" },
+    "is_active": { "type": "boolean" },
+    "deactivation_reasons": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

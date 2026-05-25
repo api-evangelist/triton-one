@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/triton-one/main/json-schema/triton-one-token-schema.json",
+  "title": "Triton One RPC Token",
+  "description": "An RPC consumption token issued under a subscription.",
+  "type": "object",
+  "required": ["uuid", "name", "rate_tier"],
+  "properties": {
+    "uuid": { "type": "string", "format": "uuid" },
+    "value": { "type": "string", "description": "Opaque token string used in the Authorization header against Triton RPC endpoints." },
+    "auth_username": { "type": "string" },
+    "name": { "type": "string" },
+    "rate_tier": {
+      "type": "string",
+      "enum": ["free", "tier1", "tier2", "tier3", "dedi"]
+    },
+    "is_active": { "type": "boolean" },
+    "deactivation_reasons": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

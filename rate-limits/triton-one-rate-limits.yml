@@ -1,0 +1,102 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Triton One
+providerId: triton-one
+created: '2026-05-25'
+modified: '2026-05-25'
+reconciled: true
+tags:
+  - Solana
+  - RPC
+  - RateLimits
+description: >
+  Triton One assigns each endpoint and token a rate tier (free, tier1, tier2,
+  tier3, dedi). Rate tiers control requests-per-second, concurrent connections,
+  and method-class access. The actual numeric ceilings are configured per
+  endpoint and exposed through the Customers API as the supported_rate_tiers
+  list. Dedi (dedicated) endpoints get isolated streaming capacity. Rate
+  tiering is unified across Solana RPC, Yellowstone streaming, and Digital
+  Assets / Photon methods.
+sources:
+  - https://docs.triton.one/core-features/ratelimits.md
+  - https://docs.triton.one/account-management/api-access/rate-tiers.md
+  - https://docs.triton.one/account-management/api-access/endpoints.md
+policies:
+  - id: triton-rate-tier-free
+    name: Free Rate Tier
+    scope: endpoint
+    description: Free-tier endpoints used for evaluation and Developer subscriptions.
+    limits:
+      - type: rps
+        scope: per-endpoint
+        unit: requests-per-second
+        value: low
+        description: Low requests-per-second ceiling configured per endpoint.
+  - id: triton-rate-tier-1
+    name: Tier 1
+    scope: endpoint
+    description: Entry shared-pool tier with moderate RPS and connection limits.
+    limits:
+      - type: rps
+        scope: per-endpoint
+        unit: requests-per-second
+        value: configured
+      - type: concurrency
+        scope: per-endpoint
+        unit: connections
+        value: configured
+  - id: triton-rate-tier-2
+    name: Tier 2
+    scope: endpoint
+    description: Higher shared-pool tier with raised RPS and connection limits.
+    limits:
+      - type: rps
+        scope: per-endpoint
+        unit: requests-per-second
+        value: configured
+      - type: concurrency
+        scope: per-endpoint
+        unit: connections
+        value: configured
+  - id: triton-rate-tier-3
+    name: Tier 3
+    scope: endpoint
+    description: Highest shared-pool tier.
+    limits:
+      - type: rps
+        scope: per-endpoint
+        unit: requests-per-second
+        value: configured
+      - type: concurrency
+        scope: per-endpoint
+        unit: connections
+        value: configured
+  - id: triton-rate-tier-dedi
+    name: Dedicated (Dedi)
+    scope: subscription
+    description: >
+      Mainnet-Dedicated subscription tier — isolated streaming capacity on
+      reserved bare-metal nodes; RPS and connection limits negotiated per
+      contract.
+    limits:
+      - type: rps
+        scope: per-endpoint
+        unit: requests-per-second
+        value: contractual
+      - type: concurrency
+        scope: per-endpoint
+        unit: connections
+        value: contractual
+  - id: triton-abuse-prevention
+    name: Abuse Prevention Throttling
+    scope: global
+    description: >
+      Triton's global edge applies abuse prevention rules independent of the
+      assigned rate tier. Excessive request patterns can result in temporary
+      throttling. See docs.triton.one/core-features/abuse-prevention.
+    limits:
+      - type: behavioural
+        scope: per-token
+        unit: tokens
+        value: dynamic

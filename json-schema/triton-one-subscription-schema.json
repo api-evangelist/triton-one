@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/triton-one/main/json-schema/triton-one-subscription-schema.json",
+  "title": "Triton One Subscription",
+  "description": "Subscription resource scoping endpoints, tokens, and rate tiers under an account.",
+  "type": "object",
+  "required": ["uuid", "subscription_type", "name"],
+  "properties": {
+    "uuid": { "type": "string", "format": "uuid" },
+    "name": { "type": "string" },
+    "subscription_type": {
+      "type": "string",
+      "enum": ["developer", "mainnet-shared", "mainnet-dedicated"]
+    },
+    "is_active": { "type": "boolean" },
+    "starts_at": { "type": "string", "format": "date-time" },
+    "ends_at": { "type": "string", "format": "date-time" },
+    "supported_rate_tiers": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["free", "tier1", "tier2", "tier3", "dedi"] }
+    },
+    "deactivation_reasons": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}
