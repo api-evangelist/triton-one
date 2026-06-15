@@ -1,0 +1,197 @@
+{
+  "item": [
+    {
+      "id": "571cd5c8-6f16-4d9d-b634-afda3281276e",
+      "name": "PriorityFees",
+      "description": {
+        "content": "Improved getRecentPrioritizationFees with percentile parameter.",
+        "type": "text/plain"
+      },
+      "item": [],
+      "event": []
+    },
+    {
+      "id": "da372c0c-2c92-401a-9e5e-1cfd61e7672b",
+      "name": "AddressHistory",
+      "description": {
+        "content": "Triton's getTransactionsForAddress consolidated address history method.",
+        "type": "text/plain"
+      },
+      "item": [],
+      "event": []
+    },
+    {
+      "id": "0ec58bed-7cd3-4695-8ead-697933ffa236",
+      "name": "Standard",
+      "description": {
+        "content": "Standard Solana JSON-RPC methods accepted at the same endpoint.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "07d35ebe-c6e6-40a7-8a15-7d4d7dedcfd8",
+          "name": "Solana JSON-RPC Call",
+          "request": {
+            "name": "Solana JSON-RPC Call",
+            "description": {
+              "content": "Single JSON-RPC entrypoint. Set the `method` field to one of Triton's supported methods. See operation examples for Triton's custom methods.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": {
+                    "content": "",
+                    "type": "text/plain"
+                  },
+                  "type": "any",
+                  "value": "{{endpoint}}",
+                  "key": "endpoint"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"<string>\",\n  \"method\": \"<string>\",\n  \"id\": \"<integer,string>\",\n  \"params\": \"<array>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8f1000bd-77b0-401c-a6f7-aa6222e9189a",
+              "name": "JSON-RPC response.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "{{endpoint}}",
+                      "key": "endpoint"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"id\": 1,\n  \"method\": \"getRecentPrioritizationFees\",\n  \"params\": [\n    [],\n    {\n      \"percentile\": 5000\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jsonrpc\": \"string\",\n  \"id\": 5725,\n  \"result\": \"\",\n  \"error\": {\n    \"code\": 678,\n    \"message\": \"string\",\n    \"data\": \"\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "mainnet-beta",
+      "key": "endpoint"
+    },
+    {
+      "type": "string",
+      "value": "https://{{endpoint}}.rpcpool.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "85f3ce14-a92a-459c-bedb-138028224e76",
+    "name": "Triton One Solana RPC API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Triton's enhanced Solana JSON-RPC interface. Exposes the full Solana JSON-RPC surface plus Triton's custom extensions including getTransactionsForAddress (consolidated address history), the improved getRecentPrioritizationFees percentile-aware priority fees API, and the Whirligig WebSocket transactionSubscribe stream. All calls share the standard Solana JSON-RPC request envelope ({jsonrpc, id, method, params}).\n\n\nContact Support:\n Name: Triton One Support\n Email: support@triton.one",
+      "type": "text/plain"
+    }
+  }
+}

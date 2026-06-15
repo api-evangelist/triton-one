@@ -1,0 +1,528 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Triton One Customers API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accounts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Accounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://customers.triton.one/api/v1/accounts",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by account name."
+              },
+              {
+                "name": "per",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List customer accounts visible to the authenticated token."
+        },
+        {
+          "info": {
+            "name": "Get Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://customers.triton.one/api/v1/accounts/:accountUuid",
+            "params": [
+              {
+                "name": "accountUuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Retrieve a single account by UUID, including subscriptions and deactivation reasons."
+        },
+        {
+          "info": {
+            "name": "Update Account",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://customers.triton.one/api/v1/accounts/:accountUuid",
+            "params": [
+              {
+                "name": "accountUuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update billing and contact details for an account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://customers.triton.one/api/v1/subscriptions",
+            "params": [
+              {
+                "name": "subscription_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "account_uuid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_uuid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "per",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List subscriptions visible to the authenticated token."
+        },
+        {
+          "info": {
+            "name": "Create Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://customers.triton.one/api/v1/subscriptions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new subscription. Reseller role only."
+        },
+        {
+          "info": {
+            "name": "Get Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://customers.triton.one/api/v1/subscriptions/:subscriptionUuid",
+            "params": [
+              {
+                "name": "subscriptionUuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Subscription"
+        },
+        {
+          "info": {
+            "name": "Update Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://customers.triton.one/api/v1/subscriptions/:subscriptionUuid",
+            "params": [
+              {
+                "name": "subscriptionUuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Subscription"
+        },
+        {
+          "info": {
+            "name": "Activate Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://customers.triton.one/api/v1/subscriptions/:subscriptionUuid/activate",
+            "params": [
+              {
+                "name": "subscriptionUuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Activate a previously deactivated subscription. Reseller role only."
+        },
+        {
+          "info": {
+            "name": "Deactivate Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://customers.triton.one/api/v1/subscriptions/:subscriptionUuid/deactivate",
+            "params": [
+              {
+                "name": "subscriptionUuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deactivate an active subscription. Reseller role only."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Endpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://customers.triton.one/api/v1/endpoints",
+            "params": [
+              {
+                "name": "account_uuid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "subscription_uuid",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Endpoints"
+        },
+        {
+          "info": {
+            "name": "Create Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://customers.triton.one/api/v1/subscriptions/:subscriptionUuid/endpoints",
+            "params": [
+              {
+                "name": "subscriptionUuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new RPC endpoint under a subscription. Reseller role only."
+        },
+        {
+          "info": {
+            "name": "Update Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://customers.triton.one/api/v1/endpoints/:endpointUuid",
+            "params": [
+              {
+                "name": "endpointUuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Endpoint"
+        },
+        {
+          "info": {
+            "name": "Activate Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://customers.triton.one/api/v1/endpoints/:endpointUuid/activate",
+            "params": [
+              {
+                "name": "endpointUuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Activate Endpoint"
+        },
+        {
+          "info": {
+            "name": "Deactivate Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://customers.triton.one/api/v1/endpoints/:endpointUuid/deactivate",
+            "params": [
+              {
+                "name": "endpointUuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deactivate Endpoint"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://customers.triton.one/api/v1/tokens",
+            "params": [
+              {
+                "name": "account_uuid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "subscription_uuid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "per",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Tokens"
+        },
+        {
+          "info": {
+            "name": "Create Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://customers.triton.one/api/v1/subscriptions/:subscriptionUuid/tokens",
+            "params": [
+              {
+                "name": "subscriptionUuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new RPC consumption token under a subscription."
+        },
+        {
+          "info": {
+            "name": "Activate Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://customers.triton.one/api/v1/tokens/:tokenUuid/activate",
+            "params": [
+              {
+                "name": "tokenUuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Activate Token"
+        },
+        {
+          "info": {
+            "name": "Deactivate Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://customers.triton.one/api/v1/tokens/:tokenUuid/deactivate",
+            "params": [
+              {
+                "name": "tokenUuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deactivate Token"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "AddressWatchLists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Address Watch Lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://customers.triton.one/api/v1/address_watch_lists",
+            "params": [
+              {
+                "name": "variant",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "subscription_uuid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "subscription_type",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Address Watch Lists"
+        },
+        {
+          "info": {
+            "name": "Add Address Watch List",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://customers.triton.one/api/v1/subscriptions/:subscriptionUuid/address_watch_lists",
+            "params": [
+              {
+                "name": "subscriptionUuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add an address watch list entry for a collection or Merkle tree."
+        },
+        {
+          "info": {
+            "name": "Delete Address Watch List",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://customers.triton.one/api/v1/address_watch_lists/:watchListUuid",
+            "params": [
+              {
+                "name": "watchListUuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Address Watch List"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

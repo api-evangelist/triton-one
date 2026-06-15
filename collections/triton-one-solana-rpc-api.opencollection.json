@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Triton One Solana RPC API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Standard",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solana JSON-RPC Call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{endpoint}.rpcpool.com/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Single JSON-RPC entrypoint. Set the `method` field to one of Triton's supported methods. See operation examples for Triton's custom methods.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
