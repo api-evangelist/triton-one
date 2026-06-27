@@ -119,7 +119,7 @@ apis:
         type: SourceCode
       - url: https://github.com/rpcpool/yellowstone-grpc
         name: yellowstone-grpc
-        type: SDK
+        type: SDKs
     description: >-
       Dragon's Mouth — Triton's high-performance Solana streaming gRPC service. Subscribe to slots, blocks,
       transactions, accounts, and blockmeta updates over a single bidirectional gRPC stream. Open-source server
@@ -267,19 +267,19 @@ common:
     url: https://docs.triton.one/account-management/api-access/rate-tiers
   - url: https://github.com/rpcpool/yellowstone-grpc
     name: Yellowstone gRPC
-    type: SDK
+    type: SDKs
   - url: https://github.com/rpcpool/yellowstone-vixen
     name: Yellowstone Vixen
-    type: SDK
+    type: SDKs
   - url: https://github.com/rpcpool/yellowstone-jet
     name: Yellowstone Jet
-    type: SDK
+    type: SDKs
   - url: https://github.com/rpcpool/yellowstone-fumarole
     name: Yellowstone Fumarole
-    type: SDK
+    type: SDKs
   - url: https://github.com/rpcpool/yellowstone-faithful
     name: Yellowstone Faithful
-    type: SDK
+    type: SDKs
   - url: https://github.com/rpcpool/solana-rpc-ansible
     name: Solana RPC Ansible Playbooks
     type: Tools
