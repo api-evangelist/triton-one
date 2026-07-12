@@ -1,0 +1,25 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/triton-one-customers-api-openapi.yml, openapi/triton-one-digital-assets-api-openapi.yml,
+  openapi/triton-one-solana-rpc-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  description: Customers API token passed in Authorization header.
+  sources:
+  - openapi/triton-one-customers-api-openapi.yml
+- name: TokenAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: RPC consumption token from Customers API.
+  sources:
+  - openapi/triton-one-digital-assets-api-openapi.yml
+  - openapi/triton-one-solana-rpc-api-openapi.yml
