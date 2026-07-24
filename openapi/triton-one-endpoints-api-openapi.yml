@@ -1,0 +1,233 @@
+openapi: 3.1.0
+info:
+  title: Triton One Customers Accounts Endpoints API
+  description: 'Account management REST API for Triton One. Use this API to manage accounts, subscriptions, endpoints, tokens, address watch lists, and rate tiers for your Triton RPC services. Token-based authentication via the Authorization header. Distinct from RPC consumption tokens — Customers API tokens are only used against customers.triton.one.
+
+    '
+  version: v1
+  contact:
+    name: Triton One Support
+    url: https://triton.one
+    email: support@triton.one
+  license:
+    name: Triton One Terms of Service
+    url: https://triton.one/terms
+servers:
+- url: https://customers.triton.one
+  description: Production Customers API
+security:
+- BearerAuth: []
+tags:
+- name: Endpoints
+  description: Manage RPC endpoints attached to subscriptions.
+paths:
+  /api/v1/endpoints:
+    get:
+      summary: List Endpoints
+      operationId: listEndpoints
+      tags:
+      - Endpoints
+      parameters:
+      - name: account_uuid
+        in: query
+        schema:
+          type: string
+          format: uuid
+      - name: subscription_uuid
+        in: query
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: Endpoints collection.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EndpointList'
+  /api/v1/subscriptions/{subscriptionUuid}/endpoints:
+    post:
+      summary: Create Endpoint
+      description: Create a new RPC endpoint under a subscription. Reseller role only.
+      operationId: createEndpoint
+      tags:
+      - Endpoints
+      parameters:
+      - $ref: '#/components/parameters/SubscriptionUuid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EndpointCreate'
+      responses:
+        '201':
+          description: Created endpoint.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EndpointEnvelope'
+  /api/v1/endpoints/{endpointUuid}:
+    put:
+      summary: Update Endpoint
+      operationId: updateEndpoint
+      tags:
+      - Endpoints
+      parameters:
+      - $ref: '#/components/parameters/EndpointUuid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EndpointUpdate'
+      responses:
+        '200':
+          description: Updated endpoint.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EndpointEnvelope'
+  /api/v1/endpoints/{endpointUuid}/activate:
+    put:
+      summary: Activate Endpoint
+      operationId: activateEndpoint
+      tags:
+      - Endpoints
+      parameters:
+      - $ref: '#/components/parameters/EndpointUuid'
+      responses:
+        '204':
+          description: Activated.
+  /api/v1/endpoints/{endpointUuid}/deactivate:
+    put:
+      summary: Deactivate Endpoint
+      operationId: deactivateEndpoint
+      tags:
+      - Endpoints
+      parameters:
+      - $ref: '#/components/parameters/EndpointUuid'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                deactivation_reason:
+                  type: string
+      responses:
+        '204':
+          description: Deactivated.
+components:
+  schemas:
+    EndpointList:
+      type: object
+      properties:
+        endpoints:
+          type: array
+          items:
+            $ref: '#/components/schemas/Endpoint'
+    EndpointUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        rate_tier:
+          type: string
+          enum:
+          - free
+          - tier1
+          - tier2
+          - tier3
+          - dedi
+        allowed_origins:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+              is_active:
+                type: boolean
+    Endpoint:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+        slug:
+          type: string
+        rate_tier:
+          type: string
+          enum:
+          - free
+          - tier1
+          - tier2
+          - tier3
+          - dedi
+        is_active:
+          type: boolean
+        values:
+          type: array
+          items:
+            type: string
+        allowed_origins:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+              is_active:
+                type: boolean
+    EndpointEnvelope:
+      type: object
+      properties:
+        endpoint:
+          $ref: '#/components/schemas/Endpoint'
+    EndpointCreate:
+      type: object
+      required:
+      - name
+      - rate_tier
+      properties:
+        name:
+          type: string
+        rate_tier:
+          type: string
+          enum:
+          - free
+          - tier1
+          - tier2
+          - tier3
+          - dedi
+        allowed_origins:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+  parameters:
+    SubscriptionUuid:
+      name: subscriptionUuid
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    EndpointUuid:
+      name: endpointUuid
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Customers API token passed in Authorization header.

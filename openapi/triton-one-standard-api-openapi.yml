@@ -1,0 +1,116 @@
+openapi: 3.1.0
+info:
+  title: Triton One Customers Accounts Standard API
+  description: 'Account management REST API for Triton One. Use this API to manage accounts, subscriptions, endpoints, tokens, address watch lists, and rate tiers for your Triton RPC services. Token-based authentication via the Authorization header. Distinct from RPC consumption tokens — Customers API tokens are only used against customers.triton.one.
+
+    '
+  version: v1
+  contact:
+    name: Triton One Support
+    url: https://triton.one
+    email: support@triton.one
+  license:
+    name: Triton One Terms of Service
+    url: https://triton.one/terms
+servers:
+- url: https://customers.triton.one
+  description: Production Customers API
+security:
+- BearerAuth: []
+tags:
+- name: Standard
+  description: Standard Solana JSON-RPC methods accepted at the same endpoint.
+paths:
+  /:
+    post:
+      summary: Solana JSON-RPC Call
+      description: 'Single JSON-RPC entrypoint. Set the `method` field to one of Triton''s supported methods. See operation examples for Triton''s custom methods.
+
+        '
+      operationId: callRpc
+      tags:
+      - Standard
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JsonRpcRequest'
+            examples:
+              getRecentPrioritizationFees:
+                summary: Improved priority fees with percentile
+                value:
+                  jsonrpc: '2.0'
+                  id: 1
+                  method: getRecentPrioritizationFees
+                  params:
+                  - []
+                  - percentile: 5000
+              getTransactionsForAddress:
+                summary: Consolidated address history (Triton extension)
+                value:
+                  jsonrpc: '2.0'
+                  id: 1
+                  method: getTransactionsForAddress
+                  params:
+                  - VinesnNPRzZBnTGzzybjJM1qZmxF8aQB6FA9P2J2TYP
+                  - transactionDetails: full
+                    sortOrder: desc
+                    limit: 100
+                    commitment: finalized
+                    encoding: jsonParsed
+                    filters:
+                      slot:
+                        gte: 200000000
+                      status: succeeded
+                      tokenAccounts: balanceChanged
+      responses:
+        '200':
+          description: JSON-RPC response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonRpcResponse'
+components:
+  schemas:
+    JsonRpcResponse:
+      type: object
+      properties:
+        jsonrpc:
+          type: string
+        id:
+          type:
+          - integer
+          - string
+        result: {}
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+            data: {}
+    JsonRpcRequest:
+      type: object
+      required:
+      - jsonrpc
+      - method
+      properties:
+        jsonrpc:
+          type: string
+          enum:
+          - '2.0'
+        id:
+          type:
+          - integer
+          - string
+        method:
+          type: string
+        params:
+          type: array
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Customers API token passed in Authorization header.

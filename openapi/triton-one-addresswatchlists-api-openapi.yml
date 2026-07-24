@@ -1,0 +1,147 @@
+openapi: 3.1.0
+info:
+  title: Triton One Customers Accounts AddressWatchLists API
+  description: 'Account management REST API for Triton One. Use this API to manage accounts, subscriptions, endpoints, tokens, address watch lists, and rate tiers for your Triton RPC services. Token-based authentication via the Authorization header. Distinct from RPC consumption tokens — Customers API tokens are only used against customers.triton.one.
+
+    '
+  version: v1
+  contact:
+    name: Triton One Support
+    url: https://triton.one
+    email: support@triton.one
+  license:
+    name: Triton One Terms of Service
+    url: https://triton.one/terms
+servers:
+- url: https://customers.triton.one
+  description: Production Customers API
+security:
+- BearerAuth: []
+tags:
+- name: AddressWatchLists
+  description: Manage on-chain address watch lists for collections and Merkle trees.
+paths:
+  /api/v1/address_watch_lists:
+    get:
+      summary: List Address Watch Lists
+      operationId: listAddressWatchLists
+      tags:
+      - AddressWatchLists
+      parameters:
+      - name: variant
+        in: query
+        schema:
+          type: string
+          enum:
+          - collection
+          - tree
+      - name: subscription_uuid
+        in: query
+        schema:
+          type: string
+          format: uuid
+      - name: subscription_type
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Address watch lists collection.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddressWatchListList'
+  /api/v1/subscriptions/{subscriptionUuid}/address_watch_lists:
+    post:
+      summary: Add Address Watch List
+      description: Add an address watch list entry for a collection or Merkle tree.
+      operationId: createAddressWatchList
+      tags:
+      - AddressWatchLists
+      parameters:
+      - $ref: '#/components/parameters/SubscriptionUuid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddressWatchListCreate'
+      responses:
+        '201':
+          description: Created watch list entry.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddressWatchListEnvelope'
+  /api/v1/address_watch_lists/{watchListUuid}:
+    delete:
+      summary: Delete Address Watch List
+      operationId: deleteAddressWatchList
+      tags:
+      - AddressWatchLists
+      parameters:
+      - name: watchListUuid
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '204':
+          description: Deleted.
+components:
+  schemas:
+    AddressWatchList:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        variant:
+          type: string
+          enum:
+          - collection
+          - tree
+        encoded_value:
+          type: string
+        subscription_uuid:
+          type: string
+          format: uuid
+    AddressWatchListCreate:
+      type: object
+      required:
+      - variant
+      - encoded_value
+      properties:
+        variant:
+          type: string
+          enum:
+          - collection
+          - tree
+        encoded_value:
+          type: string
+    AddressWatchListList:
+      type: object
+      properties:
+        address_watch_lists:
+          type: array
+          items:
+            $ref: '#/components/schemas/AddressWatchList'
+    AddressWatchListEnvelope:
+      type: object
+      properties:
+        address_watch_list:
+          $ref: '#/components/schemas/AddressWatchList'
+  parameters:
+    SubscriptionUuid:
+      name: subscriptionUuid
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Customers API token passed in Authorization header.
