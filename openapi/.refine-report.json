@@ -1,0 +1,26 @@
+{
+  "provider": "triton-one",
+  "sources": [
+    "triton-one-accounts-api-openapi.yml",
+    "triton-one-addresswatchlists-api-openapi.yml",
+    "triton-one-assets-api-openapi.yml",
+    "triton-one-endpoints-api-openapi.yml",
+    "triton-one-standard-api-openapi.yml",
+    "triton-one-subscriptions-api-openapi.yml",
+    "triton-one-tokens-api-openapi.yml"
+  ],
+  "outputs": [
+    "triton-one-accounts-api-openapi.yml",
+    "triton-one-addresswatchlists-api-openapi.yml",
+    "triton-one-assets-api-openapi.yml",
+    "triton-one-endpoints-api-openapi.yml",
+    "triton-one-standard-api-openapi.yml",
+    "triton-one-subscriptions-api-openapi.yml",
+    "triton-one-tokens-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

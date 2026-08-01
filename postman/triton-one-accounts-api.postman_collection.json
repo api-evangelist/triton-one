@@ -1,0 +1,385 @@
+{
+  "info": {
+    "_postman_id": "f58eee60-2db2-4c3b-9f1f-0cf0b137b389",
+    "name": "Triton One Customers Accounts API",
+    "description": "Account management REST API for Triton One. Use this API to manage accounts, subscriptions, endpoints, tokens, address watch lists, and rate tiers for your Triton RPC services. Token-based authentication via the Authorization header. Distinct from RPC consumption tokens \u2014 Customers API tokens are only used against customers.triton.one.\n\n\nContact Support:\n Name: Triton One Support\n Email: support@triton.one",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:19:39.000Z",
+    "updatedAt": "2026-07-28T03:19:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f58eee60-2db2-4c3b-9f1f-0cf0b137b389"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "accounts",
+              "item": [
+                {
+                  "name": "{accountUuid}",
+                  "item": [
+                    {
+                      "name": "Get Account",
+                      "id": "78780898-5e8c-4192-9a32-fd12a92f4729",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/accounts/:accountUuid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "accounts",
+                            ":accountUuid"
+                          ],
+                          "variable": [
+                            {
+                              "id": "66c30811-d49a-4063-85d4-559d36b479e5",
+                              "key": "accountUuid",
+                              "value": "<uuid>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Retrieve a single account by UUID, including subscriptions and deactivation reasons."
+                      },
+                      "response": [
+                        {
+                          "id": "35167f69-8967-4b73-a85b-206f7dddf7bc",
+                          "name": "Account detail.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/accounts/:accountUuid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "accounts",
+                                ":accountUuid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountUuid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"account\": {\n    \"uuid\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"billing_address1\": \"<string>\",\n    \"billing_address2\": \"<string>\",\n    \"billing_address3\": \"<string>\",\n    \"billing_city\": \"<string>\",\n    \"billing_state_or_province\": \"<string>\",\n    \"billing_postal_code\": \"<string>\",\n    \"billing_country_code\": \"<string>\",\n    \"telephone_country_code\": \"<string>\",\n    \"telephone\": \"<string>\",\n    \"is_active\": \"<boolean>\",\n    \"subscriptions\": [\n      {\n        \"uuid\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"subscription_type\": \"mainnet-dedicated\",\n        \"is_active\": \"<boolean>\",\n        \"starts_at\": \"<dateTime>\",\n        \"ends_at\": \"<dateTime>\",\n        \"endpoints\": [\n          {\n            \"uuid\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"slug\": \"<string>\",\n            \"rate_tier\": \"dedi\",\n            \"is_active\": \"<boolean>\",\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"allowed_origins\": [\n              {\n                \"value\": \"<string>\",\n                \"is_active\": \"<boolean>\"\n              },\n              {\n                \"value\": \"<string>\",\n                \"is_active\": \"<boolean>\"\n              }\n            ]\n          },\n          {\n            \"uuid\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"slug\": \"<string>\",\n            \"rate_tier\": \"free\",\n            \"is_active\": \"<boolean>\",\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"allowed_origins\": [\n              {\n                \"value\": \"<string>\",\n                \"is_active\": \"<boolean>\"\n              },\n              {\n                \"value\": \"<string>\",\n                \"is_active\": \"<boolean>\"\n              }\n            ]\n          }\n        ],\n        \"tokens\": [\n          {\n            \"uuid\": \"<uuid>\",\n            \"value\": \"<string>\",\n            \"auth_username\": \"<string>\",\n            \"name\": \"<string>\",\n            \"rate_tier\": \"dedi\",\n            \"is_active\": \"<boolean>\",\n            \"deactivation_reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"uuid\": \"<uuid>\",\n            \"value\": \"<string>\",\n            \"auth_username\": \"<string>\",\n            \"name\": \"<string>\",\n            \"rate_tier\": \"tier1\",\n            \"is_active\": \"<boolean>\",\n            \"deactivation_reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"supported_rate_tiers\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"account\": {\n          \"value\": \"<Circular reference to #/components/schemas/Account detected>\"\n        },\n        \"deactivation_reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"uuid\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"subscription_type\": \"developer\",\n        \"is_active\": \"<boolean>\",\n        \"starts_at\": \"<dateTime>\",\n        \"ends_at\": \"<dateTime>\",\n        \"endpoints\": [\n          {\n            \"uuid\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"slug\": \"<string>\",\n            \"rate_tier\": \"tier2\",\n            \"is_active\": \"<boolean>\",\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"allowed_origins\": [\n              {\n                \"value\": \"<string>\",\n                \"is_active\": \"<boolean>\"\n              },\n              {\n                \"value\": \"<string>\",\n                \"is_active\": \"<boolean>\"\n              }\n            ]\n          },\n          {\n            \"uuid\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"slug\": \"<string>\",\n            \"rate_tier\": \"tier3\",\n            \"is_active\": \"<boolean>\",\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"allowed_origins\": [\n              {\n                \"value\": \"<string>\",\n                \"is_active\": \"<boolean>\"\n              },\n              {\n                \"value\": \"<string>\",\n                \"is_active\": \"<boolean>\"\n              }\n            ]\n          }\n        ],\n        \"tokens\": [\n          {\n            \"uuid\": \"<uuid>\",\n            \"value\": \"<string>\",\n            \"auth_username\": \"<string>\",\n            \"name\": \"<string>\",\n            \"rate_tier\": \"tier2\",\n            \"is_active\": \"<boolean>\",\n            \"deactivation_reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"uuid\": \"<uuid>\",\n            \"value\": \"<string>\",\n            \"auth_username\": \"<string>\",\n            \"name\": \"<string>\",\n            \"rate_tier\": \"tier3\",\n            \"is_active\": \"<boolean>\",\n            \"deactivation_reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"supported_rate_tiers\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"account\": {\n          \"value\": \"<Circular reference to #/components/schemas/Account detected>\"\n        },\n        \"deactivation_reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"deactivation_reasons\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "createdAt": "2026-07-28T03:19:39.000Z",
+                          "updatedAt": "2026-07-28T03:19:39.000Z",
+                          "uid": "35240-35167f69-8967-4b73-a85b-206f7dddf7bc"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:19:39.000Z",
+                      "updatedAt": "2026-07-28T03:19:39.000Z",
+                      "uid": "35240-78780898-5e8c-4192-9a32-fd12a92f4729"
+                    },
+                    {
+                      "name": "Update Account",
+                      "id": "229fd1e0-ae24-4022-9ed4-718fe11f5f3d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"billing_address1\": \"<string>\",\n  \"billing_address2\": \"<string>\",\n  \"billing_address3\": \"<string>\",\n  \"billing_city\": \"<string>\",\n  \"billing_state_or_province\": \"<string>\",\n  \"billing_postal_code\": \"<string>\",\n  \"billing_country_code\": \"<string>\",\n  \"telephone_country_code\": \"<string>\",\n  \"telephone\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/accounts/:accountUuid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "accounts",
+                            ":accountUuid"
+                          ],
+                          "variable": [
+                            {
+                              "id": "ec1effe8-635e-4e11-ac95-f9dcfd970865",
+                              "key": "accountUuid",
+                              "value": "<uuid>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        },
+                        "description": "Update billing and contact details for an account."
+                      },
+                      "response": [
+                        {
+                          "id": "365bce1e-d3f9-454d-97ef-2e20746c3d97",
+                          "name": "Updated account.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"billing_address1\": \"<string>\",\n  \"billing_address2\": \"<string>\",\n  \"billing_address3\": \"<string>\",\n  \"billing_city\": \"<string>\",\n  \"billing_state_or_province\": \"<string>\",\n  \"billing_postal_code\": \"<string>\",\n  \"billing_country_code\": \"<string>\",\n  \"telephone_country_code\": \"<string>\",\n  \"telephone\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/accounts/:accountUuid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "accounts",
+                                ":accountUuid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "accountUuid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"account\": {\n    \"uuid\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"billing_address1\": \"<string>\",\n    \"billing_address2\": \"<string>\",\n    \"billing_address3\": \"<string>\",\n    \"billing_city\": \"<string>\",\n    \"billing_state_or_province\": \"<string>\",\n    \"billing_postal_code\": \"<string>\",\n    \"billing_country_code\": \"<string>\",\n    \"telephone_country_code\": \"<string>\",\n    \"telephone\": \"<string>\",\n    \"is_active\": \"<boolean>\",\n    \"subscriptions\": [\n      {\n        \"uuid\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"subscription_type\": \"mainnet-dedicated\",\n        \"is_active\": \"<boolean>\",\n        \"starts_at\": \"<dateTime>\",\n        \"ends_at\": \"<dateTime>\",\n        \"endpoints\": [\n          {\n            \"uuid\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"slug\": \"<string>\",\n            \"rate_tier\": \"dedi\",\n            \"is_active\": \"<boolean>\",\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"allowed_origins\": [\n              {\n                \"value\": \"<string>\",\n                \"is_active\": \"<boolean>\"\n              },\n              {\n                \"value\": \"<string>\",\n                \"is_active\": \"<boolean>\"\n              }\n            ]\n          },\n          {\n            \"uuid\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"slug\": \"<string>\",\n            \"rate_tier\": \"free\",\n            \"is_active\": \"<boolean>\",\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"allowed_origins\": [\n              {\n                \"value\": \"<string>\",\n                \"is_active\": \"<boolean>\"\n              },\n              {\n                \"value\": \"<string>\",\n                \"is_active\": \"<boolean>\"\n              }\n            ]\n          }\n        ],\n        \"tokens\": [\n          {\n            \"uuid\": \"<uuid>\",\n            \"value\": \"<string>\",\n            \"auth_username\": \"<string>\",\n            \"name\": \"<string>\",\n            \"rate_tier\": \"dedi\",\n            \"is_active\": \"<boolean>\",\n            \"deactivation_reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"uuid\": \"<uuid>\",\n            \"value\": \"<string>\",\n            \"auth_username\": \"<string>\",\n            \"name\": \"<string>\",\n            \"rate_tier\": \"tier1\",\n            \"is_active\": \"<boolean>\",\n            \"deactivation_reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"supported_rate_tiers\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"account\": {\n          \"value\": \"<Circular reference to #/components/schemas/Account detected>\"\n        },\n        \"deactivation_reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"uuid\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"subscription_type\": \"developer\",\n        \"is_active\": \"<boolean>\",\n        \"starts_at\": \"<dateTime>\",\n        \"ends_at\": \"<dateTime>\",\n        \"endpoints\": [\n          {\n            \"uuid\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"slug\": \"<string>\",\n            \"rate_tier\": \"tier2\",\n            \"is_active\": \"<boolean>\",\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"allowed_origins\": [\n              {\n                \"value\": \"<string>\",\n                \"is_active\": \"<boolean>\"\n              },\n              {\n                \"value\": \"<string>\",\n                \"is_active\": \"<boolean>\"\n              }\n            ]\n          },\n          {\n            \"uuid\": \"<uuid>\",\n            \"name\": \"<string>\",\n            \"slug\": \"<string>\",\n            \"rate_tier\": \"tier3\",\n            \"is_active\": \"<boolean>\",\n            \"values\": [\n              \"<string>\",\n              \"<string>\"\n            ],\n            \"allowed_origins\": [\n              {\n                \"value\": \"<string>\",\n                \"is_active\": \"<boolean>\"\n              },\n              {\n                \"value\": \"<string>\",\n                \"is_active\": \"<boolean>\"\n              }\n            ]\n          }\n        ],\n        \"tokens\": [\n          {\n            \"uuid\": \"<uuid>\",\n            \"value\": \"<string>\",\n            \"auth_username\": \"<string>\",\n            \"name\": \"<string>\",\n            \"rate_tier\": \"tier2\",\n            \"is_active\": \"<boolean>\",\n            \"deactivation_reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          },\n          {\n            \"uuid\": \"<uuid>\",\n            \"value\": \"<string>\",\n            \"auth_username\": \"<string>\",\n            \"name\": \"<string>\",\n            \"rate_tier\": \"tier3\",\n            \"is_active\": \"<boolean>\",\n            \"deactivation_reasons\": [\n              \"<string>\",\n              \"<string>\"\n            ]\n          }\n        ],\n        \"supported_rate_tiers\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"account\": {\n          \"value\": \"<Circular reference to #/components/schemas/Account detected>\"\n        },\n        \"deactivation_reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"deactivation_reasons\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "createdAt": "2026-07-28T03:19:39.000Z",
+                          "updatedAt": "2026-07-28T03:19:39.000Z",
+                          "uid": "35240-365bce1e-d3f9-454d-97ef-2e20746c3d97"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:19:39.000Z",
+                      "updatedAt": "2026-07-28T03:19:39.000Z",
+                      "uid": "35240-229fd1e0-ae24-4022-9ed4-718fe11f5f3d"
+                    }
+                  ],
+                  "id": "35fa1be4-fd40-4bf1-ac4f-6892d0cdd02e",
+                  "createdAt": "2026-07-28T03:19:39.000Z",
+                  "updatedAt": "2026-07-28T03:19:39.000Z",
+                  "uid": "35240-35fa1be4-fd40-4bf1-ac4f-6892d0cdd02e"
+                },
+                {
+                  "name": "List Accounts",
+                  "id": "1008d76e-f693-4eb5-8179-f69a4c20c39e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/accounts?name=<string>&per=50&page=1",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "accounts"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by account name.",
+                          "key": "name",
+                          "value": "<string>"
+                        },
+                        {
+                          "key": "per",
+                          "value": "50"
+                        },
+                        {
+                          "key": "page",
+                          "value": "1"
+                        }
+                      ]
+                    },
+                    "description": "List customer accounts visible to the authenticated token."
+                  },
+                  "response": [
+                    {
+                      "id": "7fc9f606-6768-4f4d-a66d-92e4b0c8335e",
+                      "name": "List of accounts.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/accounts?name=<string>&per=50&page=1",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "accounts"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by account name.",
+                              "key": "name",
+                              "value": "<string>"
+                            },
+                            {
+                              "key": "per",
+                              "value": "50"
+                            },
+                            {
+                              "key": "page",
+                              "value": "1"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"accounts\": [\n    {\n      \"uuid\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"billing_address1\": \"<string>\",\n      \"billing_address2\": \"<string>\",\n      \"billing_address3\": \"<string>\",\n      \"billing_city\": \"<string>\",\n      \"billing_state_or_province\": \"<string>\",\n      \"billing_postal_code\": \"<string>\",\n      \"billing_country_code\": \"<string>\",\n      \"telephone_country_code\": \"<string>\",\n      \"telephone\": \"<string>\",\n      \"is_active\": \"<boolean>\",\n      \"subscriptions\": [\n        {\n          \"uuid\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"subscription_type\": \"mainnet-dedicated\",\n          \"is_active\": \"<boolean>\",\n          \"starts_at\": \"<dateTime>\",\n          \"ends_at\": \"<dateTime>\",\n          \"endpoints\": [\n            {\n              \"uuid\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"slug\": \"<string>\",\n              \"rate_tier\": \"tier1\",\n              \"is_active\": \"<boolean>\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"allowed_origins\": [\n                {\n                  \"value\": \"<string>\",\n                  \"is_active\": \"<boolean>\"\n                },\n                {\n                  \"value\": \"<string>\",\n                  \"is_active\": \"<boolean>\"\n                }\n              ]\n            },\n            {\n              \"uuid\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"slug\": \"<string>\",\n              \"rate_tier\": \"tier1\",\n              \"is_active\": \"<boolean>\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"allowed_origins\": [\n                {\n                  \"value\": \"<string>\",\n                  \"is_active\": \"<boolean>\"\n                },\n                {\n                  \"value\": \"<string>\",\n                  \"is_active\": \"<boolean>\"\n                }\n              ]\n            }\n          ],\n          \"tokens\": [\n            {\n              \"uuid\": \"<uuid>\",\n              \"value\": \"<string>\",\n              \"auth_username\": \"<string>\",\n              \"name\": \"<string>\",\n              \"rate_tier\": \"free\",\n              \"is_active\": \"<boolean>\",\n              \"deactivation_reasons\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"uuid\": \"<uuid>\",\n              \"value\": \"<string>\",\n              \"auth_username\": \"<string>\",\n              \"name\": \"<string>\",\n              \"rate_tier\": \"free\",\n              \"is_active\": \"<boolean>\",\n              \"deactivation_reasons\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"supported_rate_tiers\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"account\": {\n            \"value\": \"<Circular reference to #/components/schemas/Account detected>\"\n          },\n          \"deactivation_reasons\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"uuid\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"subscription_type\": \"developer\",\n          \"is_active\": \"<boolean>\",\n          \"starts_at\": \"<dateTime>\",\n          \"ends_at\": \"<dateTime>\",\n          \"endpoints\": [\n            {\n              \"uuid\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"slug\": \"<string>\",\n              \"rate_tier\": \"tier1\",\n              \"is_active\": \"<boolean>\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"allowed_origins\": [\n                {\n                  \"value\": \"<string>\",\n                  \"is_active\": \"<boolean>\"\n                },\n                {\n                  \"value\": \"<string>\",\n                  \"is_active\": \"<boolean>\"\n                }\n              ]\n            },\n            {\n              \"uuid\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"slug\": \"<string>\",\n              \"rate_tier\": \"free\",\n              \"is_active\": \"<boolean>\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"allowed_origins\": [\n                {\n                  \"value\": \"<string>\",\n                  \"is_active\": \"<boolean>\"\n                },\n                {\n                  \"value\": \"<string>\",\n                  \"is_active\": \"<boolean>\"\n                }\n              ]\n            }\n          ],\n          \"tokens\": [\n            {\n              \"uuid\": \"<uuid>\",\n              \"value\": \"<string>\",\n              \"auth_username\": \"<string>\",\n              \"name\": \"<string>\",\n              \"rate_tier\": \"tier2\",\n              \"is_active\": \"<boolean>\",\n              \"deactivation_reasons\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"uuid\": \"<uuid>\",\n              \"value\": \"<string>\",\n              \"auth_username\": \"<string>\",\n              \"name\": \"<string>\",\n              \"rate_tier\": \"tier2\",\n              \"is_active\": \"<boolean>\",\n              \"deactivation_reasons\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"supported_rate_tiers\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"account\": {\n            \"value\": \"<Circular reference to #/components/schemas/Account detected>\"\n          },\n          \"deactivation_reasons\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"deactivation_reasons\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"uuid\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"billing_address1\": \"<string>\",\n      \"billing_address2\": \"<string>\",\n      \"billing_address3\": \"<string>\",\n      \"billing_city\": \"<string>\",\n      \"billing_state_or_province\": \"<string>\",\n      \"billing_postal_code\": \"<string>\",\n      \"billing_country_code\": \"<string>\",\n      \"telephone_country_code\": \"<string>\",\n      \"telephone\": \"<string>\",\n      \"is_active\": \"<boolean>\",\n      \"subscriptions\": [\n        {\n          \"uuid\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"subscription_type\": \"mainnet-shared\",\n          \"is_active\": \"<boolean>\",\n          \"starts_at\": \"<dateTime>\",\n          \"ends_at\": \"<dateTime>\",\n          \"endpoints\": [\n            {\n              \"uuid\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"slug\": \"<string>\",\n              \"rate_tier\": \"free\",\n              \"is_active\": \"<boolean>\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"allowed_origins\": [\n                {\n                  \"value\": \"<string>\",\n                  \"is_active\": \"<boolean>\"\n                },\n                {\n                  \"value\": \"<string>\",\n                  \"is_active\": \"<boolean>\"\n                }\n              ]\n            },\n            {\n              \"uuid\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"slug\": \"<string>\",\n              \"rate_tier\": \"tier1\",\n              \"is_active\": \"<boolean>\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"allowed_origins\": [\n                {\n                  \"value\": \"<string>\",\n                  \"is_active\": \"<boolean>\"\n                },\n                {\n                  \"value\": \"<string>\",\n                  \"is_active\": \"<boolean>\"\n                }\n              ]\n            }\n          ],\n          \"tokens\": [\n            {\n              \"uuid\": \"<uuid>\",\n              \"value\": \"<string>\",\n              \"auth_username\": \"<string>\",\n              \"name\": \"<string>\",\n              \"rate_tier\": \"tier1\",\n              \"is_active\": \"<boolean>\",\n              \"deactivation_reasons\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"uuid\": \"<uuid>\",\n              \"value\": \"<string>\",\n              \"auth_username\": \"<string>\",\n              \"name\": \"<string>\",\n              \"rate_tier\": \"dedi\",\n              \"is_active\": \"<boolean>\",\n              \"deactivation_reasons\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"supported_rate_tiers\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"account\": {\n            \"value\": \"<Circular reference to #/components/schemas/Account detected>\"\n          },\n          \"deactivation_reasons\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"uuid\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"subscription_type\": \"mainnet-dedicated\",\n          \"is_active\": \"<boolean>\",\n          \"starts_at\": \"<dateTime>\",\n          \"ends_at\": \"<dateTime>\",\n          \"endpoints\": [\n            {\n              \"uuid\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"slug\": \"<string>\",\n              \"rate_tier\": \"free\",\n              \"is_active\": \"<boolean>\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"allowed_origins\": [\n                {\n                  \"value\": \"<string>\",\n                  \"is_active\": \"<boolean>\"\n                },\n                {\n                  \"value\": \"<string>\",\n                  \"is_active\": \"<boolean>\"\n                }\n              ]\n            },\n            {\n              \"uuid\": \"<uuid>\",\n              \"name\": \"<string>\",\n              \"slug\": \"<string>\",\n              \"rate_tier\": \"free\",\n              \"is_active\": \"<boolean>\",\n              \"values\": [\n                \"<string>\",\n                \"<string>\"\n              ],\n              \"allowed_origins\": [\n                {\n                  \"value\": \"<string>\",\n                  \"is_active\": \"<boolean>\"\n                },\n                {\n                  \"value\": \"<string>\",\n                  \"is_active\": \"<boolean>\"\n                }\n              ]\n            }\n          ],\n          \"tokens\": [\n            {\n              \"uuid\": \"<uuid>\",\n              \"value\": \"<string>\",\n              \"auth_username\": \"<string>\",\n              \"name\": \"<string>\",\n              \"rate_tier\": \"dedi\",\n              \"is_active\": \"<boolean>\",\n              \"deactivation_reasons\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            },\n            {\n              \"uuid\": \"<uuid>\",\n              \"value\": \"<string>\",\n              \"auth_username\": \"<string>\",\n              \"name\": \"<string>\",\n              \"rate_tier\": \"tier3\",\n              \"is_active\": \"<boolean>\",\n              \"deactivation_reasons\": [\n                \"<string>\",\n                \"<string>\"\n              ]\n            }\n          ],\n          \"supported_rate_tiers\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"account\": {\n            \"value\": \"<Circular reference to #/components/schemas/Account detected>\"\n          },\n          \"deactivation_reasons\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"deactivation_reasons\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"meta\": {\n    \"current_page\": \"<integer>\",\n    \"next_page\": \"<integer,null>\",\n    \"per_page\": \"<integer>\",\n    \"prev_page\": \"<integer,null>\",\n    \"total_pages\": \"<integer>\",\n    \"total_count\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:19:39.000Z",
+                      "updatedAt": "2026-07-28T03:19:39.000Z",
+                      "uid": "35240-7fc9f606-6768-4f4d-a66d-92e4b0c8335e"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:19:39.000Z",
+                  "updatedAt": "2026-07-28T03:19:39.000Z",
+                  "uid": "35240-1008d76e-f693-4eb5-8179-f69a4c20c39e"
+                }
+              ],
+              "id": "d3dda891-177a-4317-9855-79fe7d73f7c6",
+              "createdAt": "2026-07-28T03:19:39.000Z",
+              "updatedAt": "2026-07-28T03:19:39.000Z",
+              "uid": "35240-d3dda891-177a-4317-9855-79fe7d73f7c6"
+            }
+          ],
+          "id": "8f4f5224-21f8-4a2b-a43c-a0933152ba34",
+          "createdAt": "2026-07-28T03:19:39.000Z",
+          "updatedAt": "2026-07-28T03:19:39.000Z",
+          "uid": "35240-8f4f5224-21f8-4a2b-a43c-a0933152ba34"
+        }
+      ],
+      "id": "0fdbb5a6-4463-4fde-8fb5-d186d793f6a7",
+      "createdAt": "2026-07-28T03:19:39.000Z",
+      "updatedAt": "2026-07-28T03:19:39.000Z",
+      "uid": "35240-0fdbb5a6-4463-4fde-8fb5-d186d793f6a7"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://customers.triton.one"
+    }
+  ]
+}

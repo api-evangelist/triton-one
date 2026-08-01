@@ -1,0 +1,162 @@
+openapi: 3.1.0
+info:
+  title: Triton One Digital Assets API
+  description: >
+    Triton One's hosted Metaplex Digital Assets Standard (DAS) implementation,
+    accessible through the same Solana RPC endpoint. Exposes compressed-NFT and
+    SPL token introspection methods (getAsset, getAssetProof, searchAssets,
+    getTokenAccounts, getTokenLargestAccounts, getAssetsByOwner/Creator/Authority,
+    getNftEditions, etc.). Powered by Triton's Photon indexer infrastructure.
+  version: '1.0'
+  contact:
+    name: Triton One Support
+    url: https://triton.one
+    email: support@triton.one
+
+servers:
+  - url: https://{endpoint}.rpcpool.com
+    description: Triton RPC endpoint (replace {endpoint} with your endpoint slug).
+    variables:
+      endpoint:
+        default: mainnet-beta
+
+security:
+  - TokenAuth: []
+
+tags:
+  - name: Assets
+    description: Read methods for compressed and standard digital assets.
+  - name: Tokens
+    description: SPL token account introspection methods.
+
+paths:
+  /:
+    post:
+      summary: Digital Assets JSON-RPC Call
+      description: >
+        Single JSON-RPC entrypoint accepting Metaplex DAS methods. Set the
+        `method` field to one of getAsset, getAssets, getAssetProof,
+        getAssetProofs, getAssetSignatures, getAssetsByAuthority,
+        getAssetsByCreator, getAssetsByOwner, searchAssets, getNftEditions,
+        getTokenAccounts, or getTokenLargestAccounts.
+      operationId: callDigitalAssetsRpc
+      tags: [Assets]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JsonRpcRequest'
+            examples:
+              getAsset:
+                summary: Retrieve a single asset by ID
+                value:
+                  jsonrpc: '2.0'
+                  id: 1
+                  method: getAsset
+                  params: { id: "F9Lw3ki3hJ7PF9HQXsBzoY8GyE6sPoEZZdXJBsTTD2rk" }
+              searchAssets:
+                summary: Search assets with filters
+                value:
+                  jsonrpc: '2.0'
+                  id: 1
+                  method: searchAssets
+                  params:
+                    ownerAddress: "VinesnNPRzZBnTGzzybjJM1qZmxF8aQB6FA9P2J2TYP"
+                    compressed: true
+                    page: 1
+                    limit: 100
+              getTokenAccounts:
+                summary: List token accounts for an owner or mint
+                value:
+                  jsonrpc: '2.0'
+                  id: 1
+                  method: getTokenAccounts
+                  params:
+                    owner: "VinesnNPRzZBnTGzzybjJM1qZmxF8aQB6FA9P2J2TYP"
+                    limit: 100
+      responses:
+        '200':
+          description: JSON-RPC response.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JsonRpcResponse'
+
+components:
+  securitySchemes:
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: RPC consumption token from Customers API.
+  schemas:
+    JsonRpcRequest:
+      type: object
+      required: [jsonrpc, method]
+      properties:
+        jsonrpc: { type: string, enum: ['2.0'] }
+        id: { type: [integer, string] }
+        method:
+          type: string
+          enum:
+            - getAsset
+            - getAssets
+            - getAssetProof
+            - getAssetProofs
+            - getAssetSignatures
+            - getAssetsByAuthority
+            - getAssetsByCreator
+            - getAssetsByOwner
+            - searchAssets
+            - getNftEditions
+            - getTokenAccounts
+            - getTokenLargestAccounts
+        params: {}
+    JsonRpcResponse:
+      type: object
+      properties:
+        jsonrpc: { type: string }
+        id: { type: [integer, string] }
+        result: {}
+        error:
+          type: object
+          properties:
+            code: { type: integer }
+            message: { type: string }
+            data: {}
+    Asset:
+      type: object
+      description: Metaplex DAS asset object.
+      properties:
+        id: { type: string }
+        interface: { type: string }
+        content: { type: object }
+        authorities: { type: array }
+        compression: { type: object }
+        grouping: { type: array }
+        royalty: { type: object }
+        creators: { type: array }
+        ownership: { type: object }
+        supply: { type: object }
+        mutable: { type: boolean }
+        burnt: { type: boolean }
+    AssetProof:
+      type: object
+      properties:
+        root: { type: string }
+        proof:
+          type: array
+          items: { type: string }
+        node_index: { type: integer }
+        leaf: { type: string }
+        tree_id: { type: string }
+    TokenAccount:
+      type: object
+      properties:
+        address: { type: string }
+        mint: { type: string }
+        owner: { type: string }
+        amount: { type: string }
+        delegated_amount: { type: string }
+        frozen: { type: boolean }

@@ -1,0 +1,532 @@
+{
+  "info": {
+    "_postman_id": "c23dfd72-54aa-4b28-a33d-8b350b0f53c5",
+    "name": "Triton One Customers Accounts Tokens API",
+    "description": "Account management REST API for Triton One. Use this API to manage accounts, subscriptions, endpoints, tokens, address watch lists, and rate tiers for your Triton RPC services. Token-based authentication via the Authorization header. Distinct from RPC consumption tokens \u2014 Customers API tokens are only used against customers.triton.one.\n\n\nContact Support:\n Name: Triton One Support\n Email: support@triton.one",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:19:44.000Z",
+    "updatedAt": "2026-07-28T03:19:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c23dfd72-54aa-4b28-a33d-8b350b0f53c5"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "tokens",
+              "item": [
+                {
+                  "name": "{tokenUuid}",
+                  "item": [
+                    {
+                      "name": "activate",
+                      "item": [
+                        {
+                          "name": "Activate Token",
+                          "id": "d04f6b9c-a57d-4fc5-9ce0-a745e35347f1",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/tokens/:tokenUuid/activate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "tokens",
+                                ":tokenUuid",
+                                "activate"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "a0744531-cf7c-49e1-b78e-c23e73332e63",
+                                  "key": "tokenUuid",
+                                  "value": "<uuid>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "fd0d1106-ebae-4dc4-805c-0346a6934397",
+                              "name": "Activated.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/tokens/:tokenUuid/activate",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "tokens",
+                                    ":tokenUuid",
+                                    "activate"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "tokenUuid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:19:45.000Z",
+                              "updatedAt": "2026-07-28T03:19:45.000Z",
+                              "uid": "35240-fd0d1106-ebae-4dc4-805c-0346a6934397"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:19:45.000Z",
+                          "updatedAt": "2026-07-28T03:19:45.000Z",
+                          "uid": "35240-d04f6b9c-a57d-4fc5-9ce0-a745e35347f1"
+                        }
+                      ],
+                      "id": "8d37f101-14e1-4506-97b3-0e27c4652b8b",
+                      "createdAt": "2026-07-28T03:19:45.000Z",
+                      "updatedAt": "2026-07-28T03:19:45.000Z",
+                      "uid": "35240-8d37f101-14e1-4506-97b3-0e27c4652b8b"
+                    },
+                    {
+                      "name": "deactivate",
+                      "item": [
+                        {
+                          "name": "Deactivate Token",
+                          "id": "a0d68d40-2311-4db6-aef0-0f69858a0aab",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"deactivation_reason\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/tokens/:tokenUuid/deactivate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "tokens",
+                                ":tokenUuid",
+                                "deactivate"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "0c87bd0f-836f-489d-b6d2-bf336dbf8c19",
+                                  "key": "tokenUuid",
+                                  "value": "<uuid>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "9b07af9d-0d92-4242-9558-592624218b39",
+                              "name": "Deactivated.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"deactivation_reason\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/tokens/:tokenUuid/deactivate",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "tokens",
+                                    ":tokenUuid",
+                                    "deactivate"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "tokenUuid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:19:45.000Z",
+                              "updatedAt": "2026-07-28T03:19:45.000Z",
+                              "uid": "35240-9b07af9d-0d92-4242-9558-592624218b39"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:19:45.000Z",
+                          "updatedAt": "2026-07-28T03:19:45.000Z",
+                          "uid": "35240-a0d68d40-2311-4db6-aef0-0f69858a0aab"
+                        }
+                      ],
+                      "id": "15d56113-1971-4841-98de-507bc5031100",
+                      "createdAt": "2026-07-28T03:19:45.000Z",
+                      "updatedAt": "2026-07-28T03:19:45.000Z",
+                      "uid": "35240-15d56113-1971-4841-98de-507bc5031100"
+                    }
+                  ],
+                  "id": "a6179c2e-f8c8-4c5c-901c-891c39668f09",
+                  "createdAt": "2026-07-28T03:19:45.000Z",
+                  "updatedAt": "2026-07-28T03:19:45.000Z",
+                  "uid": "35240-a6179c2e-f8c8-4c5c-901c-891c39668f09"
+                },
+                {
+                  "name": "List Tokens",
+                  "id": "253fdbb4-a00d-455c-ba50-a6b7e4f8d2e3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/tokens?account_uuid=<uuid>&subscription_uuid=<uuid>&per=50&page=1",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "tokens"
+                      ],
+                      "query": [
+                        {
+                          "key": "account_uuid",
+                          "value": "<uuid>"
+                        },
+                        {
+                          "key": "subscription_uuid",
+                          "value": "<uuid>"
+                        },
+                        {
+                          "key": "per",
+                          "value": "50"
+                        },
+                        {
+                          "key": "page",
+                          "value": "1"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "892522fb-9e03-4739-bfed-13ef9258f5d5",
+                      "name": "Tokens collection.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/tokens?account_uuid=<uuid>&subscription_uuid=<uuid>&per=50&page=1",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "tokens"
+                          ],
+                          "query": [
+                            {
+                              "key": "account_uuid",
+                              "value": "<uuid>"
+                            },
+                            {
+                              "key": "subscription_uuid",
+                              "value": "<uuid>"
+                            },
+                            {
+                              "key": "per",
+                              "value": "50"
+                            },
+                            {
+                              "key": "page",
+                              "value": "1"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"tokens\": [\n    {\n      \"uuid\": \"<uuid>\",\n      \"value\": \"<string>\",\n      \"auth_username\": \"<string>\",\n      \"name\": \"<string>\",\n      \"rate_tier\": \"tier2\",\n      \"is_active\": \"<boolean>\",\n      \"deactivation_reasons\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"uuid\": \"<uuid>\",\n      \"value\": \"<string>\",\n      \"auth_username\": \"<string>\",\n      \"name\": \"<string>\",\n      \"rate_tier\": \"dedi\",\n      \"is_active\": \"<boolean>\",\n      \"deactivation_reasons\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"meta\": {\n    \"current_page\": \"<integer>\",\n    \"next_page\": \"<integer,null>\",\n    \"per_page\": \"<integer>\",\n    \"prev_page\": \"<integer,null>\",\n    \"total_pages\": \"<integer>\",\n    \"total_count\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:19:45.000Z",
+                      "updatedAt": "2026-07-28T03:19:45.000Z",
+                      "uid": "35240-892522fb-9e03-4739-bfed-13ef9258f5d5"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:19:45.000Z",
+                  "updatedAt": "2026-07-28T03:19:45.000Z",
+                  "uid": "35240-253fdbb4-a00d-455c-ba50-a6b7e4f8d2e3"
+                }
+              ],
+              "id": "826e8544-01b4-453c-9597-3db5502248da",
+              "createdAt": "2026-07-28T03:19:45.000Z",
+              "updatedAt": "2026-07-28T03:19:45.000Z",
+              "uid": "35240-826e8544-01b4-453c-9597-3db5502248da"
+            },
+            {
+              "name": "subscriptions",
+              "item": [
+                {
+                  "name": "{subscriptionUuid}",
+                  "item": [
+                    {
+                      "name": "tokens",
+                      "item": [
+                        {
+                          "name": "Create Token",
+                          "id": "225d0b49-6560-4dd6-b31d-a191b70c0209",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"rate_tier\": \"tier1\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/subscriptions/:subscriptionUuid/tokens",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "subscriptions",
+                                ":subscriptionUuid",
+                                "tokens"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "8e1daee4-3bbf-4d59-ae01-791ddd8ec1b6",
+                                  "key": "subscriptionUuid",
+                                  "value": "<uuid>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Create a new RPC consumption token under a subscription."
+                          },
+                          "response": [
+                            {
+                              "id": "d3079e1a-4e45-489a-ac98-b625547a952b",
+                              "name": "Created token.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"rate_tier\": \"tier1\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/subscriptions/:subscriptionUuid/tokens",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "subscriptions",
+                                    ":subscriptionUuid",
+                                    "tokens"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "subscriptionUuid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Created",
+                              "code": 201,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"token\": {\n    \"uuid\": \"<uuid>\",\n    \"value\": \"<string>\",\n    \"auth_username\": \"<string>\",\n    \"name\": \"<string>\",\n    \"rate_tier\": \"dedi\",\n    \"is_active\": \"<boolean>\",\n    \"deactivation_reasons\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                              "createdAt": "2026-07-28T03:19:45.000Z",
+                              "updatedAt": "2026-07-28T03:19:45.000Z",
+                              "uid": "35240-d3079e1a-4e45-489a-ac98-b625547a952b"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:19:45.000Z",
+                          "updatedAt": "2026-07-28T03:19:45.000Z",
+                          "uid": "35240-225d0b49-6560-4dd6-b31d-a191b70c0209"
+                        }
+                      ],
+                      "id": "cd54df79-234e-46d4-acf7-843da33645ad",
+                      "createdAt": "2026-07-28T03:19:45.000Z",
+                      "updatedAt": "2026-07-28T03:19:45.000Z",
+                      "uid": "35240-cd54df79-234e-46d4-acf7-843da33645ad"
+                    }
+                  ],
+                  "id": "e713bde3-18dc-48a6-8db1-700cd7ff5027",
+                  "createdAt": "2026-07-28T03:19:45.000Z",
+                  "updatedAt": "2026-07-28T03:19:45.000Z",
+                  "uid": "35240-e713bde3-18dc-48a6-8db1-700cd7ff5027"
+                }
+              ],
+              "id": "a9f687b8-dcfe-4573-b904-a8ac14abef30",
+              "createdAt": "2026-07-28T03:19:45.000Z",
+              "updatedAt": "2026-07-28T03:19:45.000Z",
+              "uid": "35240-a9f687b8-dcfe-4573-b904-a8ac14abef30"
+            }
+          ],
+          "id": "6e2ce37a-115a-4181-94b4-3f4c6c4b9f11",
+          "createdAt": "2026-07-28T03:19:45.000Z",
+          "updatedAt": "2026-07-28T03:19:45.000Z",
+          "uid": "35240-6e2ce37a-115a-4181-94b4-3f4c6c4b9f11"
+        }
+      ],
+      "id": "278a8e56-9242-4f4f-91ef-d2bf53597954",
+      "createdAt": "2026-07-28T03:19:45.000Z",
+      "updatedAt": "2026-07-28T03:19:45.000Z",
+      "uid": "35240-278a8e56-9242-4f4f-91ef-d2bf53597954"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://customers.triton.one"
+    }
+  ]
+}

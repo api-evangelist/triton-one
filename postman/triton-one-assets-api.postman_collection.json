@@ -1,0 +1,140 @@
+{
+  "info": {
+    "_postman_id": "e9762576-f56c-41c4-9746-6c1f25330274",
+    "name": "Triton One Customers Accounts Assets API",
+    "description": "Account management REST API for Triton One. Use this API to manage accounts, subscriptions, endpoints, tokens, address watch lists, and rate tiers for your Triton RPC services. Token-based authentication via the Authorization header. Distinct from RPC consumption tokens \u2014 Customers API tokens are only used against customers.triton.one.\n\n\nContact Support:\n Name: Triton One Support\n Email: support@triton.one",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:19:40.000Z",
+    "updatedAt": "2026-07-28T03:19:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e9762576-f56c-41c4-9746-6c1f25330274"
+  },
+  "item": [
+    {
+      "name": "/",
+      "item": [
+        {
+          "name": "Digital Assets JSON-RPC Call",
+          "id": "2904d07b-2848-4c50-9199-e5688cf89f65",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"getNftEditions\",\n  \"id\": \"<integer,string>\",\n  \"params\": {}\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ]
+            },
+            "description": "Single JSON-RPC entrypoint accepting Metaplex DAS methods. Set the `method` field to one of getAsset, getAssets, getAssetProof, getAssetProofs, getAssetSignatures, getAssetsByAuthority, getAssetsByCreator, getAssetsByOwner, searchAssets, getNftEditions, getTokenAccounts, or getTokenLargestAccounts.\n"
+          },
+          "response": [
+            {
+              "id": "22889f26-6871-400d-8832-2227040514ed",
+              "name": "JSON-RPC response.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"getNftEditions\",\n  \"id\": \"<integer,string>\",\n  \"params\": {}\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer,string>\",\n  \"result\": {},\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"data\": {}\n  }\n}",
+              "createdAt": "2026-07-28T03:19:41.000Z",
+              "updatedAt": "2026-07-28T03:19:41.000Z",
+              "uid": "35240-22889f26-6871-400d-8832-2227040514ed"
+            }
+          ],
+          "createdAt": "2026-07-28T03:19:41.000Z",
+          "updatedAt": "2026-07-28T03:19:41.000Z",
+          "uid": "35240-2904d07b-2848-4c50-9199-e5688cf89f65"
+        }
+      ],
+      "id": "fc38339b-3e96-4eca-b79f-5f6b488b7cee",
+      "createdAt": "2026-07-28T03:19:41.000Z",
+      "updatedAt": "2026-07-28T03:19:41.000Z",
+      "uid": "35240-fc38339b-3e96-4eca-b79f-5f6b488b7cee"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://customers.triton.one"
+    }
+  ]
+}

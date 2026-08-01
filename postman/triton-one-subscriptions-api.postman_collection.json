@@ -1,0 +1,709 @@
+{
+  "info": {
+    "_postman_id": "35d0344d-f050-4c73-9da7-e6f6477ca6ca",
+    "name": "Triton One Customers Accounts Subscriptions API",
+    "description": "Account management REST API for Triton One. Use this API to manage accounts, subscriptions, endpoints, tokens, address watch lists, and rate tiers for your Triton RPC services. Token-based authentication via the Authorization header. Distinct from RPC consumption tokens \u2014 Customers API tokens are only used against customers.triton.one.\n\n\nContact Support:\n Name: Triton One Support\n Email: support@triton.one",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:19:43.000Z",
+    "updatedAt": "2026-07-28T03:19:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-35d0344d-f050-4c73-9da7-e6f6477ca6ca"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "subscriptions",
+              "item": [
+                {
+                  "name": "{subscriptionUuid}",
+                  "item": [
+                    {
+                      "name": "activate",
+                      "item": [
+                        {
+                          "name": "Activate Subscription",
+                          "id": "9a41fb61-19b7-4667-af00-ffd0175a75f2",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/subscriptions/:subscriptionUuid/activate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "subscriptions",
+                                ":subscriptionUuid",
+                                "activate"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "8390a972-6992-47c0-8a99-beb40d4eba5b",
+                                  "key": "subscriptionUuid",
+                                  "value": "<uuid>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Activate a previously deactivated subscription. Reseller role only."
+                          },
+                          "response": [
+                            {
+                              "id": "8d74050e-1708-4d25-bc85-f81e819d1c5e",
+                              "name": "Activated.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/subscriptions/:subscriptionUuid/activate",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "subscriptions",
+                                    ":subscriptionUuid",
+                                    "activate"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "subscriptionUuid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:19:44.000Z",
+                              "updatedAt": "2026-07-28T03:19:44.000Z",
+                              "uid": "35240-8d74050e-1708-4d25-bc85-f81e819d1c5e"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:19:44.000Z",
+                          "updatedAt": "2026-07-28T03:19:44.000Z",
+                          "uid": "35240-9a41fb61-19b7-4667-af00-ffd0175a75f2"
+                        }
+                      ],
+                      "id": "645c7f1c-b935-40f2-b249-3c83b1e7cb69",
+                      "createdAt": "2026-07-28T03:19:44.000Z",
+                      "updatedAt": "2026-07-28T03:19:44.000Z",
+                      "uid": "35240-645c7f1c-b935-40f2-b249-3c83b1e7cb69"
+                    },
+                    {
+                      "name": "deactivate",
+                      "item": [
+                        {
+                          "name": "Deactivate Subscription",
+                          "id": "ba8d2dc7-1178-433c-9ca7-0c00f6bf3fd2",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"deactivation_reason\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/subscriptions/:subscriptionUuid/deactivate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "subscriptions",
+                                ":subscriptionUuid",
+                                "deactivate"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "6aca44f0-5a76-4af3-a7a0-6e8f1626bc55",
+                                  "key": "subscriptionUuid",
+                                  "value": "<uuid>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Deactivate an active subscription. Reseller role only."
+                          },
+                          "response": [
+                            {
+                              "id": "21ee2424-25cc-42eb-a095-bf97cb422539",
+                              "name": "Deactivated.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"deactivation_reason\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/subscriptions/:subscriptionUuid/deactivate",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "subscriptions",
+                                    ":subscriptionUuid",
+                                    "deactivate"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "subscriptionUuid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:19:44.000Z",
+                              "updatedAt": "2026-07-28T03:19:44.000Z",
+                              "uid": "35240-21ee2424-25cc-42eb-a095-bf97cb422539"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:19:44.000Z",
+                          "updatedAt": "2026-07-28T03:19:44.000Z",
+                          "uid": "35240-ba8d2dc7-1178-433c-9ca7-0c00f6bf3fd2"
+                        }
+                      ],
+                      "id": "e2a4ee98-023d-44d7-88aa-a4eb20ff5144",
+                      "createdAt": "2026-07-28T03:19:44.000Z",
+                      "updatedAt": "2026-07-28T03:19:44.000Z",
+                      "uid": "35240-e2a4ee98-023d-44d7-88aa-a4eb20ff5144"
+                    },
+                    {
+                      "name": "Get Subscription",
+                      "id": "6ad9613c-ac13-4a9a-87d1-e6ed7fd33735",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/subscriptions/:subscriptionUuid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "subscriptions",
+                            ":subscriptionUuid"
+                          ],
+                          "variable": [
+                            {
+                              "id": "c94787d4-481c-4506-8bd7-c5e48db4904c",
+                              "key": "subscriptionUuid",
+                              "value": "<uuid>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "e7edbf77-8b7d-4f8c-b66b-d9e55bee0b13",
+                          "name": "Subscription detail.",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/subscriptions/:subscriptionUuid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "subscriptions",
+                                ":subscriptionUuid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "subscriptionUuid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"subscription\": {\n    \"uuid\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"subscription_type\": \"developer\",\n    \"is_active\": \"<boolean>\",\n    \"starts_at\": \"<dateTime>\",\n    \"ends_at\": \"<dateTime>\",\n    \"endpoints\": [\n      {\n        \"uuid\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"slug\": \"<string>\",\n        \"rate_tier\": \"tier2\",\n        \"is_active\": \"<boolean>\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"allowed_origins\": [\n          {\n            \"value\": \"<string>\",\n            \"is_active\": \"<boolean>\"\n          },\n          {\n            \"value\": \"<string>\",\n            \"is_active\": \"<boolean>\"\n          }\n        ]\n      },\n      {\n        \"uuid\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"slug\": \"<string>\",\n        \"rate_tier\": \"tier1\",\n        \"is_active\": \"<boolean>\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"allowed_origins\": [\n          {\n            \"value\": \"<string>\",\n            \"is_active\": \"<boolean>\"\n          },\n          {\n            \"value\": \"<string>\",\n            \"is_active\": \"<boolean>\"\n          }\n        ]\n      }\n    ],\n    \"tokens\": [\n      {\n        \"uuid\": \"<uuid>\",\n        \"value\": \"<string>\",\n        \"auth_username\": \"<string>\",\n        \"name\": \"<string>\",\n        \"rate_tier\": \"free\",\n        \"is_active\": \"<boolean>\",\n        \"deactivation_reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"uuid\": \"<uuid>\",\n        \"value\": \"<string>\",\n        \"auth_username\": \"<string>\",\n        \"name\": \"<string>\",\n        \"rate_tier\": \"free\",\n        \"is_active\": \"<boolean>\",\n        \"deactivation_reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"supported_rate_tiers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"account\": {\n      \"uuid\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"billing_address1\": \"<string>\",\n      \"billing_address2\": \"<string>\",\n      \"billing_address3\": \"<string>\",\n      \"billing_city\": \"<string>\",\n      \"billing_state_or_province\": \"<string>\",\n      \"billing_postal_code\": \"<string>\",\n      \"billing_country_code\": \"<string>\",\n      \"telephone_country_code\": \"<string>\",\n      \"telephone\": \"<string>\",\n      \"is_active\": \"<boolean>\",\n      \"subscriptions\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Subscription detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Subscription detected>\"\n        }\n      ],\n      \"deactivation_reasons\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"deactivation_reasons\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "createdAt": "2026-07-28T03:19:44.000Z",
+                          "updatedAt": "2026-07-28T03:19:44.000Z",
+                          "uid": "35240-e7edbf77-8b7d-4f8c-b66b-d9e55bee0b13"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:19:44.000Z",
+                      "updatedAt": "2026-07-28T03:19:44.000Z",
+                      "uid": "35240-6ad9613c-ac13-4a9a-87d1-e6ed7fd33735"
+                    },
+                    {
+                      "name": "Update Subscription",
+                      "id": "e6582517-20f9-4723-b9af-166bd4b8396d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/subscriptions/:subscriptionUuid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "subscriptions",
+                            ":subscriptionUuid"
+                          ],
+                          "variable": [
+                            {
+                              "id": "eed6643b-52d8-4850-99c9-f597ea75ebe9",
+                              "key": "subscriptionUuid",
+                              "value": "<uuid>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "de446508-1d52-4cfb-80ee-76846c155e6e",
+                          "name": "Updated subscription.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/subscriptions/:subscriptionUuid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "subscriptions",
+                                ":subscriptionUuid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "subscriptionUuid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"subscription\": {\n    \"uuid\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"subscription_type\": \"developer\",\n    \"is_active\": \"<boolean>\",\n    \"starts_at\": \"<dateTime>\",\n    \"ends_at\": \"<dateTime>\",\n    \"endpoints\": [\n      {\n        \"uuid\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"slug\": \"<string>\",\n        \"rate_tier\": \"tier2\",\n        \"is_active\": \"<boolean>\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"allowed_origins\": [\n          {\n            \"value\": \"<string>\",\n            \"is_active\": \"<boolean>\"\n          },\n          {\n            \"value\": \"<string>\",\n            \"is_active\": \"<boolean>\"\n          }\n        ]\n      },\n      {\n        \"uuid\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"slug\": \"<string>\",\n        \"rate_tier\": \"tier1\",\n        \"is_active\": \"<boolean>\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"allowed_origins\": [\n          {\n            \"value\": \"<string>\",\n            \"is_active\": \"<boolean>\"\n          },\n          {\n            \"value\": \"<string>\",\n            \"is_active\": \"<boolean>\"\n          }\n        ]\n      }\n    ],\n    \"tokens\": [\n      {\n        \"uuid\": \"<uuid>\",\n        \"value\": \"<string>\",\n        \"auth_username\": \"<string>\",\n        \"name\": \"<string>\",\n        \"rate_tier\": \"free\",\n        \"is_active\": \"<boolean>\",\n        \"deactivation_reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"uuid\": \"<uuid>\",\n        \"value\": \"<string>\",\n        \"auth_username\": \"<string>\",\n        \"name\": \"<string>\",\n        \"rate_tier\": \"free\",\n        \"is_active\": \"<boolean>\",\n        \"deactivation_reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"supported_rate_tiers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"account\": {\n      \"uuid\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"billing_address1\": \"<string>\",\n      \"billing_address2\": \"<string>\",\n      \"billing_address3\": \"<string>\",\n      \"billing_city\": \"<string>\",\n      \"billing_state_or_province\": \"<string>\",\n      \"billing_postal_code\": \"<string>\",\n      \"billing_country_code\": \"<string>\",\n      \"telephone_country_code\": \"<string>\",\n      \"telephone\": \"<string>\",\n      \"is_active\": \"<boolean>\",\n      \"subscriptions\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Subscription detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Subscription detected>\"\n        }\n      ],\n      \"deactivation_reasons\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"deactivation_reasons\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                          "createdAt": "2026-07-28T03:19:44.000Z",
+                          "updatedAt": "2026-07-28T03:19:44.000Z",
+                          "uid": "35240-de446508-1d52-4cfb-80ee-76846c155e6e"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:19:44.000Z",
+                      "updatedAt": "2026-07-28T03:19:44.000Z",
+                      "uid": "35240-e6582517-20f9-4723-b9af-166bd4b8396d"
+                    }
+                  ],
+                  "id": "084422b6-90f3-4d45-8eb4-e5a833e066d4",
+                  "createdAt": "2026-07-28T03:19:44.000Z",
+                  "updatedAt": "2026-07-28T03:19:44.000Z",
+                  "uid": "35240-084422b6-90f3-4d45-8eb4-e5a833e066d4"
+                },
+                {
+                  "name": "List Subscriptions",
+                  "id": "515d2ed3-614f-4f6a-a82f-ba4ed8c29dd9",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/subscriptions?subscription_type=mainnet-dedicated&account_uuid=<uuid>&user_uuid=<uuid>&per=50&page=1",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "subscriptions"
+                      ],
+                      "query": [
+                        {
+                          "key": "subscription_type",
+                          "value": "mainnet-dedicated"
+                        },
+                        {
+                          "key": "account_uuid",
+                          "value": "<uuid>"
+                        },
+                        {
+                          "key": "user_uuid",
+                          "value": "<uuid>"
+                        },
+                        {
+                          "key": "per",
+                          "value": "50"
+                        },
+                        {
+                          "key": "page",
+                          "value": "1"
+                        }
+                      ]
+                    },
+                    "description": "List subscriptions visible to the authenticated token."
+                  },
+                  "response": [
+                    {
+                      "id": "b6b11b8e-ccb9-4d1f-92eb-86b9754d06fa",
+                      "name": "List of subscriptions.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/subscriptions?subscription_type=mainnet-dedicated&account_uuid=<uuid>&user_uuid=<uuid>&per=50&page=1",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "subscriptions"
+                          ],
+                          "query": [
+                            {
+                              "key": "subscription_type",
+                              "value": "mainnet-dedicated"
+                            },
+                            {
+                              "key": "account_uuid",
+                              "value": "<uuid>"
+                            },
+                            {
+                              "key": "user_uuid",
+                              "value": "<uuid>"
+                            },
+                            {
+                              "key": "per",
+                              "value": "50"
+                            },
+                            {
+                              "key": "page",
+                              "value": "1"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"subscriptions\": [\n    {\n      \"uuid\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"subscription_type\": \"mainnet-dedicated\",\n      \"is_active\": \"<boolean>\",\n      \"starts_at\": \"<dateTime>\",\n      \"ends_at\": \"<dateTime>\",\n      \"endpoints\": [\n        {\n          \"uuid\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"rate_tier\": \"tier3\",\n          \"is_active\": \"<boolean>\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"allowed_origins\": [\n            {\n              \"value\": \"<string>\",\n              \"is_active\": \"<boolean>\"\n            },\n            {\n              \"value\": \"<string>\",\n              \"is_active\": \"<boolean>\"\n            }\n          ]\n        },\n        {\n          \"uuid\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"rate_tier\": \"tier3\",\n          \"is_active\": \"<boolean>\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"allowed_origins\": [\n            {\n              \"value\": \"<string>\",\n              \"is_active\": \"<boolean>\"\n            },\n            {\n              \"value\": \"<string>\",\n              \"is_active\": \"<boolean>\"\n            }\n          ]\n        }\n      ],\n      \"tokens\": [\n        {\n          \"uuid\": \"<uuid>\",\n          \"value\": \"<string>\",\n          \"auth_username\": \"<string>\",\n          \"name\": \"<string>\",\n          \"rate_tier\": \"tier2\",\n          \"is_active\": \"<boolean>\",\n          \"deactivation_reasons\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"uuid\": \"<uuid>\",\n          \"value\": \"<string>\",\n          \"auth_username\": \"<string>\",\n          \"name\": \"<string>\",\n          \"rate_tier\": \"free\",\n          \"is_active\": \"<boolean>\",\n          \"deactivation_reasons\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"supported_rate_tiers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"account\": {\n        \"uuid\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"billing_address1\": \"<string>\",\n        \"billing_address2\": \"<string>\",\n        \"billing_address3\": \"<string>\",\n        \"billing_city\": \"<string>\",\n        \"billing_state_or_province\": \"<string>\",\n        \"billing_postal_code\": \"<string>\",\n        \"billing_country_code\": \"<string>\",\n        \"telephone_country_code\": \"<string>\",\n        \"telephone\": \"<string>\",\n        \"is_active\": \"<boolean>\",\n        \"subscriptions\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Subscription detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Subscription detected>\"\n          }\n        ],\n        \"deactivation_reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"deactivation_reasons\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"uuid\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"subscription_type\": \"mainnet-shared\",\n      \"is_active\": \"<boolean>\",\n      \"starts_at\": \"<dateTime>\",\n      \"ends_at\": \"<dateTime>\",\n      \"endpoints\": [\n        {\n          \"uuid\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"rate_tier\": \"tier2\",\n          \"is_active\": \"<boolean>\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"allowed_origins\": [\n            {\n              \"value\": \"<string>\",\n              \"is_active\": \"<boolean>\"\n            },\n            {\n              \"value\": \"<string>\",\n              \"is_active\": \"<boolean>\"\n            }\n          ]\n        },\n        {\n          \"uuid\": \"<uuid>\",\n          \"name\": \"<string>\",\n          \"slug\": \"<string>\",\n          \"rate_tier\": \"tier2\",\n          \"is_active\": \"<boolean>\",\n          \"values\": [\n            \"<string>\",\n            \"<string>\"\n          ],\n          \"allowed_origins\": [\n            {\n              \"value\": \"<string>\",\n              \"is_active\": \"<boolean>\"\n            },\n            {\n              \"value\": \"<string>\",\n              \"is_active\": \"<boolean>\"\n            }\n          ]\n        }\n      ],\n      \"tokens\": [\n        {\n          \"uuid\": \"<uuid>\",\n          \"value\": \"<string>\",\n          \"auth_username\": \"<string>\",\n          \"name\": \"<string>\",\n          \"rate_tier\": \"tier1\",\n          \"is_active\": \"<boolean>\",\n          \"deactivation_reasons\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        },\n        {\n          \"uuid\": \"<uuid>\",\n          \"value\": \"<string>\",\n          \"auth_username\": \"<string>\",\n          \"name\": \"<string>\",\n          \"rate_tier\": \"tier2\",\n          \"is_active\": \"<boolean>\",\n          \"deactivation_reasons\": [\n            \"<string>\",\n            \"<string>\"\n          ]\n        }\n      ],\n      \"supported_rate_tiers\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"account\": {\n        \"uuid\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"billing_address1\": \"<string>\",\n        \"billing_address2\": \"<string>\",\n        \"billing_address3\": \"<string>\",\n        \"billing_city\": \"<string>\",\n        \"billing_state_or_province\": \"<string>\",\n        \"billing_postal_code\": \"<string>\",\n        \"billing_country_code\": \"<string>\",\n        \"telephone_country_code\": \"<string>\",\n        \"telephone\": \"<string>\",\n        \"is_active\": \"<boolean>\",\n        \"subscriptions\": [\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Subscription detected>\"\n          },\n          {\n            \"value\": \"<Circular reference to #/components/schemas/Subscription detected>\"\n          }\n        ],\n        \"deactivation_reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"deactivation_reasons\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"meta\": {\n    \"current_page\": \"<integer>\",\n    \"next_page\": \"<integer,null>\",\n    \"per_page\": \"<integer>\",\n    \"prev_page\": \"<integer,null>\",\n    \"total_pages\": \"<integer>\",\n    \"total_count\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-07-28T03:19:44.000Z",
+                      "updatedAt": "2026-07-28T03:19:44.000Z",
+                      "uid": "35240-b6b11b8e-ccb9-4d1f-92eb-86b9754d06fa"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:19:44.000Z",
+                  "updatedAt": "2026-07-28T03:19:44.000Z",
+                  "uid": "35240-515d2ed3-614f-4f6a-a82f-ba4ed8c29dd9"
+                },
+                {
+                  "name": "Create Subscription",
+                  "id": "5e5e57e4-56a1-40d1-84bb-5a429c9abe8c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"account_uuid\": \"<uuid>\",\n  \"subscription_type\": \"developer\",\n  \"name\": \"<string>\",\n  \"starts_at\": \"<dateTime>\",\n  \"ends_at\": \"<dateTime>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/subscriptions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "subscriptions"
+                      ]
+                    },
+                    "description": "Create a new subscription. Reseller role only."
+                  },
+                  "response": [
+                    {
+                      "id": "9e8defc4-d314-4fd8-aa49-19fb8ca4ab99",
+                      "name": "Created subscription.",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"account_uuid\": \"<uuid>\",\n  \"subscription_type\": \"developer\",\n  \"name\": \"<string>\",\n  \"starts_at\": \"<dateTime>\",\n  \"ends_at\": \"<dateTime>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/subscriptions",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "subscriptions"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"subscription\": {\n    \"uuid\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"subscription_type\": \"developer\",\n    \"is_active\": \"<boolean>\",\n    \"starts_at\": \"<dateTime>\",\n    \"ends_at\": \"<dateTime>\",\n    \"endpoints\": [\n      {\n        \"uuid\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"slug\": \"<string>\",\n        \"rate_tier\": \"tier2\",\n        \"is_active\": \"<boolean>\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"allowed_origins\": [\n          {\n            \"value\": \"<string>\",\n            \"is_active\": \"<boolean>\"\n          },\n          {\n            \"value\": \"<string>\",\n            \"is_active\": \"<boolean>\"\n          }\n        ]\n      },\n      {\n        \"uuid\": \"<uuid>\",\n        \"name\": \"<string>\",\n        \"slug\": \"<string>\",\n        \"rate_tier\": \"tier1\",\n        \"is_active\": \"<boolean>\",\n        \"values\": [\n          \"<string>\",\n          \"<string>\"\n        ],\n        \"allowed_origins\": [\n          {\n            \"value\": \"<string>\",\n            \"is_active\": \"<boolean>\"\n          },\n          {\n            \"value\": \"<string>\",\n            \"is_active\": \"<boolean>\"\n          }\n        ]\n      }\n    ],\n    \"tokens\": [\n      {\n        \"uuid\": \"<uuid>\",\n        \"value\": \"<string>\",\n        \"auth_username\": \"<string>\",\n        \"name\": \"<string>\",\n        \"rate_tier\": \"free\",\n        \"is_active\": \"<boolean>\",\n        \"deactivation_reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"uuid\": \"<uuid>\",\n        \"value\": \"<string>\",\n        \"auth_username\": \"<string>\",\n        \"name\": \"<string>\",\n        \"rate_tier\": \"free\",\n        \"is_active\": \"<boolean>\",\n        \"deactivation_reasons\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"supported_rate_tiers\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"account\": {\n      \"uuid\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"billing_address1\": \"<string>\",\n      \"billing_address2\": \"<string>\",\n      \"billing_address3\": \"<string>\",\n      \"billing_city\": \"<string>\",\n      \"billing_state_or_province\": \"<string>\",\n      \"billing_postal_code\": \"<string>\",\n      \"billing_country_code\": \"<string>\",\n      \"telephone_country_code\": \"<string>\",\n      \"telephone\": \"<string>\",\n      \"is_active\": \"<boolean>\",\n      \"subscriptions\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Subscription detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/Subscription detected>\"\n        }\n      ],\n      \"deactivation_reasons\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    \"deactivation_reasons\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n}",
+                      "createdAt": "2026-07-28T03:19:44.000Z",
+                      "updatedAt": "2026-07-28T03:19:44.000Z",
+                      "uid": "35240-9e8defc4-d314-4fd8-aa49-19fb8ca4ab99"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:19:44.000Z",
+                  "updatedAt": "2026-07-28T03:19:44.000Z",
+                  "uid": "35240-5e5e57e4-56a1-40d1-84bb-5a429c9abe8c"
+                }
+              ],
+              "id": "17bcae18-bb70-4398-a79a-a2f81f4ad130",
+              "createdAt": "2026-07-28T03:19:44.000Z",
+              "updatedAt": "2026-07-28T03:19:44.000Z",
+              "uid": "35240-17bcae18-bb70-4398-a79a-a2f81f4ad130"
+            }
+          ],
+          "id": "c8dc4e9f-ffb3-4923-86cc-1ca8c0b1f1c3",
+          "createdAt": "2026-07-28T03:19:44.000Z",
+          "updatedAt": "2026-07-28T03:19:44.000Z",
+          "uid": "35240-c8dc4e9f-ffb3-4923-86cc-1ca8c0b1f1c3"
+        }
+      ],
+      "id": "cf9e71ec-5565-4957-8a3e-0d9b31f230a6",
+      "createdAt": "2026-07-28T03:19:44.000Z",
+      "updatedAt": "2026-07-28T03:19:44.000Z",
+      "uid": "35240-cf9e71ec-5565-4957-8a3e-0d9b31f230a6"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://customers.triton.one"
+    }
+  ]
+}

@@ -1,0 +1,635 @@
+{
+  "info": {
+    "_postman_id": "006744df-2c45-4bea-b9e9-4c255598d04f",
+    "name": "Triton One Customers Accounts Endpoints API",
+    "description": "Account management REST API for Triton One. Use this API to manage accounts, subscriptions, endpoints, tokens, address watch lists, and rate tiers for your Triton RPC services. Token-based authentication via the Authorization header. Distinct from RPC consumption tokens \u2014 Customers API tokens are only used against customers.triton.one.\n\n\nContact Support:\n Name: Triton One Support\n Email: support@triton.one",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:19:41.000Z",
+    "updatedAt": "2026-07-28T03:19:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-006744df-2c45-4bea-b9e9-4c255598d04f"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "endpoints",
+              "item": [
+                {
+                  "name": "{endpointUuid}",
+                  "item": [
+                    {
+                      "name": "activate",
+                      "item": [
+                        {
+                          "name": "Activate Endpoint",
+                          "id": "6f650136-a6ac-48fd-bcaf-72b3747896f5",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/endpoints/:endpointUuid/activate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "endpoints",
+                                ":endpointUuid",
+                                "activate"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "9b8692df-5651-44ff-93d3-d35163b8edc6",
+                                  "key": "endpointUuid",
+                                  "value": "<uuid>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "07e2fc4d-c76c-4a08-ade0-eda5b7f7d808",
+                              "name": "Activated.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/endpoints/:endpointUuid/activate",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "endpoints",
+                                    ":endpointUuid",
+                                    "activate"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "endpointUuid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:19:42.000Z",
+                              "updatedAt": "2026-07-28T03:19:42.000Z",
+                              "uid": "35240-07e2fc4d-c76c-4a08-ade0-eda5b7f7d808"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:19:42.000Z",
+                          "updatedAt": "2026-07-28T03:19:42.000Z",
+                          "uid": "35240-6f650136-a6ac-48fd-bcaf-72b3747896f5"
+                        }
+                      ],
+                      "id": "a16bdf53-6825-41a5-a5e4-2dcd3a49ae61",
+                      "createdAt": "2026-07-28T03:19:42.000Z",
+                      "updatedAt": "2026-07-28T03:19:42.000Z",
+                      "uid": "35240-a16bdf53-6825-41a5-a5e4-2dcd3a49ae61"
+                    },
+                    {
+                      "name": "deactivate",
+                      "item": [
+                        {
+                          "name": "Deactivate Endpoint",
+                          "id": "0114f7d0-b1cb-4e41-94b3-b515c9ec7b4e",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"deactivation_reason\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/endpoints/:endpointUuid/deactivate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "endpoints",
+                                ":endpointUuid",
+                                "deactivate"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "7024af0f-63bb-4062-bdfc-6158f57b4be2",
+                                  "key": "endpointUuid",
+                                  "value": "<uuid>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "2995d88a-cf0e-47dc-b0db-e77834559dd0",
+                              "name": "Deactivated.",
+                              "originalRequest": {
+                                "method": "PUT",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"deactivation_reason\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/endpoints/:endpointUuid/deactivate",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "endpoints",
+                                    ":endpointUuid",
+                                    "deactivate"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "endpointUuid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T03:19:42.000Z",
+                              "updatedAt": "2026-07-28T03:19:42.000Z",
+                              "uid": "35240-2995d88a-cf0e-47dc-b0db-e77834559dd0"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:19:42.000Z",
+                          "updatedAt": "2026-07-28T03:19:42.000Z",
+                          "uid": "35240-0114f7d0-b1cb-4e41-94b3-b515c9ec7b4e"
+                        }
+                      ],
+                      "id": "88c2c4bd-9343-4b13-b6c6-b7ca149eae65",
+                      "createdAt": "2026-07-28T03:19:42.000Z",
+                      "updatedAt": "2026-07-28T03:19:42.000Z",
+                      "uid": "35240-88c2c4bd-9343-4b13-b6c6-b7ca149eae65"
+                    },
+                    {
+                      "name": "Update Endpoint",
+                      "id": "6ae2eed1-6ad2-4be6-8408-88e44433dbaa",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\",\n  \"rate_tier\": \"tier1\",\n  \"allowed_origins\": [\n    {\n      \"value\": \"<string>\",\n      \"is_active\": \"<boolean>\"\n    },\n    {\n      \"value\": \"<string>\",\n      \"is_active\": \"<boolean>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/endpoints/:endpointUuid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "endpoints",
+                            ":endpointUuid"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9eff92ad-3bcd-4e15-8b8d-a90cb37159b6",
+                              "key": "endpointUuid",
+                              "value": "<uuid>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "3b038c70-f0a5-4958-80e5-96f8fc6f9c55",
+                          "name": "Updated endpoint.",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"rate_tier\": \"tier1\",\n  \"allowed_origins\": [\n    {\n      \"value\": \"<string>\",\n      \"is_active\": \"<boolean>\"\n    },\n    {\n      \"value\": \"<string>\",\n      \"is_active\": \"<boolean>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/endpoints/:endpointUuid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "endpoints",
+                                ":endpointUuid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "endpointUuid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"endpoint\": {\n    \"uuid\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"rate_tier\": \"tier1\",\n    \"is_active\": \"<boolean>\",\n    \"values\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"allowed_origins\": [\n      {\n        \"value\": \"<string>\",\n        \"is_active\": \"<boolean>\"\n      },\n      {\n        \"value\": \"<string>\",\n        \"is_active\": \"<boolean>\"\n      }\n    ]\n  }\n}",
+                          "createdAt": "2026-07-28T03:19:42.000Z",
+                          "updatedAt": "2026-07-28T03:19:42.000Z",
+                          "uid": "35240-3b038c70-f0a5-4958-80e5-96f8fc6f9c55"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:19:42.000Z",
+                      "updatedAt": "2026-07-28T03:19:42.000Z",
+                      "uid": "35240-6ae2eed1-6ad2-4be6-8408-88e44433dbaa"
+                    }
+                  ],
+                  "id": "85423bfa-2290-40c1-a835-657ccd27b9da",
+                  "createdAt": "2026-07-28T03:19:42.000Z",
+                  "updatedAt": "2026-07-28T03:19:42.000Z",
+                  "uid": "35240-85423bfa-2290-40c1-a835-657ccd27b9da"
+                },
+                {
+                  "name": "List Endpoints",
+                  "id": "3cd1e2e4-b9be-490a-b9fe-c64e28690604",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/endpoints?account_uuid=<uuid>&subscription_uuid=<uuid>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "endpoints"
+                      ],
+                      "query": [
+                        {
+                          "key": "account_uuid",
+                          "value": "<uuid>"
+                        },
+                        {
+                          "key": "subscription_uuid",
+                          "value": "<uuid>"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "90b3bdde-f90b-4544-8a3e-cdb0168cab93",
+                      "name": "Endpoints collection.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/endpoints?account_uuid=<uuid>&subscription_uuid=<uuid>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "endpoints"
+                          ],
+                          "query": [
+                            {
+                              "key": "account_uuid",
+                              "value": "<uuid>"
+                            },
+                            {
+                              "key": "subscription_uuid",
+                              "value": "<uuid>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"endpoints\": [\n    {\n      \"uuid\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"rate_tier\": \"tier2\",\n      \"is_active\": \"<boolean>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"allowed_origins\": [\n        {\n          \"value\": \"<string>\",\n          \"is_active\": \"<boolean>\"\n        },\n        {\n          \"value\": \"<string>\",\n          \"is_active\": \"<boolean>\"\n        }\n      ]\n    },\n    {\n      \"uuid\": \"<uuid>\",\n      \"name\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"rate_tier\": \"tier1\",\n      \"is_active\": \"<boolean>\",\n      \"values\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"allowed_origins\": [\n        {\n          \"value\": \"<string>\",\n          \"is_active\": \"<boolean>\"\n        },\n        {\n          \"value\": \"<string>\",\n          \"is_active\": \"<boolean>\"\n        }\n      ]\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:19:42.000Z",
+                      "updatedAt": "2026-07-28T03:19:42.000Z",
+                      "uid": "35240-90b3bdde-f90b-4544-8a3e-cdb0168cab93"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:19:42.000Z",
+                  "updatedAt": "2026-07-28T03:19:42.000Z",
+                  "uid": "35240-3cd1e2e4-b9be-490a-b9fe-c64e28690604"
+                }
+              ],
+              "id": "232537d9-dca4-4d94-bb1c-68a3c388acb4",
+              "createdAt": "2026-07-28T03:19:42.000Z",
+              "updatedAt": "2026-07-28T03:19:42.000Z",
+              "uid": "35240-232537d9-dca4-4d94-bb1c-68a3c388acb4"
+            },
+            {
+              "name": "subscriptions",
+              "item": [
+                {
+                  "name": "{subscriptionUuid}",
+                  "item": [
+                    {
+                      "name": "endpoints",
+                      "item": [
+                        {
+                          "name": "Create Endpoint",
+                          "id": "402f4871-242f-481f-8298-74d076136879",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"name\": \"<string>\",\n  \"rate_tier\": \"tier3\",\n  \"allowed_origins\": [\n    {\n      \"value\": \"<string>\"\n    },\n    {\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/subscriptions/:subscriptionUuid/endpoints",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "subscriptions",
+                                ":subscriptionUuid",
+                                "endpoints"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "ec6c2e93-54a8-4ccc-a704-ab943836ddea",
+                                  "key": "subscriptionUuid",
+                                  "value": "<uuid>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Create a new RPC endpoint under a subscription. Reseller role only."
+                          },
+                          "response": [
+                            {
+                              "id": "cb1bc5bd-b174-4cbf-bf0a-8e8f8fcdfc71",
+                              "name": "Created endpoint.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"name\": \"<string>\",\n  \"rate_tier\": \"tier3\",\n  \"allowed_origins\": [\n    {\n      \"value\": \"<string>\"\n    },\n    {\n      \"value\": \"<string>\"\n    }\n  ]\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/subscriptions/:subscriptionUuid/endpoints",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "subscriptions",
+                                    ":subscriptionUuid",
+                                    "endpoints"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "subscriptionUuid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Created",
+                              "code": 201,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"endpoint\": {\n    \"uuid\": \"<uuid>\",\n    \"name\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"rate_tier\": \"tier1\",\n    \"is_active\": \"<boolean>\",\n    \"values\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"allowed_origins\": [\n      {\n        \"value\": \"<string>\",\n        \"is_active\": \"<boolean>\"\n      },\n      {\n        \"value\": \"<string>\",\n        \"is_active\": \"<boolean>\"\n      }\n    ]\n  }\n}",
+                              "createdAt": "2026-07-28T03:19:42.000Z",
+                              "updatedAt": "2026-07-28T03:19:42.000Z",
+                              "uid": "35240-cb1bc5bd-b174-4cbf-bf0a-8e8f8fcdfc71"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:19:42.000Z",
+                          "updatedAt": "2026-07-28T03:19:42.000Z",
+                          "uid": "35240-402f4871-242f-481f-8298-74d076136879"
+                        }
+                      ],
+                      "id": "01ba7d4c-36da-47f1-bced-8c713e21052c",
+                      "createdAt": "2026-07-28T03:19:42.000Z",
+                      "updatedAt": "2026-07-28T03:19:42.000Z",
+                      "uid": "35240-01ba7d4c-36da-47f1-bced-8c713e21052c"
+                    }
+                  ],
+                  "id": "43a49069-ccce-4e89-a9fe-8c2a69990cb2",
+                  "createdAt": "2026-07-28T03:19:42.000Z",
+                  "updatedAt": "2026-07-28T03:19:42.000Z",
+                  "uid": "35240-43a49069-ccce-4e89-a9fe-8c2a69990cb2"
+                }
+              ],
+              "id": "f4fbf7e7-0b32-4ee7-836b-488643a9ee72",
+              "createdAt": "2026-07-28T03:19:42.000Z",
+              "updatedAt": "2026-07-28T03:19:42.000Z",
+              "uid": "35240-f4fbf7e7-0b32-4ee7-836b-488643a9ee72"
+            }
+          ],
+          "id": "b19d882a-7fc4-412f-a906-42b0d79756af",
+          "createdAt": "2026-07-28T03:19:42.000Z",
+          "updatedAt": "2026-07-28T03:19:42.000Z",
+          "uid": "35240-b19d882a-7fc4-412f-a906-42b0d79756af"
+        }
+      ],
+      "id": "5b9d3e8c-c065-47c5-b9da-78bd828f998a",
+      "createdAt": "2026-07-28T03:19:42.000Z",
+      "updatedAt": "2026-07-28T03:19:42.000Z",
+      "uid": "35240-5b9d3e8c-c065-47c5-b9da-78bd828f998a"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://customers.triton.one"
+    }
+  ]
+}

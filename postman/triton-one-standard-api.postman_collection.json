@@ -1,0 +1,140 @@
+{
+  "info": {
+    "_postman_id": "cf7ff2ff-da8e-4260-8e51-1c5f2bbebf36",
+    "name": "Triton One Customers Accounts Standard API",
+    "description": "Account management REST API for Triton One. Use this API to manage accounts, subscriptions, endpoints, tokens, address watch lists, and rate tiers for your Triton RPC services. Token-based authentication via the Authorization header. Distinct from RPC consumption tokens \u2014 Customers API tokens are only used against customers.triton.one.\n\n\nContact Support:\n Name: Triton One Support\n Email: support@triton.one",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:19:42.000Z",
+    "updatedAt": "2026-07-28T03:19:42.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-cf7ff2ff-da8e-4260-8e51-1c5f2bbebf36"
+  },
+  "item": [
+    {
+      "name": "/",
+      "item": [
+        {
+          "name": "Solana JSON-RPC Call",
+          "id": "3fe86b85-86da-4321-9988-8893e3eb043c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"<string>\",\n  \"id\": \"<integer,string>\",\n  \"params\": \"<array>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ""
+              ]
+            },
+            "description": "Single JSON-RPC entrypoint. Set the `method` field to one of Triton's supported methods. See operation examples for Triton's custom methods.\n"
+          },
+          "response": [
+            {
+              "id": "e503d1fe-96bf-4c9f-8071-f5bee38b1802",
+              "name": "JSON-RPC response.",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jsonrpc\": \"2.0\",\n  \"method\": \"<string>\",\n  \"id\": \"<integer,string>\",\n  \"params\": \"<array>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ""
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"jsonrpc\": \"<string>\",\n  \"id\": \"<integer,string>\",\n  \"result\": {},\n  \"error\": {\n    \"code\": \"<integer>\",\n    \"message\": \"<string>\",\n    \"data\": {}\n  }\n}",
+              "createdAt": "2026-07-28T03:19:43.000Z",
+              "updatedAt": "2026-07-28T03:19:43.000Z",
+              "uid": "35240-e503d1fe-96bf-4c9f-8071-f5bee38b1802"
+            }
+          ],
+          "createdAt": "2026-07-28T03:19:43.000Z",
+          "updatedAt": "2026-07-28T03:19:43.000Z",
+          "uid": "35240-3fe86b85-86da-4321-9988-8893e3eb043c"
+        }
+      ],
+      "id": "e1d2b8d4-a707-4e11-9f36-cbb39202cc2f",
+      "createdAt": "2026-07-28T03:19:43.000Z",
+      "updatedAt": "2026-07-28T03:19:43.000Z",
+      "uid": "35240-e1d2b8d4-a707-4e11-9f36-cbb39202cc2f"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://customers.triton.one"
+    }
+  ]
+}

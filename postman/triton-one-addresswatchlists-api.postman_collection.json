@@ -1,0 +1,396 @@
+{
+  "info": {
+    "_postman_id": "9b39b20d-b8ea-40bb-98bf-af1815c8cb05",
+    "name": "Triton One Customers Accounts AddressWatchLists API",
+    "description": "Account management REST API for Triton One. Use this API to manage accounts, subscriptions, endpoints, tokens, address watch lists, and rate tiers for your Triton RPC services. Token-based authentication via the Authorization header. Distinct from RPC consumption tokens \u2014 Customers API tokens are only used against customers.triton.one.\n\n\nContact Support:\n Name: Triton One Support\n Email: support@triton.one",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T03:19:40.000Z",
+    "updatedAt": "2026-07-28T03:19:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9b39b20d-b8ea-40bb-98bf-af1815c8cb05"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "v1",
+          "item": [
+            {
+              "name": "address_watch_lists",
+              "item": [
+                {
+                  "name": "{watchListUuid}",
+                  "item": [
+                    {
+                      "name": "Delete Address Watch List",
+                      "id": "5ade8b2d-7003-4b00-a3b8-2277c44d8190",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/address_watch_lists/:watchListUuid",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "address_watch_lists",
+                            ":watchListUuid"
+                          ],
+                          "variable": [
+                            {
+                              "id": "b31ffbf4-99e8-4ed3-b983-73fca5786546",
+                              "key": "watchListUuid",
+                              "value": "<uuid>",
+                              "description": "(Required) "
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "2948426f-41bf-4eea-9c76-3d27c536611d",
+                          "name": "Deleted.",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/address_watch_lists/:watchListUuid",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "address_watch_lists",
+                                ":watchListUuid"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "watchListUuid"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T03:19:40.000Z",
+                          "updatedAt": "2026-07-28T03:19:40.000Z",
+                          "uid": "35240-2948426f-41bf-4eea-9c76-3d27c536611d"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T03:19:40.000Z",
+                      "updatedAt": "2026-07-28T03:19:40.000Z",
+                      "uid": "35240-5ade8b2d-7003-4b00-a3b8-2277c44d8190"
+                    }
+                  ],
+                  "id": "a09b41b6-f01c-4516-b3d8-2d727984fe52",
+                  "createdAt": "2026-07-28T03:19:40.000Z",
+                  "updatedAt": "2026-07-28T03:19:40.000Z",
+                  "uid": "35240-a09b41b6-f01c-4516-b3d8-2d727984fe52"
+                },
+                {
+                  "name": "List Address Watch Lists",
+                  "id": "eb23bf73-40ae-4d9c-b120-1813f3f4836b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/v1/address_watch_lists?variant=collection&subscription_uuid=<uuid>&subscription_type=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "v1",
+                        "address_watch_lists"
+                      ],
+                      "query": [
+                        {
+                          "key": "variant",
+                          "value": "collection"
+                        },
+                        {
+                          "key": "subscription_uuid",
+                          "value": "<uuid>"
+                        },
+                        {
+                          "key": "subscription_type",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "id": "09c0223d-ff67-4535-b9ee-a9a1c06856d3",
+                      "name": "Address watch lists collection.",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/v1/address_watch_lists?variant=collection&subscription_uuid=<uuid>&subscription_type=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "v1",
+                            "address_watch_lists"
+                          ],
+                          "query": [
+                            {
+                              "key": "variant",
+                              "value": "collection"
+                            },
+                            {
+                              "key": "subscription_uuid",
+                              "value": "<uuid>"
+                            },
+                            {
+                              "key": "subscription_type",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"address_watch_lists\": [\n    {\n      \"uuid\": \"<uuid>\",\n      \"variant\": \"collection\",\n      \"encoded_value\": \"<string>\",\n      \"subscription_uuid\": \"<uuid>\"\n    },\n    {\n      \"uuid\": \"<uuid>\",\n      \"variant\": \"collection\",\n      \"encoded_value\": \"<string>\",\n      \"subscription_uuid\": \"<uuid>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-07-28T03:19:40.000Z",
+                      "updatedAt": "2026-07-28T03:19:40.000Z",
+                      "uid": "35240-09c0223d-ff67-4535-b9ee-a9a1c06856d3"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T03:19:40.000Z",
+                  "updatedAt": "2026-07-28T03:19:40.000Z",
+                  "uid": "35240-eb23bf73-40ae-4d9c-b120-1813f3f4836b"
+                }
+              ],
+              "id": "9baae046-d186-46a3-9231-e9b424a5ea72",
+              "createdAt": "2026-07-28T03:19:40.000Z",
+              "updatedAt": "2026-07-28T03:19:40.000Z",
+              "uid": "35240-9baae046-d186-46a3-9231-e9b424a5ea72"
+            },
+            {
+              "name": "subscriptions",
+              "item": [
+                {
+                  "name": "{subscriptionUuid}",
+                  "item": [
+                    {
+                      "name": "address_watch_lists",
+                      "item": [
+                        {
+                          "name": "Add Address Watch List",
+                          "id": "e7e2d8f9-b4c9-4aaa-ae53-60cb9dfbbb7c",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"variant\": \"tree\",\n  \"encoded_value\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/v1/subscriptions/:subscriptionUuid/address_watch_lists",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "v1",
+                                "subscriptions",
+                                ":subscriptionUuid",
+                                "address_watch_lists"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "b0e9a030-7bfb-43cf-8f6b-0513231156c4",
+                                  "key": "subscriptionUuid",
+                                  "value": "<uuid>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Add an address watch list entry for a collection or Merkle tree."
+                          },
+                          "response": [
+                            {
+                              "id": "36f763ca-3ba8-4b2e-a3f9-1b2b1e86b72f",
+                              "name": "Created watch list entry.",
+                              "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: bearer",
+                                    "key": "Authorization",
+                                    "value": "Bearer <token>"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"variant\": \"tree\",\n  \"encoded_value\": \"<string>\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/v1/subscriptions/:subscriptionUuid/address_watch_lists",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "v1",
+                                    "subscriptions",
+                                    ":subscriptionUuid",
+                                    "address_watch_lists"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "subscriptionUuid"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Created",
+                              "code": 201,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"address_watch_list\": {\n    \"uuid\": \"<uuid>\",\n    \"variant\": \"collection\",\n    \"encoded_value\": \"<string>\",\n    \"subscription_uuid\": \"<uuid>\"\n  }\n}",
+                              "createdAt": "2026-07-28T03:19:40.000Z",
+                              "updatedAt": "2026-07-28T03:19:40.000Z",
+                              "uid": "35240-36f763ca-3ba8-4b2e-a3f9-1b2b1e86b72f"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T03:19:40.000Z",
+                          "updatedAt": "2026-07-28T03:19:40.000Z",
+                          "uid": "35240-e7e2d8f9-b4c9-4aaa-ae53-60cb9dfbbb7c"
+                        }
+                      ],
+                      "id": "c078b26d-5c76-45cd-9dea-1298dcce15ce",
+                      "createdAt": "2026-07-28T03:19:40.000Z",
+                      "updatedAt": "2026-07-28T03:19:40.000Z",
+                      "uid": "35240-c078b26d-5c76-45cd-9dea-1298dcce15ce"
+                    }
+                  ],
+                  "id": "f1c95248-09ac-4665-ad61-190b92f4d72d",
+                  "createdAt": "2026-07-28T03:19:40.000Z",
+                  "updatedAt": "2026-07-28T03:19:40.000Z",
+                  "uid": "35240-f1c95248-09ac-4665-ad61-190b92f4d72d"
+                }
+              ],
+              "id": "d25f529b-f98c-487e-b357-e72933422606",
+              "createdAt": "2026-07-28T03:19:40.000Z",
+              "updatedAt": "2026-07-28T03:19:40.000Z",
+              "uid": "35240-d25f529b-f98c-487e-b357-e72933422606"
+            }
+          ],
+          "id": "ad33e8f7-b71c-4b9b-9da9-ea56355c0b17",
+          "createdAt": "2026-07-28T03:19:40.000Z",
+          "updatedAt": "2026-07-28T03:19:40.000Z",
+          "uid": "35240-ad33e8f7-b71c-4b9b-9da9-ea56355c0b17"
+        }
+      ],
+      "id": "60d231e3-9a30-4623-a9c3-53bfef4b71c5",
+      "createdAt": "2026-07-28T03:19:40.000Z",
+      "updatedAt": "2026-07-28T03:19:40.000Z",
+      "uid": "35240-60d231e3-9a30-4623-a9c3-53bfef4b71c5"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://customers.triton.one"
+    }
+  ]
+}

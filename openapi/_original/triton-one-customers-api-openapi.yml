@@ -1,0 +1,691 @@
+openapi: 3.1.0
+info:
+  title: Triton One Customers API
+  description: >
+    Account management REST API for Triton One. Use this API to manage accounts,
+    subscriptions, endpoints, tokens, address watch lists, and rate tiers for
+    your Triton RPC services. Token-based authentication via the Authorization
+    header. Distinct from RPC consumption tokens — Customers API tokens are
+    only used against customers.triton.one.
+  version: v1
+  contact:
+    name: Triton One Support
+    url: https://triton.one
+    email: support@triton.one
+  license:
+    name: Triton One Terms of Service
+    url: https://triton.one/terms
+
+servers:
+  - url: https://customers.triton.one
+    description: Production Customers API
+
+security:
+  - BearerAuth: []
+
+tags:
+  - name: Accounts
+    description: Manage customer accounts.
+  - name: Subscriptions
+    description: Manage subscriptions (Developer, Mainnet-Shared, Mainnet-Dedicated).
+  - name: Endpoints
+    description: Manage RPC endpoints attached to subscriptions.
+  - name: Tokens
+    description: Manage RPC consumption tokens.
+  - name: AddressWatchLists
+    description: Manage on-chain address watch lists for collections and Merkle trees.
+  - name: RateTiers
+    description: Inspect available rate tiers (free, tier1, tier2, tier3, dedi).
+  - name: SubscriptionTypes
+    description: Inspect available subscription types.
+
+paths:
+  /api/v1/accounts:
+    get:
+      summary: List Accounts
+      description: List customer accounts visible to the authenticated token.
+      operationId: listAccounts
+      tags: [Accounts]
+      parameters:
+        - name: name
+          in: query
+          schema: { type: string }
+          description: Filter by account name.
+        - name: per
+          in: query
+          schema: { type: integer, default: 50 }
+        - name: page
+          in: query
+          schema: { type: integer, default: 1 }
+      responses:
+        '200':
+          description: List of accounts.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountList'
+
+  /api/v1/accounts/{accountUuid}:
+    get:
+      summary: Get Account
+      description: Retrieve a single account by UUID, including subscriptions and deactivation reasons.
+      operationId: getAccount
+      tags: [Accounts]
+      parameters:
+        - $ref: '#/components/parameters/AccountUuid'
+      responses:
+        '200':
+          description: Account detail.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountEnvelope'
+    put:
+      summary: Update Account
+      description: Update billing and contact details for an account.
+      operationId: updateAccount
+      tags: [Accounts]
+      parameters:
+        - $ref: '#/components/parameters/AccountUuid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AccountUpdate'
+      responses:
+        '200':
+          description: Updated account.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountEnvelope'
+
+  /api/v1/subscriptions:
+    get:
+      summary: List Subscriptions
+      description: List subscriptions visible to the authenticated token.
+      operationId: listSubscriptions
+      tags: [Subscriptions]
+      parameters:
+        - name: subscription_type
+          in: query
+          schema:
+            type: string
+            enum: [developer, mainnet-shared, mainnet-dedicated]
+        - name: account_uuid
+          in: query
+          schema: { type: string, format: uuid }
+        - name: user_uuid
+          in: query
+          schema: { type: string, format: uuid }
+        - name: per
+          in: query
+          schema: { type: integer, default: 50 }
+        - name: page
+          in: query
+          schema: { type: integer, default: 1 }
+      responses:
+        '200':
+          description: List of subscriptions.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionList'
+    post:
+      summary: Create Subscription
+      description: Create a new subscription. Reseller role only.
+      operationId: createSubscription
+      tags: [Subscriptions]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubscriptionCreate'
+      responses:
+        '201':
+          description: Created subscription.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionEnvelope'
+
+  /api/v1/subscriptions/{subscriptionUuid}:
+    get:
+      summary: Get Subscription
+      operationId: getSubscription
+      tags: [Subscriptions]
+      parameters:
+        - $ref: '#/components/parameters/SubscriptionUuid'
+      responses:
+        '200':
+          description: Subscription detail.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionEnvelope'
+    put:
+      summary: Update Subscription
+      operationId: updateSubscription
+      tags: [Subscriptions]
+      parameters:
+        - $ref: '#/components/parameters/SubscriptionUuid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name: { type: string }
+      responses:
+        '200':
+          description: Updated subscription.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SubscriptionEnvelope'
+
+  /api/v1/subscriptions/{subscriptionUuid}/activate:
+    put:
+      summary: Activate Subscription
+      description: Activate a previously deactivated subscription. Reseller role only.
+      operationId: activateSubscription
+      tags: [Subscriptions]
+      parameters:
+        - $ref: '#/components/parameters/SubscriptionUuid'
+      responses:
+        '204': { description: Activated. }
+
+  /api/v1/subscriptions/{subscriptionUuid}/deactivate:
+    put:
+      summary: Deactivate Subscription
+      description: Deactivate an active subscription. Reseller role only.
+      operationId: deactivateSubscription
+      tags: [Subscriptions]
+      parameters:
+        - $ref: '#/components/parameters/SubscriptionUuid'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                deactivation_reason: { type: string }
+      responses:
+        '204': { description: Deactivated. }
+
+  /api/v1/endpoints:
+    get:
+      summary: List Endpoints
+      operationId: listEndpoints
+      tags: [Endpoints]
+      parameters:
+        - name: account_uuid
+          in: query
+          schema: { type: string, format: uuid }
+        - name: subscription_uuid
+          in: query
+          schema: { type: string, format: uuid }
+      responses:
+        '200':
+          description: Endpoints collection.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EndpointList'
+
+  /api/v1/subscriptions/{subscriptionUuid}/endpoints:
+    post:
+      summary: Create Endpoint
+      description: Create a new RPC endpoint under a subscription. Reseller role only.
+      operationId: createEndpoint
+      tags: [Endpoints]
+      parameters:
+        - $ref: '#/components/parameters/SubscriptionUuid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EndpointCreate'
+      responses:
+        '201':
+          description: Created endpoint.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EndpointEnvelope'
+
+  /api/v1/endpoints/{endpointUuid}:
+    put:
+      summary: Update Endpoint
+      operationId: updateEndpoint
+      tags: [Endpoints]
+      parameters:
+        - $ref: '#/components/parameters/EndpointUuid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EndpointUpdate'
+      responses:
+        '200':
+          description: Updated endpoint.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EndpointEnvelope'
+
+  /api/v1/endpoints/{endpointUuid}/activate:
+    put:
+      summary: Activate Endpoint
+      operationId: activateEndpoint
+      tags: [Endpoints]
+      parameters:
+        - $ref: '#/components/parameters/EndpointUuid'
+      responses:
+        '204': { description: Activated. }
+
+  /api/v1/endpoints/{endpointUuid}/deactivate:
+    put:
+      summary: Deactivate Endpoint
+      operationId: deactivateEndpoint
+      tags: [Endpoints]
+      parameters:
+        - $ref: '#/components/parameters/EndpointUuid'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                deactivation_reason: { type: string }
+      responses:
+        '204': { description: Deactivated. }
+
+  /api/v1/tokens:
+    get:
+      summary: List Tokens
+      operationId: listTokens
+      tags: [Tokens]
+      parameters:
+        - name: account_uuid
+          in: query
+          schema: { type: string, format: uuid }
+        - name: subscription_uuid
+          in: query
+          schema: { type: string, format: uuid }
+        - name: per
+          in: query
+          schema: { type: integer, default: 50 }
+        - name: page
+          in: query
+          schema: { type: integer, default: 1 }
+      responses:
+        '200':
+          description: Tokens collection.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenList'
+
+  /api/v1/subscriptions/{subscriptionUuid}/tokens:
+    post:
+      summary: Create Token
+      description: Create a new RPC consumption token under a subscription.
+      operationId: createToken
+      tags: [Tokens]
+      parameters:
+        - $ref: '#/components/parameters/SubscriptionUuid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenCreate'
+      responses:
+        '201':
+          description: Created token.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenEnvelope'
+
+  /api/v1/tokens/{tokenUuid}/activate:
+    put:
+      summary: Activate Token
+      operationId: activateToken
+      tags: [Tokens]
+      parameters:
+        - $ref: '#/components/parameters/TokenUuid'
+      responses:
+        '204': { description: Activated. }
+
+  /api/v1/tokens/{tokenUuid}/deactivate:
+    put:
+      summary: Deactivate Token
+      operationId: deactivateToken
+      tags: [Tokens]
+      parameters:
+        - $ref: '#/components/parameters/TokenUuid'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                deactivation_reason: { type: string }
+      responses:
+        '204': { description: Deactivated. }
+
+  /api/v1/address_watch_lists:
+    get:
+      summary: List Address Watch Lists
+      operationId: listAddressWatchLists
+      tags: [AddressWatchLists]
+      parameters:
+        - name: variant
+          in: query
+          schema: { type: string, enum: [collection, tree] }
+        - name: subscription_uuid
+          in: query
+          schema: { type: string, format: uuid }
+        - name: subscription_type
+          in: query
+          schema: { type: string }
+      responses:
+        '200':
+          description: Address watch lists collection.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddressWatchListList'
+
+  /api/v1/subscriptions/{subscriptionUuid}/address_watch_lists:
+    post:
+      summary: Add Address Watch List
+      description: Add an address watch list entry for a collection or Merkle tree.
+      operationId: createAddressWatchList
+      tags: [AddressWatchLists]
+      parameters:
+        - $ref: '#/components/parameters/SubscriptionUuid'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddressWatchListCreate'
+      responses:
+        '201':
+          description: Created watch list entry.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddressWatchListEnvelope'
+
+  /api/v1/address_watch_lists/{watchListUuid}:
+    delete:
+      summary: Delete Address Watch List
+      operationId: deleteAddressWatchList
+      tags: [AddressWatchLists]
+      parameters:
+        - name: watchListUuid
+          in: path
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '204': { description: Deleted. }
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Customers API token passed in Authorization header.
+  parameters:
+    AccountUuid:
+      name: accountUuid
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+    SubscriptionUuid:
+      name: subscriptionUuid
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+    EndpointUuid:
+      name: endpointUuid
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+    TokenUuid:
+      name: tokenUuid
+      in: path
+      required: true
+      schema: { type: string, format: uuid }
+  schemas:
+    Meta:
+      type: object
+      properties:
+        current_page: { type: integer }
+        next_page: { type: [integer, "null"] }
+        per_page: { type: integer }
+        prev_page: { type: [integer, "null"] }
+        total_pages: { type: integer }
+        total_count: { type: integer }
+    Account:
+      type: object
+      properties:
+        uuid: { type: string, format: uuid }
+        name: { type: string }
+        billing_address1: { type: string }
+        billing_address2: { type: string }
+        billing_address3: { type: string }
+        billing_city: { type: string }
+        billing_state_or_province: { type: string }
+        billing_postal_code: { type: string }
+        billing_country_code: { type: string }
+        telephone_country_code: { type: string }
+        telephone: { type: string }
+        is_active: { type: boolean }
+        subscriptions:
+          type: array
+          items: { $ref: '#/components/schemas/Subscription' }
+        deactivation_reasons:
+          type: array
+          items: { type: string }
+    AccountEnvelope:
+      type: object
+      properties:
+        account: { $ref: '#/components/schemas/Account' }
+    AccountList:
+      type: object
+      properties:
+        accounts:
+          type: array
+          items: { $ref: '#/components/schemas/Account' }
+        meta: { $ref: '#/components/schemas/Meta' }
+    AccountUpdate:
+      type: object
+      required: [name]
+      properties:
+        name: { type: string }
+        billing_address1: { type: string }
+        billing_address2: { type: string }
+        billing_address3: { type: string }
+        billing_city: { type: string }
+        billing_state_or_province: { type: string }
+        billing_postal_code: { type: string }
+        billing_country_code: { type: string }
+        telephone_country_code: { type: string }
+        telephone: { type: string }
+    Subscription:
+      type: object
+      properties:
+        uuid: { type: string, format: uuid }
+        name: { type: string }
+        subscription_type:
+          type: string
+          enum: [developer, mainnet-shared, mainnet-dedicated]
+        is_active: { type: boolean }
+        starts_at: { type: string, format: date-time }
+        ends_at: { type: string, format: date-time }
+        endpoints:
+          type: array
+          items: { $ref: '#/components/schemas/Endpoint' }
+        tokens:
+          type: array
+          items: { $ref: '#/components/schemas/Token' }
+        supported_rate_tiers:
+          type: array
+          items: { type: string }
+        account: { $ref: '#/components/schemas/Account' }
+        deactivation_reasons:
+          type: array
+          items: { type: string }
+    SubscriptionEnvelope:
+      type: object
+      properties:
+        subscription: { $ref: '#/components/schemas/Subscription' }
+    SubscriptionList:
+      type: object
+      properties:
+        subscriptions:
+          type: array
+          items: { $ref: '#/components/schemas/Subscription' }
+        meta: { $ref: '#/components/schemas/Meta' }
+    SubscriptionCreate:
+      type: object
+      required: [account_uuid, subscription_type, name]
+      properties:
+        account_uuid: { type: string, format: uuid }
+        subscription_type:
+          type: string
+          enum: [developer, mainnet-shared, mainnet-dedicated]
+        name: { type: string }
+        starts_at: { type: string, format: date-time }
+        ends_at: { type: string, format: date-time }
+    Endpoint:
+      type: object
+      properties:
+        uuid: { type: string, format: uuid }
+        name: { type: string }
+        slug: { type: string }
+        rate_tier:
+          type: string
+          enum: [free, tier1, tier2, tier3, dedi]
+        is_active: { type: boolean }
+        values:
+          type: array
+          items: { type: string }
+        allowed_origins:
+          type: array
+          items:
+            type: object
+            properties:
+              value: { type: string }
+              is_active: { type: boolean }
+    EndpointEnvelope:
+      type: object
+      properties:
+        endpoint: { $ref: '#/components/schemas/Endpoint' }
+    EndpointList:
+      type: object
+      properties:
+        endpoints:
+          type: array
+          items: { $ref: '#/components/schemas/Endpoint' }
+    EndpointCreate:
+      type: object
+      required: [name, rate_tier]
+      properties:
+        name: { type: string }
+        rate_tier:
+          type: string
+          enum: [free, tier1, tier2, tier3, dedi]
+        allowed_origins:
+          type: array
+          items:
+            type: object
+            properties:
+              value: { type: string }
+    EndpointUpdate:
+      type: object
+      properties:
+        name: { type: string }
+        rate_tier:
+          type: string
+          enum: [free, tier1, tier2, tier3, dedi]
+        allowed_origins:
+          type: array
+          items:
+            type: object
+            properties:
+              value: { type: string }
+              is_active: { type: boolean }
+    Token:
+      type: object
+      properties:
+        uuid: { type: string, format: uuid }
+        value: { type: string, description: The opaque token string to use for RPC auth. }
+        auth_username: { type: string }
+        name: { type: string }
+        rate_tier:
+          type: string
+          enum: [free, tier1, tier2, tier3, dedi]
+        is_active: { type: boolean }
+        deactivation_reasons:
+          type: array
+          items: { type: string }
+    TokenEnvelope:
+      type: object
+      properties:
+        token: { $ref: '#/components/schemas/Token' }
+    TokenList:
+      type: object
+      properties:
+        tokens:
+          type: array
+          items: { $ref: '#/components/schemas/Token' }
+        meta: { $ref: '#/components/schemas/Meta' }
+    TokenCreate:
+      type: object
+      required: [name, rate_tier]
+      properties:
+        name: { type: string }
+        rate_tier:
+          type: string
+          enum: [free, tier1, tier2, tier3, dedi]
+    AddressWatchList:
+      type: object
+      properties:
+        uuid: { type: string, format: uuid }
+        variant:
+          type: string
+          enum: [collection, tree]
+        encoded_value: { type: string }
+        subscription_uuid: { type: string, format: uuid }
+    AddressWatchListEnvelope:
+      type: object
+      properties:
+        address_watch_list: { $ref: '#/components/schemas/AddressWatchList' }
+    AddressWatchListList:
+      type: object
+      properties:
+        address_watch_lists:
+          type: array
+          items: { $ref: '#/components/schemas/AddressWatchList' }
+    AddressWatchListCreate:
+      type: object
+      required: [variant, encoded_value]
+      properties:
+        variant:
+          type: string
+          enum: [collection, tree]
+        encoded_value: { type: string }
