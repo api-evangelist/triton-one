@@ -1,0 +1,374 @@
+{
+  "item": [
+    {
+      "id": "2e19529b-1a1a-4cf9-a4ff-66c859be5c78",
+      "name": "Accounts",
+      "description": {
+        "content": "Manage customer accounts.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "31309c5d-fd5c-4dfc-a657-d65c473733df",
+          "name": "List Accounts",
+          "request": {
+            "name": "List Accounts",
+            "description": {
+              "content": "List customer accounts visible to the authenticated token.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter by account name."
+                },
+                {
+                  "disabled": false,
+                  "key": "per",
+                  "value": "50"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6f7dfee2-30e4-48cb-b019-31527f417a2e",
+              "name": "List of accounts.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "per",
+                      "value": "50"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accounts\": [\n    {\n      \"uuid\": \"763a7718-d214-b22f-4d3f-87881e0e30d5\",\n      \"name\": \"string\",\n      \"billing_address1\": \"string\",\n      \"billing_address2\": \"string\",\n      \"billing_address3\": \"string\",\n      \"billing_city\": \"string\",\n      \"billing_state_or_province\": \"string\",\n      \"billing_postal_code\": \"string\",\n      \"billing_country_code\": \"string\",\n      \"telephone_country_code\": \"string\",\n      \"telephone\": \"string\",\n      \"is_active\": true,\n      \"subscriptions\": [\n        {\n          \"uuid\": \"4cb720ea-e838-61e0-10fa-f81639657ff7\",\n          \"name\": \"string\",\n          \"subscription_type\": \"mainnet-shared\",\n          \"is_active\": false,\n          \"starts_at\": \"2020-12-21T21:09:17.897Z\",\n          \"ends_at\": \"1969-04-09T02:42:43.280Z\",\n          \"endpoints\": [\n            {\n              \"uuid\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"slug\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate_tier\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_active\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"allowed_origins\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"uuid\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"slug\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate_tier\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_active\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"allowed_origins\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"tokens\": [\n            {\n              \"uuid\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"auth_username\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate_tier\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_active\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"deactivation_reasons\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"uuid\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"auth_username\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate_tier\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_active\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"deactivation_reasons\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"supported_rate_tiers\": [\n            \"string\",\n            \"string\"\n          ],\n          \"account\": {\n            \"value\": \"<Circular reference to #/components/schemas/Account detected>\"\n          },\n          \"deactivation_reasons\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"uuid\": \"1e7c4316-99a2-c44a-ded1-f08b8751baa4\",\n          \"name\": \"string\",\n          \"subscription_type\": \"mainnet-dedicated\",\n          \"is_active\": true,\n          \"starts_at\": \"1959-12-06T07:42:45.625Z\",\n          \"ends_at\": \"2008-02-09T22:19:53.717Z\",\n          \"endpoints\": [\n            {\n              \"uuid\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"slug\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate_tier\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_active\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"allowed_origins\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"uuid\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"slug\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate_tier\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_active\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"allowed_origins\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"tokens\": [\n            {\n              \"uuid\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"auth_username\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate_tier\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_active\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"deactivation_reasons\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"uuid\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"auth_username\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate_tier\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_active\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"deactivation_reasons\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"supported_rate_tiers\": [\n            \"string\",\n            \"string\"\n          ],\n          \"account\": {\n            \"value\": \"<Circular reference to #/components/schemas/Account detected>\"\n          },\n          \"deactivation_reasons\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"deactivation_reasons\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"uuid\": \"5c8f5e5f-1e70-3dda-6713-41a2b15f95ac\",\n      \"name\": \"string\",\n      \"billing_address1\": \"string\",\n      \"billing_address2\": \"string\",\n      \"billing_address3\": \"string\",\n      \"billing_city\": \"string\",\n      \"billing_state_or_province\": \"string\",\n      \"billing_postal_code\": \"string\",\n      \"billing_country_code\": \"string\",\n      \"telephone_country_code\": \"string\",\n      \"telephone\": \"string\",\n      \"is_active\": false,\n      \"subscriptions\": [\n        {\n          \"uuid\": \"fdf5d2b1-5ae2-8f9d-3650-156f26cb78c0\",\n          \"name\": \"string\",\n          \"subscription_type\": \"mainnet-dedicated\",\n          \"is_active\": false,\n          \"starts_at\": \"1950-05-23T13:46:14.322Z\",\n          \"ends_at\": \"2026-02-06T10:13:48.597Z\",\n          \"endpoints\": [\n            {\n              \"uuid\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"slug\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate_tier\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_active\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"allowed_origins\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"uuid\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"slug\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate_tier\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_active\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"allowed_origins\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"tokens\": [\n            {\n              \"uuid\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"auth_username\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate_tier\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_active\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"deactivation_reasons\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"uuid\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"auth_username\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate_tier\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_active\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"deactivation_reasons\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"supported_rate_tiers\": [\n            \"string\",\n            \"string\"\n          ],\n          \"account\": {\n            \"value\": \"<Circular reference to #/components/schemas/Account detected>\"\n          },\n          \"deactivation_reasons\": [\n            \"string\",\n            \"string\"\n          ]\n        },\n        {\n          \"uuid\": \"b4021651-6b41-dbcd-9adb-d5a2a011e350\",\n          \"name\": \"string\",\n          \"subscription_type\": \"mainnet-shared\",\n          \"is_active\": false,\n          \"starts_at\": \"1955-02-17T20:52:58.751Z\",\n          \"ends_at\": \"1956-02-01T12:59:25.174Z\",\n          \"endpoints\": [\n            {\n              \"uuid\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"slug\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate_tier\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_active\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"allowed_origins\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"uuid\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"slug\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate_tier\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_active\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"values\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"allowed_origins\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"tokens\": [\n            {\n              \"uuid\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"auth_username\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate_tier\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_active\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"deactivation_reasons\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            },\n            {\n              \"uuid\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"value\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"auth_username\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"name\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"rate_tier\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"is_active\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"deactivation_reasons\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          ],\n          \"supported_rate_tiers\": [\n            \"string\",\n            \"string\"\n          ],\n          \"account\": {\n            \"value\": \"<Circular reference to #/components/schemas/Account detected>\"\n          },\n          \"deactivation_reasons\": [\n            \"string\",\n            \"string\"\n          ]\n        }\n      ],\n      \"deactivation_reasons\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"meta\": {\n    \"current_page\": 662,\n    \"next_page\": 9902,\n    \"per_page\": 9772,\n    \"prev_page\": 2685,\n    \"total_pages\": 8688,\n    \"total_count\": 986\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ffd0f100-94c5-49b7-8fcc-ec3bdd74c0f7",
+          "name": "Get Account",
+          "request": {
+            "name": "Get Account",
+            "description": {
+              "content": "Retrieve a single account by UUID, including subscriptions and deactivation reasons.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "accounts",
+                ":accountUuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "accountUuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "45026ba7-7b10-4d12-a2ce-4e1e1a28f127",
+              "name": "Account detail.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "accounts",
+                    ":accountUuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "accountUuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"account\": {\n    \"uuid\": \"48d2c093-686c-b5bb-bae0-099f01210542\",\n    \"name\": \"string\",\n    \"billing_address1\": \"string\",\n    \"billing_address2\": \"string\",\n    \"billing_address3\": \"string\",\n    \"billing_city\": \"string\",\n    \"billing_state_or_province\": \"string\",\n    \"billing_postal_code\": \"string\",\n    \"billing_country_code\": \"string\",\n    \"telephone_country_code\": \"string\",\n    \"telephone\": \"string\",\n    \"is_active\": false,\n    \"subscriptions\": [\n      {\n        \"uuid\": \"082d4583-46ff-4abd-a990-26a2562f5f5b\",\n        \"name\": \"string\",\n        \"subscription_type\": \"mainnet-dedicated\",\n        \"is_active\": true,\n        \"starts_at\": \"2012-03-03T12:56:47.599Z\",\n        \"ends_at\": \"2024-06-21T23:34:54.918Z\",\n        \"endpoints\": [\n          {\n            \"uuid\": \"2bae824d-ceb1-cef8-64f5-9eafdf6c2884\",\n            \"name\": \"string\",\n            \"slug\": \"string\",\n            \"rate_tier\": \"free\",\n            \"is_active\": true,\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"allowed_origins\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"uuid\": \"558edaf8-40ed-92d2-8ce5-0bfada32aa33\",\n            \"name\": \"string\",\n            \"slug\": \"string\",\n            \"rate_tier\": \"tier3\",\n            \"is_active\": false,\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"allowed_origins\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"tokens\": [\n          {\n            \"uuid\": \"f0f03a37-1a89-811c-205b-c90c5cee6258\",\n            \"value\": \"string\",\n            \"auth_username\": \"string\",\n            \"name\": \"string\",\n            \"rate_tier\": \"free\",\n            \"is_active\": false,\n            \"deactivation_reasons\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"uuid\": \"28cbbd49-72ea-410d-6b03-290189fff79b\",\n            \"value\": \"string\",\n            \"auth_username\": \"string\",\n            \"name\": \"string\",\n            \"rate_tier\": \"free\",\n            \"is_active\": true,\n            \"deactivation_reasons\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"supported_rate_tiers\": [\n          \"string\",\n          \"string\"\n        ],\n        \"account\": {\n          \"value\": \"<Circular reference to #/components/schemas/Account detected>\"\n        },\n        \"deactivation_reasons\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"uuid\": \"c8c77708-6dea-e5e8-5776-7337fc88c9f2\",\n        \"name\": \"string\",\n        \"subscription_type\": \"developer\",\n        \"is_active\": false,\n        \"starts_at\": \"2013-07-15T06:55:00.435Z\",\n        \"ends_at\": \"1956-06-07T07:53:03.001Z\",\n        \"endpoints\": [\n          {\n            \"uuid\": \"ce472b4e-e435-c011-fe94-60281f857ef1\",\n            \"name\": \"string\",\n            \"slug\": \"string\",\n            \"rate_tier\": \"tier1\",\n            \"is_active\": true,\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"allowed_origins\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"uuid\": \"9d9d49d8-de94-523a-1a48-ec8bff82a80f\",\n            \"name\": \"string\",\n            \"slug\": \"string\",\n            \"rate_tier\": \"tier2\",\n            \"is_active\": true,\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"allowed_origins\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"tokens\": [\n          {\n            \"uuid\": \"353e86c7-2f21-3fc4-2c0c-96f005dace1b\",\n            \"value\": \"string\",\n            \"auth_username\": \"string\",\n            \"name\": \"string\",\n            \"rate_tier\": \"tier2\",\n            \"is_active\": false,\n            \"deactivation_reasons\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"uuid\": \"0f1296bd-145e-3768-e2a5-f86861f7f3fe\",\n            \"value\": \"string\",\n            \"auth_username\": \"string\",\n            \"name\": \"string\",\n            \"rate_tier\": \"free\",\n            \"is_active\": false,\n            \"deactivation_reasons\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"supported_rate_tiers\": [\n          \"string\",\n          \"string\"\n        ],\n        \"account\": {\n          \"value\": \"<Circular reference to #/components/schemas/Account detected>\"\n        },\n        \"deactivation_reasons\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ],\n    \"deactivation_reasons\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2826d1a5-3faa-43cb-ba37-891b580e37e9",
+          "name": "Update Account",
+          "request": {
+            "name": "Update Account",
+            "description": {
+              "content": "Update billing and contact details for an account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "accounts",
+                ":accountUuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "accountUuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"billing_address1\": \"<string>\",\n  \"billing_address2\": \"<string>\",\n  \"billing_address3\": \"<string>\",\n  \"billing_city\": \"<string>\",\n  \"billing_state_or_province\": \"<string>\",\n  \"billing_postal_code\": \"<string>\",\n  \"billing_country_code\": \"<string>\",\n  \"telephone_country_code\": \"<string>\",\n  \"telephone\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "11e440f9-d936-46c4-91d6-3a348c9682b6",
+              "name": "Updated account.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "accounts",
+                    ":accountUuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "accountUuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"billing_address1\": \"<string>\",\n  \"billing_address2\": \"<string>\",\n  \"billing_address3\": \"<string>\",\n  \"billing_city\": \"<string>\",\n  \"billing_state_or_province\": \"<string>\",\n  \"billing_postal_code\": \"<string>\",\n  \"billing_country_code\": \"<string>\",\n  \"telephone_country_code\": \"<string>\",\n  \"telephone\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"account\": {\n    \"uuid\": \"48d2c093-686c-b5bb-bae0-099f01210542\",\n    \"name\": \"string\",\n    \"billing_address1\": \"string\",\n    \"billing_address2\": \"string\",\n    \"billing_address3\": \"string\",\n    \"billing_city\": \"string\",\n    \"billing_state_or_province\": \"string\",\n    \"billing_postal_code\": \"string\",\n    \"billing_country_code\": \"string\",\n    \"telephone_country_code\": \"string\",\n    \"telephone\": \"string\",\n    \"is_active\": false,\n    \"subscriptions\": [\n      {\n        \"uuid\": \"082d4583-46ff-4abd-a990-26a2562f5f5b\",\n        \"name\": \"string\",\n        \"subscription_type\": \"mainnet-dedicated\",\n        \"is_active\": true,\n        \"starts_at\": \"2012-03-03T12:56:47.599Z\",\n        \"ends_at\": \"2024-06-21T23:34:54.918Z\",\n        \"endpoints\": [\n          {\n            \"uuid\": \"2bae824d-ceb1-cef8-64f5-9eafdf6c2884\",\n            \"name\": \"string\",\n            \"slug\": \"string\",\n            \"rate_tier\": \"free\",\n            \"is_active\": true,\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"allowed_origins\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"uuid\": \"558edaf8-40ed-92d2-8ce5-0bfada32aa33\",\n            \"name\": \"string\",\n            \"slug\": \"string\",\n            \"rate_tier\": \"tier3\",\n            \"is_active\": false,\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"allowed_origins\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"tokens\": [\n          {\n            \"uuid\": \"f0f03a37-1a89-811c-205b-c90c5cee6258\",\n            \"value\": \"string\",\n            \"auth_username\": \"string\",\n            \"name\": \"string\",\n            \"rate_tier\": \"free\",\n            \"is_active\": false,\n            \"deactivation_reasons\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"uuid\": \"28cbbd49-72ea-410d-6b03-290189fff79b\",\n            \"value\": \"string\",\n            \"auth_username\": \"string\",\n            \"name\": \"string\",\n            \"rate_tier\": \"free\",\n            \"is_active\": true,\n            \"deactivation_reasons\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"supported_rate_tiers\": [\n          \"string\",\n          \"string\"\n        ],\n        \"account\": {\n          \"value\": \"<Circular reference to #/components/schemas/Account detected>\"\n        },\n        \"deactivation_reasons\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"uuid\": \"c8c77708-6dea-e5e8-5776-7337fc88c9f2\",\n        \"name\": \"string\",\n        \"subscription_type\": \"developer\",\n        \"is_active\": false,\n        \"starts_at\": \"2013-07-15T06:55:00.435Z\",\n        \"ends_at\": \"1956-06-07T07:53:03.001Z\",\n        \"endpoints\": [\n          {\n            \"uuid\": \"ce472b4e-e435-c011-fe94-60281f857ef1\",\n            \"name\": \"string\",\n            \"slug\": \"string\",\n            \"rate_tier\": \"tier1\",\n            \"is_active\": true,\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"allowed_origins\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"uuid\": \"9d9d49d8-de94-523a-1a48-ec8bff82a80f\",\n            \"name\": \"string\",\n            \"slug\": \"string\",\n            \"rate_tier\": \"tier2\",\n            \"is_active\": true,\n            \"values\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ],\n            \"allowed_origins\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"tokens\": [\n          {\n            \"uuid\": \"353e86c7-2f21-3fc4-2c0c-96f005dace1b\",\n            \"value\": \"string\",\n            \"auth_username\": \"string\",\n            \"name\": \"string\",\n            \"rate_tier\": \"tier2\",\n            \"is_active\": false,\n            \"deactivation_reasons\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          },\n          {\n            \"uuid\": \"0f1296bd-145e-3768-e2a5-f86861f7f3fe\",\n            \"value\": \"string\",\n            \"auth_username\": \"string\",\n            \"name\": \"string\",\n            \"rate_tier\": \"free\",\n            \"is_active\": false,\n            \"deactivation_reasons\": [\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            ]\n          }\n        ],\n        \"supported_rate_tiers\": [\n          \"string\",\n          \"string\"\n        ],\n        \"account\": {\n          \"value\": \"<Circular reference to #/components/schemas/Account detected>\"\n        },\n        \"deactivation_reasons\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ],\n    \"deactivation_reasons\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://customers.triton.one",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a3ec33ab-3e09-4a70-8ab0-855920e20e8e",
+    "name": "Triton One Customers Accounts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Account management REST API for Triton One. Use this API to manage accounts, subscriptions, endpoints, tokens, address watch lists, and rate tiers for your Triton RPC services. Token-based authentication via the Authorization header. Distinct from RPC consumption tokens — Customers API tokens are only used against customers.triton.one.\n\n\nContact Support:\n Name: Triton One Support\n Email: support@triton.one",
+      "type": "text/plain"
+    }
+  }
+}

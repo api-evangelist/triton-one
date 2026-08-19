@@ -1,0 +1,131 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Triton One Customers Accounts Endpoints API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Endpoints",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Endpoints",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://customers.triton.one/api/v1/endpoints",
+            "params": [
+              {
+                "name": "account_uuid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "subscription_uuid",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Endpoints"
+        },
+        {
+          "info": {
+            "name": "Create Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://customers.triton.one/api/v1/subscriptions/:subscriptionUuid/endpoints",
+            "params": [
+              {
+                "name": "subscriptionUuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new RPC endpoint under a subscription. Reseller role only."
+        },
+        {
+          "info": {
+            "name": "Update Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://customers.triton.one/api/v1/endpoints/:endpointUuid",
+            "params": [
+              {
+                "name": "endpointUuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Endpoint"
+        },
+        {
+          "info": {
+            "name": "Activate Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://customers.triton.one/api/v1/endpoints/:endpointUuid/activate",
+            "params": [
+              {
+                "name": "endpointUuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Activate Endpoint"
+        },
+        {
+          "info": {
+            "name": "Deactivate Endpoint",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://customers.triton.one/api/v1/endpoints/:endpointUuid/deactivate",
+            "params": [
+              {
+                "name": "endpointUuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deactivate Endpoint"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

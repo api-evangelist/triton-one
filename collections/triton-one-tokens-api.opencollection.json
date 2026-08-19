@@ -1,0 +1,119 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Triton One Customers Accounts Tokens API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tokens",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Tokens",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://customers.triton.one/api/v1/tokens",
+            "params": [
+              {
+                "name": "account_uuid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "subscription_uuid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "per",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Tokens"
+        },
+        {
+          "info": {
+            "name": "Create Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://customers.triton.one/api/v1/subscriptions/:subscriptionUuid/tokens",
+            "params": [
+              {
+                "name": "subscriptionUuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new RPC consumption token under a subscription."
+        },
+        {
+          "info": {
+            "name": "Activate Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://customers.triton.one/api/v1/tokens/:tokenUuid/activate",
+            "params": [
+              {
+                "name": "tokenUuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Activate Token"
+        },
+        {
+          "info": {
+            "name": "Deactivate Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://customers.triton.one/api/v1/tokens/:tokenUuid/deactivate",
+            "params": [
+              {
+                "name": "tokenUuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deactivate Token"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

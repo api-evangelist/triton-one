@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Triton One Customers Accounts Assets API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Assets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Digital Assets JSON-RPC Call",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://customers.triton.one/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Single JSON-RPC entrypoint accepting Metaplex DAS methods. Set the `method` field to one of getAsset, getAssets, getAssetProof, getAssetProofs, getAssetSignatures, getAssetsByAuthority, getAssetsByCreator, getAssetsByOwner, searchAssets, getNftEditions, getTokenAccounts, or getTokenLargestAccounts.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

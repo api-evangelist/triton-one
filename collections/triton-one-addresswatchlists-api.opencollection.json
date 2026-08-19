@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Triton One Customers Accounts AddressWatchLists API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AddressWatchLists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Address Watch Lists",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://customers.triton.one/api/v1/address_watch_lists",
+            "params": [
+              {
+                "name": "variant",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "subscription_uuid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "subscription_type",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List Address Watch Lists"
+        },
+        {
+          "info": {
+            "name": "Add Address Watch List",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://customers.triton.one/api/v1/subscriptions/:subscriptionUuid/address_watch_lists",
+            "params": [
+              {
+                "name": "subscriptionUuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add an address watch list entry for a collection or Merkle tree."
+        },
+        {
+          "info": {
+            "name": "Delete Address Watch List",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://customers.triton.one/api/v1/address_watch_lists/:watchListUuid",
+            "params": [
+              {
+                "name": "watchListUuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Delete Address Watch List"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,157 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Triton One Customers Accounts Subscriptions API",
+    "version": "v1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://customers.triton.one/api/v1/subscriptions",
+            "params": [
+              {
+                "name": "subscription_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "account_uuid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "user_uuid",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "per",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "List subscriptions visible to the authenticated token."
+        },
+        {
+          "info": {
+            "name": "Create Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://customers.triton.one/api/v1/subscriptions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new subscription. Reseller role only."
+        },
+        {
+          "info": {
+            "name": "Get Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://customers.triton.one/api/v1/subscriptions/:subscriptionUuid",
+            "params": [
+              {
+                "name": "subscriptionUuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Get Subscription"
+        },
+        {
+          "info": {
+            "name": "Update Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://customers.triton.one/api/v1/subscriptions/:subscriptionUuid",
+            "params": [
+              {
+                "name": "subscriptionUuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update Subscription"
+        },
+        {
+          "info": {
+            "name": "Activate Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://customers.triton.one/api/v1/subscriptions/:subscriptionUuid/activate",
+            "params": [
+              {
+                "name": "subscriptionUuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Activate a previously deactivated subscription. Reseller role only."
+        },
+        {
+          "info": {
+            "name": "Deactivate Subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://customers.triton.one/api/v1/subscriptions/:subscriptionUuid/deactivate",
+            "params": [
+              {
+                "name": "subscriptionUuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deactivate an active subscription. Reseller role only."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
