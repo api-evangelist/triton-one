@@ -76,6 +76,11 @@ apis:
   name: Triton One Cascade Transaction Delivery
   tags:
   - Solana
+  - Transaction
+  - SWQoS
+  - Cascade
+  tags_raw:
+  - Solana
   - Transactions
   - SWQoS
   - Cascade
@@ -125,6 +130,8 @@ apis:
   humanURL: https://docs.triton.one/account-management/api-access/introduction
   baseURL: https://customers.triton.one/api/v1
   tags:
+  - Account
+  tags_raw:
   - Accounts
   properties:
   - type: OpenAPI
@@ -298,7 +305,8 @@ apis:
   description: Manage RPC endpoints attached to subscriptions.
   humanURL: https://docs.triton.one/account-management/api-access/introduction
   baseURL: https://customers.triton.one/api/v1
-  tags:
+  tags: []
+  tags_raw:
   - Endpoints
   properties:
   - type: OpenAPI
@@ -415,6 +423,8 @@ apis:
   humanURL: https://docs.triton.one/account-management/api-access/introduction
   baseURL: https://customers.triton.one/api/v1
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
