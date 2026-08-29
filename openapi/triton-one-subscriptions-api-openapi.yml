@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Triton One Customers Accounts Subscriptions API
+  title: Triton One Customers Subscriptions API
   description: 'Account management REST API for Triton One. Use this API to manage accounts, subscriptions, endpoints, tokens, address watch lists, and rate tiers for your Triton RPC services. Token-based authentication via the Authorization header. Distinct from RPC consumption tokens — Customers API tokens are only used against customers.triton.one.
 
     '
@@ -155,7 +155,92 @@ paths:
         '204':
           description: Deactivated.
 components:
+  parameters:
+    SubscriptionUuid:
+      name: subscriptionUuid
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
   schemas:
+    Account:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+        billing_address1:
+          type: string
+        billing_address2:
+          type: string
+        billing_address3:
+          type: string
+        billing_city:
+          type: string
+        billing_state_or_province:
+          type: string
+        billing_postal_code:
+          type: string
+        billing_country_code:
+          type: string
+        telephone_country_code:
+          type: string
+        telephone:
+          type: string
+        is_active:
+          type: boolean
+        subscriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Subscription'
+        deactivation_reasons:
+          type: array
+          items:
+            type: string
+    SubscriptionEnvelope:
+      type: object
+      properties:
+        subscription:
+          $ref: '#/components/schemas/Subscription'
+    SubscriptionList:
+      type: object
+      properties:
+        subscriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Subscription'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    Token:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        value:
+          type: string
+          description: The opaque token string to use for RPC auth.
+        auth_username:
+          type: string
+        name:
+          type: string
+        rate_tier:
+          type: string
+          enum:
+          - free
+          - tier1
+          - tier2
+          - tier3
+          - dedi
+        is_active:
+          type: boolean
+        deactivation_reasons:
+          type: array
+          items:
+            type: string
     Subscription:
       type: object
       properties:
@@ -196,66 +281,6 @@ components:
           type: array
           items:
             type: string
-    SubscriptionCreate:
-      type: object
-      required:
-      - account_uuid
-      - subscription_type
-      - name
-      properties:
-        account_uuid:
-          type: string
-          format: uuid
-        subscription_type:
-          type: string
-          enum:
-          - developer
-          - mainnet-shared
-          - mainnet-dedicated
-        name:
-          type: string
-        starts_at:
-          type: string
-          format: date-time
-        ends_at:
-          type: string
-          format: date-time
-    Token:
-      type: object
-      properties:
-        uuid:
-          type: string
-          format: uuid
-        value:
-          type: string
-          description: The opaque token string to use for RPC auth.
-        auth_username:
-          type: string
-        name:
-          type: string
-        rate_tier:
-          type: string
-          enum:
-          - free
-          - tier1
-          - tier2
-          - tier3
-          - dedi
-        is_active:
-          type: boolean
-        deactivation_reasons:
-          type: array
-          items:
-            type: string
-    SubscriptionList:
-      type: object
-      properties:
-        subscriptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Subscription'
-        meta:
-          $ref: '#/components/schemas/Meta'
     Endpoint:
       type: object
       properties:
@@ -308,55 +333,30 @@ components:
           type: integer
         total_count:
           type: integer
-    SubscriptionEnvelope:
+    SubscriptionCreate:
       type: object
+      required:
+      - account_uuid
+      - subscription_type
+      - name
       properties:
-        subscription:
-          $ref: '#/components/schemas/Subscription'
-    Account:
-      type: object
-      properties:
-        uuid:
+        account_uuid:
           type: string
           format: uuid
+        subscription_type:
+          type: string
+          enum:
+          - developer
+          - mainnet-shared
+          - mainnet-dedicated
         name:
           type: string
-        billing_address1:
+        starts_at:
           type: string
-        billing_address2:
+          format: date-time
+        ends_at:
           type: string
-        billing_address3:
-          type: string
-        billing_city:
-          type: string
-        billing_state_or_province:
-          type: string
-        billing_postal_code:
-          type: string
-        billing_country_code:
-          type: string
-        telephone_country_code:
-          type: string
-        telephone:
-          type: string
-        is_active:
-          type: boolean
-        subscriptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Subscription'
-        deactivation_reasons:
-          type: array
-          items:
-            type: string
-  parameters:
-    SubscriptionUuid:
-      name: subscriptionUuid
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
+          format: date-time
   securitySchemes:
     BearerAuth:
       type: http

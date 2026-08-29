@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Triton One Customers Accounts AddressWatchLists API
+  title: Triton One Customers Address Watch Lists API
   description: 'Account management REST API for Triton One. Use this API to manage accounts, subscriptions, endpoints, tokens, address watch lists, and rate tiers for your Triton RPC services. Token-based authentication via the Authorization header. Distinct from RPC consumption tokens — Customers API tokens are only used against customers.triton.one.
 
     '
@@ -90,7 +90,35 @@ paths:
         '204':
           description: Deleted.
 components:
+  parameters:
+    SubscriptionUuid:
+      name: subscriptionUuid
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
   schemas:
+    AddressWatchListList:
+      type: object
+      properties:
+        address_watch_lists:
+          type: array
+          items:
+            $ref: '#/components/schemas/AddressWatchList'
+    AddressWatchListCreate:
+      type: object
+      required:
+      - variant
+      - encoded_value
+      properties:
+        variant:
+          type: string
+          enum:
+          - collection
+          - tree
+        encoded_value:
+          type: string
     AddressWatchList:
       type: object
       properties:
@@ -107,39 +135,11 @@ components:
         subscription_uuid:
           type: string
           format: uuid
-    AddressWatchListCreate:
-      type: object
-      required:
-      - variant
-      - encoded_value
-      properties:
-        variant:
-          type: string
-          enum:
-          - collection
-          - tree
-        encoded_value:
-          type: string
-    AddressWatchListList:
-      type: object
-      properties:
-        address_watch_lists:
-          type: array
-          items:
-            $ref: '#/components/schemas/AddressWatchList'
     AddressWatchListEnvelope:
       type: object
       properties:
         address_watch_list:
           $ref: '#/components/schemas/AddressWatchList'
-  parameters:
-    SubscriptionUuid:
-      name: subscriptionUuid
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
   securitySchemes:
     BearerAuth:
       type: http

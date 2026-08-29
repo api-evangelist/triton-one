@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Triton One Customers Accounts Endpoints API
+  title: Triton One Customers Endpoints API
   description: 'Account management REST API for Triton One. Use this API to manage accounts, subscriptions, endpoints, tokens, address watch lists, and rate tiers for your Triton RPC services. Token-based authentication via the Authorization header. Distinct from RPC consumption tokens — Customers API tokens are only used against customers.triton.one.
 
     '
@@ -120,14 +120,45 @@ paths:
         '204':
           description: Deactivated.
 components:
+  parameters:
+    SubscriptionUuid:
+      name: subscriptionUuid
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    EndpointUuid:
+      name: endpointUuid
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
   schemas:
-    EndpointList:
+    EndpointCreate:
       type: object
+      required:
+      - name
+      - rate_tier
       properties:
-        endpoints:
+        name:
+          type: string
+        rate_tier:
+          type: string
+          enum:
+          - free
+          - tier1
+          - tier2
+          - tier3
+          - dedi
+        allowed_origins:
           type: array
           items:
-            $ref: '#/components/schemas/Endpoint'
+            type: object
+            properties:
+              value:
+                type: string
     EndpointUpdate:
       type: object
       properties:
@@ -150,6 +181,18 @@ components:
                 type: string
               is_active:
                 type: boolean
+    EndpointList:
+      type: object
+      properties:
+        endpoints:
+          type: array
+          items:
+            $ref: '#/components/schemas/Endpoint'
+    EndpointEnvelope:
+      type: object
+      properties:
+        endpoint:
+          $ref: '#/components/schemas/Endpoint'
     Endpoint:
       type: object
       properties:
@@ -183,49 +226,6 @@ components:
                 type: string
               is_active:
                 type: boolean
-    EndpointEnvelope:
-      type: object
-      properties:
-        endpoint:
-          $ref: '#/components/schemas/Endpoint'
-    EndpointCreate:
-      type: object
-      required:
-      - name
-      - rate_tier
-      properties:
-        name:
-          type: string
-        rate_tier:
-          type: string
-          enum:
-          - free
-          - tier1
-          - tier2
-          - tier3
-          - dedi
-        allowed_origins:
-          type: array
-          items:
-            type: object
-            properties:
-              value:
-                type: string
-  parameters:
-    SubscriptionUuid:
-      name: subscriptionUuid
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
-    EndpointUuid:
-      name: endpointUuid
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
   securitySchemes:
     BearerAuth:
       type: http

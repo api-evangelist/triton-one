@@ -1,26 +1,35 @@
 {
   "provider": "triton-one",
   "sources": [
-    "triton-one-accounts-api-openapi.yml",
-    "triton-one-addresswatchlists-api-openapi.yml",
-    "triton-one-assets-api-openapi.yml",
-    "triton-one-endpoints-api-openapi.yml",
-    "triton-one-standard-api-openapi.yml",
-    "triton-one-subscriptions-api-openapi.yml",
-    "triton-one-tokens-api-openapi.yml"
+    "_original/triton-one-customers-api-openapi.yml",
+    "_original/triton-one-digital-assets-api-openapi.yml",
+    "_original/triton-one-solana-rpc-api-openapi.yml"
   ],
   "outputs": [
     "triton-one-accounts-api-openapi.yml",
     "triton-one-addresswatchlists-api-openapi.yml",
-    "triton-one-assets-api-openapi.yml",
     "triton-one-endpoints-api-openapi.yml",
-    "triton-one-standard-api-openapi.yml",
     "triton-one-subscriptions-api-openapi.yml",
-    "triton-one-tokens-api-openapi.yml"
+    "triton-one-tokens-api-openapi.yml",
+    "triton-one-assets-api-openapi.yml",
+    "triton-one-standard-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (3 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "triton-one-customers-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "triton-one-digital-assets-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "triton-one-solana-rpc-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0"
+  ],
+  "skipped": [
+    "triton-one-accounts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "triton-one-addresswatchlists-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "triton-one-assets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "triton-one-endpoints-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "triton-one-standard-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "triton-one-subscriptions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "triton-one-tokens-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

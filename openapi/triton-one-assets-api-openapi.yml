@@ -1,22 +1,22 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Triton One Customers Accounts Assets API
-  description: 'Account management REST API for Triton One. Use this API to manage accounts, subscriptions, endpoints, tokens, address watch lists, and rate tiers for your Triton RPC services. Token-based authentication via the Authorization header. Distinct from RPC consumption tokens — Customers API tokens are only used against customers.triton.one.
+  title: Triton One Digital Assets API
+  description: 'Triton One''s hosted Metaplex Digital Assets Standard (DAS) implementation, accessible through the same Solana RPC endpoint. Exposes compressed-NFT and SPL token introspection methods (getAsset, getAssetProof, searchAssets, getTokenAccounts, getTokenLargestAccounts, getAssetsByOwner/Creator/Authority, getNftEditions, etc.). Powered by Triton''s Photon indexer infrastructure.
 
     '
-  version: v1
+  version: '1.0'
   contact:
     name: Triton One Support
     url: https://triton.one
     email: support@triton.one
-  license:
-    name: Triton One Terms of Service
-    url: https://triton.one/terms
 servers:
-- url: https://customers.triton.one
-  description: Production Customers API
+- url: https://{endpoint}.rpcpool.com
+  description: Triton RPC endpoint (replace {endpoint} with your endpoint slug).
+  variables:
+    endpoint:
+      default: mainnet-beta
 security:
-- BearerAuth: []
+- TokenAuth: []
 tags:
 - name: Assets
   description: Read methods for compressed and standard digital assets.
@@ -123,7 +123,8 @@ components:
           - getTokenLargestAccounts
         params: {}
   securitySchemes:
-    BearerAuth:
-      type: http
-      scheme: bearer
-      description: Customers API token passed in Authorization header.
+    TokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: RPC consumption token from Customers API.
