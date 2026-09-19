@@ -57,6 +57,11 @@ apis:
   name: Triton One Old Faithful Historical Archive
   tags:
   - Solana
+  - Archives
+  - Historical Data
+  - Yellowstone
+  tags_raw:
+  - Solana
   - Archive
   - Historical Data
   - Yellowstone
