@@ -1,9 +1,7 @@
 openapi: 3.2.0
 info:
   title: Triton One Digital Assets API
-  description: 'Triton One''s hosted Metaplex Digital Assets Standard (DAS) implementation, accessible through the same Solana RPC endpoint. Exposes compressed-NFT and SPL token introspection methods (getAsset, getAssetProof, searchAssets, getTokenAccounts, getTokenLargestAccounts, getAssetsByOwner/Creator/Authority, getNftEditions, etc.). Powered by Triton''s Photon indexer infrastructure.
-
-    '
+  description: Triton One's hosted Metaplex Digital Assets Standard (DAS) implementation, accessible through the same Solana RPC endpoint. Exposes compressed-NFT and SPL token introspection methods (getAsset, getAssetProof, searchAssets, getTokenAccounts, getTokenLargestAccounts, getAssetsByOwner/Creator/Authority, getNftEditions, etc.). Powered by Triton's Photon indexer infrastructure.
   version: '1.0'
   contact:
     name: Triton One Support
@@ -24,9 +22,7 @@ paths:
   /:
     post:
       summary: Digital Assets JSON-RPC Call
-      description: 'Single JSON-RPC entrypoint accepting Metaplex DAS methods. Set the `method` field to one of getAsset, getAssets, getAssetProof, getAssetProofs, getAssetSignatures, getAssetsByAuthority, getAssetsByCreator, getAssetsByOwner, searchAssets, getNftEditions, getTokenAccounts, or getTokenLargestAccounts.
-
-        '
+      description: Single JSON-RPC entrypoint accepting Metaplex DAS methods. Set the `method` field to one of getAsset, getAssets, getAssetProof, getAssetProofs, getAssetSignatures, getAssetsByAuthority, getAssetsByCreator, getAssetsByOwner, searchAssets, getNftEditions, getTokenAccounts, or getTokenLargestAccounts.
       operationId: callDigitalAssetsRpc
       tags:
       - Assets

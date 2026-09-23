@@ -1,9 +1,7 @@
 openapi: 3.2.0
 info:
   title: Triton One Customers Tokens API
-  description: 'Account management REST API for Triton One. Use this API to manage accounts, subscriptions, endpoints, tokens, address watch lists, and rate tiers for your Triton RPC services. Token-based authentication via the Authorization header. Distinct from RPC consumption tokens — Customers API tokens are only used against customers.triton.one.
-
-    '
+  description: Account management REST API for Triton One. Use this API to manage accounts, subscriptions, endpoints, tokens, address watch lists, and rate tiers for your Triton RPC services. Token-based authentication via the Authorization header. Distinct from RPC consumption tokens — Customers API tokens are only used against customers.triton.one.
   version: v1
   contact:
     name: Triton One Support
@@ -109,31 +107,7 @@ paths:
         '204':
           description: Deactivated.
 components:
-  parameters:
-    TokenUuid:
-      name: tokenUuid
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
-    SubscriptionUuid:
-      name: subscriptionUuid
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
   schemas:
-    TokenList:
-      type: object
-      properties:
-        tokens:
-          type: array
-          items:
-            $ref: '#/components/schemas/Token'
-        meta:
-          $ref: '#/components/schemas/Meta'
     TokenCreate:
       type: object
       required:
@@ -150,11 +124,6 @@ components:
           - tier2
           - tier3
           - dedi
-    TokenEnvelope:
-      type: object
-      properties:
-        token:
-          $ref: '#/components/schemas/Token'
     Token:
       type: object
       properties:
@@ -201,6 +170,35 @@ components:
           type: integer
         total_count:
           type: integer
+    TokenList:
+      type: object
+      properties:
+        tokens:
+          type: array
+          items:
+            $ref: '#/components/schemas/Token'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    TokenEnvelope:
+      type: object
+      properties:
+        token:
+          $ref: '#/components/schemas/Token'
+  parameters:
+    SubscriptionUuid:
+      name: subscriptionUuid
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    TokenUuid:
+      name: tokenUuid
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
   securitySchemes:
     BearerAuth:
       type: http
