@@ -119,28 +119,11 @@ paths:
           description: Deactivated.
 components:
   schemas:
-    EndpointUpdate:
+    EndpointEnvelope:
       type: object
       properties:
-        name:
-          type: string
-        rate_tier:
-          type: string
-          enum:
-          - free
-          - tier1
-          - tier2
-          - tier3
-          - dedi
-        allowed_origins:
-          type: array
-          items:
-            type: object
-            properties:
-              value:
-                type: string
-              is_active:
-                type: boolean
+        endpoint:
+          $ref: '#/components/schemas/Endpoint'
     EndpointList:
       type: object
       properties:
@@ -181,6 +164,28 @@ components:
                 type: string
               is_active:
                 type: boolean
+    EndpointUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        rate_tier:
+          type: string
+          enum:
+          - free
+          - tier1
+          - tier2
+          - tier3
+          - dedi
+        allowed_origins:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+              is_active:
+                type: boolean
     EndpointCreate:
       type: object
       required:
@@ -204,11 +209,6 @@ components:
             properties:
               value:
                 type: string
-    EndpointEnvelope:
-      type: object
-      properties:
-        endpoint:
-          $ref: '#/components/schemas/Endpoint'
   parameters:
     EndpointUuid:
       name: endpointUuid

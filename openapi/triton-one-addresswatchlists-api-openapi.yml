@@ -89,31 +89,6 @@ paths:
           description: Deleted.
 components:
   schemas:
-    AddressWatchListCreate:
-      type: object
-      required:
-      - variant
-      - encoded_value
-      properties:
-        variant:
-          type: string
-          enum:
-          - collection
-          - tree
-        encoded_value:
-          type: string
-    AddressWatchListEnvelope:
-      type: object
-      properties:
-        address_watch_list:
-          $ref: '#/components/schemas/AddressWatchList'
-    AddressWatchListList:
-      type: object
-      properties:
-        address_watch_lists:
-          type: array
-          items:
-            $ref: '#/components/schemas/AddressWatchList'
     AddressWatchList:
       type: object
       properties:
@@ -130,6 +105,31 @@ components:
         subscription_uuid:
           type: string
           format: uuid
+    AddressWatchListCreate:
+      type: object
+      required:
+      - variant
+      - encoded_value
+      properties:
+        variant:
+          type: string
+          enum:
+          - collection
+          - tree
+        encoded_value:
+          type: string
+    AddressWatchListList:
+      type: object
+      properties:
+        address_watch_lists:
+          type: array
+          items:
+            $ref: '#/components/schemas/AddressWatchList'
+    AddressWatchListEnvelope:
+      type: object
+      properties:
+        address_watch_list:
+          $ref: '#/components/schemas/AddressWatchList'
   parameters:
     SubscriptionUuid:
       name: subscriptionUuid

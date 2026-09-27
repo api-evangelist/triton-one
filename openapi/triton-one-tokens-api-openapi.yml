@@ -107,50 +107,22 @@ paths:
         '204':
           description: Deactivated.
 components:
+  parameters:
+    TokenUuid:
+      name: tokenUuid
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+    SubscriptionUuid:
+      name: subscriptionUuid
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
   schemas:
-    TokenCreate:
-      type: object
-      required:
-      - name
-      - rate_tier
-      properties:
-        name:
-          type: string
-        rate_tier:
-          type: string
-          enum:
-          - free
-          - tier1
-          - tier2
-          - tier3
-          - dedi
-    Token:
-      type: object
-      properties:
-        uuid:
-          type: string
-          format: uuid
-        value:
-          type: string
-          description: The opaque token string to use for RPC auth.
-        auth_username:
-          type: string
-        name:
-          type: string
-        rate_tier:
-          type: string
-          enum:
-          - free
-          - tier1
-          - tier2
-          - tier3
-          - dedi
-        is_active:
-          type: boolean
-        deactivation_reasons:
-          type: array
-          items:
-            type: string
     Meta:
       type: object
       properties:
@@ -179,26 +151,54 @@ components:
             $ref: '#/components/schemas/Token'
         meta:
           $ref: '#/components/schemas/Meta'
+    TokenCreate:
+      type: object
+      required:
+      - name
+      - rate_tier
+      properties:
+        name:
+          type: string
+        rate_tier:
+          type: string
+          enum:
+          - free
+          - tier1
+          - tier2
+          - tier3
+          - dedi
     TokenEnvelope:
       type: object
       properties:
         token:
           $ref: '#/components/schemas/Token'
-  parameters:
-    SubscriptionUuid:
-      name: subscriptionUuid
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
-    TokenUuid:
-      name: tokenUuid
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
+    Token:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        value:
+          type: string
+          description: The opaque token string to use for RPC auth.
+        auth_username:
+          type: string
+        name:
+          type: string
+        rate_tier:
+          type: string
+          enum:
+          - free
+          - tier1
+          - tier2
+          - tier3
+          - dedi
+        is_active:
+          type: boolean
+        deactivation_reasons:
+          type: array
+          items:
+            type: string
   securitySchemes:
     BearerAuth:
       type: http
