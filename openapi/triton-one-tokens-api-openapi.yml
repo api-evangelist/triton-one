@@ -123,6 +123,20 @@ components:
         type: string
         format: uuid
   schemas:
+    TokenList:
+      type: object
+      properties:
+        tokens:
+          type: array
+          items:
+            $ref: '#/components/schemas/Token'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    TokenEnvelope:
+      type: object
+      properties:
+        token:
+          $ref: '#/components/schemas/Token'
     Meta:
       type: object
       properties:
@@ -142,36 +156,6 @@ components:
           type: integer
         total_count:
           type: integer
-    TokenList:
-      type: object
-      properties:
-        tokens:
-          type: array
-          items:
-            $ref: '#/components/schemas/Token'
-        meta:
-          $ref: '#/components/schemas/Meta'
-    TokenCreate:
-      type: object
-      required:
-      - name
-      - rate_tier
-      properties:
-        name:
-          type: string
-        rate_tier:
-          type: string
-          enum:
-          - free
-          - tier1
-          - tier2
-          - tier3
-          - dedi
-    TokenEnvelope:
-      type: object
-      properties:
-        token:
-          $ref: '#/components/schemas/Token'
     Token:
       type: object
       properties:
@@ -199,6 +183,22 @@ components:
           type: array
           items:
             type: string
+    TokenCreate:
+      type: object
+      required:
+      - name
+      - rate_tier
+      properties:
+        name:
+          type: string
+        rate_tier:
+          type: string
+          enum:
+          - free
+          - tier1
+          - tier2
+          - tier3
+          - dedi
   securitySchemes:
     BearerAuth:
       type: http

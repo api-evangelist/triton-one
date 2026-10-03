@@ -89,6 +89,13 @@ paths:
           description: Deleted.
 components:
   schemas:
+    AddressWatchListList:
+      type: object
+      properties:
+        address_watch_lists:
+          type: array
+          items:
+            $ref: '#/components/schemas/AddressWatchList'
     AddressWatchList:
       type: object
       properties:
@@ -118,13 +125,6 @@ components:
           - tree
         encoded_value:
           type: string
-    AddressWatchListList:
-      type: object
-      properties:
-        address_watch_lists:
-          type: array
-          items:
-            $ref: '#/components/schemas/AddressWatchList'
     AddressWatchListEnvelope:
       type: object
       properties:

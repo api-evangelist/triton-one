@@ -88,51 +88,6 @@ paths:
                 $ref: '#/components/schemas/AccountEnvelope'
 components:
   schemas:
-    AccountEnvelope:
-      type: object
-      properties:
-        account:
-          $ref: '#/components/schemas/Account'
-    Subscription:
-      type: object
-      properties:
-        uuid:
-          type: string
-          format: uuid
-        name:
-          type: string
-        subscription_type:
-          type: string
-          enum:
-          - developer
-          - mainnet-shared
-          - mainnet-dedicated
-        is_active:
-          type: boolean
-        starts_at:
-          type: string
-          format: date-time
-        ends_at:
-          type: string
-          format: date-time
-        endpoints:
-          type: array
-          items:
-            $ref: '#/components/schemas/Endpoint'
-        tokens:
-          type: array
-          items:
-            $ref: '#/components/schemas/Token'
-        supported_rate_tiers:
-          type: array
-          items:
-            type: string
-        account:
-          $ref: '#/components/schemas/Account'
-        deactivation_reasons:
-          type: array
-          items:
-            type: string
     AccountUpdate:
       type: object
       required:
@@ -158,25 +113,11 @@ components:
           type: string
         telephone:
           type: string
-    Meta:
+    AccountEnvelope:
       type: object
       properties:
-        current_page:
-          type: integer
-        next_page:
-          type:
-          - integer
-          - 'null'
-        per_page:
-          type: integer
-        prev_page:
-          type:
-          - integer
-          - 'null'
-        total_pages:
-          type: integer
-        total_count:
-          type: integer
+        account:
+          $ref: '#/components/schemas/Account'
     Endpoint:
       type: object
       properties:
@@ -246,15 +187,6 @@ components:
           type: array
           items:
             type: string
-    AccountList:
-      type: object
-      properties:
-        accounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Account'
-        meta:
-          $ref: '#/components/schemas/Meta'
     Token:
       type: object
       properties:
@@ -278,6 +210,74 @@ components:
           - dedi
         is_active:
           type: boolean
+        deactivation_reasons:
+          type: array
+          items:
+            type: string
+    AccountList:
+      type: object
+      properties:
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+        meta:
+          $ref: '#/components/schemas/Meta'
+    Meta:
+      type: object
+      properties:
+        current_page:
+          type: integer
+        next_page:
+          type:
+          - integer
+          - 'null'
+        per_page:
+          type: integer
+        prev_page:
+          type:
+          - integer
+          - 'null'
+        total_pages:
+          type: integer
+        total_count:
+          type: integer
+    Subscription:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+        subscription_type:
+          type: string
+          enum:
+          - developer
+          - mainnet-shared
+          - mainnet-dedicated
+        is_active:
+          type: boolean
+        starts_at:
+          type: string
+          format: date-time
+        ends_at:
+          type: string
+          format: date-time
+        endpoints:
+          type: array
+          items:
+            $ref: '#/components/schemas/Endpoint'
+        tokens:
+          type: array
+          items:
+            $ref: '#/components/schemas/Token'
+        supported_rate_tiers:
+          type: array
+          items:
+            type: string
+        account:
+          $ref: '#/components/schemas/Account'
         deactivation_reasons:
           type: array
           items:
