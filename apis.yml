@@ -532,6 +532,9 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/triton-one.png
 access: 3rd-Party
 common:
+  - type: CapabilityMap
+    url: capabilities/triton-one-capability-edges.yml
+    name: Triton One Business Capability Map
   - type: Website
     url: https://www.triton.one/
   - type: PostmanWorkspace
