@@ -88,7 +88,28 @@ paths:
         '204':
           description: Deleted.
 components:
+  parameters:
+    SubscriptionUuid:
+      name: subscriptionUuid
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
   schemas:
+    AddressWatchListCreate:
+      type: object
+      required:
+      - variant
+      - encoded_value
+      properties:
+        variant:
+          type: string
+          enum:
+          - collection
+          - tree
+        encoded_value:
+          type: string
     AddressWatchListList:
       type: object
       properties:
@@ -112,32 +133,11 @@ components:
         subscription_uuid:
           type: string
           format: uuid
-    AddressWatchListCreate:
-      type: object
-      required:
-      - variant
-      - encoded_value
-      properties:
-        variant:
-          type: string
-          enum:
-          - collection
-          - tree
-        encoded_value:
-          type: string
     AddressWatchListEnvelope:
       type: object
       properties:
         address_watch_list:
           $ref: '#/components/schemas/AddressWatchList'
-  parameters:
-    SubscriptionUuid:
-      name: subscriptionUuid
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
   securitySchemes:
     BearerAuth:
       type: http

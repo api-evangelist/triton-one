@@ -70,6 +70,24 @@ paths:
                 $ref: '#/components/schemas/JsonRpcResponse'
 components:
   schemas:
+    JsonRpcResponse:
+      type: object
+      properties:
+        jsonrpc:
+          type: string
+        id:
+          type:
+          - integer
+          - string
+        result: {}
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+            data: {}
     JsonRpcRequest:
       type: object
       required:
@@ -100,24 +118,6 @@ components:
           - getTokenAccounts
           - getTokenLargestAccounts
         params: {}
-    JsonRpcResponse:
-      type: object
-      properties:
-        jsonrpc:
-          type: string
-        id:
-          type:
-          - integer
-          - string
-        result: {}
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-            message:
-              type: string
-            data: {}
   securitySchemes:
     TokenAuth:
       type: apiKey
