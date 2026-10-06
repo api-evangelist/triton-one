@@ -532,6 +532,8 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/triton-one.png
 access: 3rd-Party
 common:
+  - url: https://blog.triton.one/rss/
+    type: BlogRSS
   - type: CapabilityMap
     url: capabilities/triton-one-capability-edges.yml
     name: Triton One Business Capability Map
@@ -634,7 +636,7 @@ common:
       - https://github.com/rpcpool
     updated: '2026-05-25'
 created: '2026-05-25'
-modified: '2026-05-25'
+modified: '2026-10-06'
 position: Consuming
 description: >-
   Triton One is a high-performance Solana RPC and blockchain infrastructure provider operating globally distributed
