@@ -140,3 +140,24 @@ plans:
       - name: Solana, Pythnet, Sui, Monad network coverage
       - name: No tier gating — every feature on every plan
       - name: No overage premiums — overages bill at base rate
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - metered
+  units:
+  - data
+  - money
+  - request
+  plans:
+  - name: Triton One Pay-As-You-Go
+    access: other
+    model: metered
+    model_how: stated
+    units:
+    - data
+    - money
+    - request
+    periods:
+    - per-use
+    - year
