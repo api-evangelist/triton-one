@@ -119,11 +119,28 @@ paths:
           description: Deactivated.
 components:
   schemas:
-    EndpointEnvelope:
+    EndpointUpdate:
       type: object
       properties:
-        endpoint:
-          $ref: '#/components/schemas/Endpoint'
+        name:
+          type: string
+        rate_tier:
+          type: string
+          enum:
+          - free
+          - tier1
+          - tier2
+          - tier3
+          - dedi
+        allowed_origins:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+              is_active:
+                type: boolean
     Endpoint:
       type: object
       properties:
@@ -157,28 +174,6 @@ components:
                 type: string
               is_active:
                 type: boolean
-    EndpointUpdate:
-      type: object
-      properties:
-        name:
-          type: string
-        rate_tier:
-          type: string
-          enum:
-          - free
-          - tier1
-          - tier2
-          - tier3
-          - dedi
-        allowed_origins:
-          type: array
-          items:
-            type: object
-            properties:
-              value:
-                type: string
-              is_active:
-                type: boolean
     EndpointCreate:
       type: object
       required:
@@ -202,6 +197,11 @@ components:
             properties:
               value:
                 type: string
+    EndpointEnvelope:
+      type: object
+      properties:
+        endpoint:
+          $ref: '#/components/schemas/Endpoint'
     EndpointList:
       type: object
       properties:
@@ -210,15 +210,15 @@ components:
           items:
             $ref: '#/components/schemas/Endpoint'
   parameters:
-    SubscriptionUuid:
-      name: subscriptionUuid
+    EndpointUuid:
+      name: endpointUuid
       in: path
       required: true
       schema:
         type: string
         format: uuid
-    EndpointUuid:
-      name: endpointUuid
+    SubscriptionUuid:
+      name: subscriptionUuid
       in: path
       required: true
       schema:

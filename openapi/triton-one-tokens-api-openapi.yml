@@ -113,31 +113,6 @@ components:
       properties:
         token:
           $ref: '#/components/schemas/Token'
-    TokenCreate:
-      type: object
-      required:
-      - name
-      - rate_tier
-      properties:
-        name:
-          type: string
-        rate_tier:
-          type: string
-          enum:
-          - free
-          - tier1
-          - tier2
-          - tier3
-          - dedi
-    TokenList:
-      type: object
-      properties:
-        tokens:
-          type: array
-          items:
-            $ref: '#/components/schemas/Token'
-        meta:
-          $ref: '#/components/schemas/Meta'
     Token:
       type: object
       properties:
@@ -165,6 +140,15 @@ components:
           type: array
           items:
             type: string
+    TokenList:
+      type: object
+      properties:
+        tokens:
+          type: array
+          items:
+            $ref: '#/components/schemas/Token'
+        meta:
+          $ref: '#/components/schemas/Meta'
     Meta:
       type: object
       properties:
@@ -184,16 +168,32 @@ components:
           type: integer
         total_count:
           type: integer
+    TokenCreate:
+      type: object
+      required:
+      - name
+      - rate_tier
+      properties:
+        name:
+          type: string
+        rate_tier:
+          type: string
+          enum:
+          - free
+          - tier1
+          - tier2
+          - tier3
+          - dedi
   parameters:
-    SubscriptionUuid:
-      name: subscriptionUuid
+    TokenUuid:
+      name: tokenUuid
       in: path
       required: true
       schema:
         type: string
         format: uuid
-    TokenUuid:
-      name: tokenUuid
+    SubscriptionUuid:
+      name: subscriptionUuid
       in: path
       required: true
       schema:

@@ -88,116 +88,6 @@ paths:
                 $ref: '#/components/schemas/AccountEnvelope'
 components:
   schemas:
-    Token:
-      type: object
-      properties:
-        uuid:
-          type: string
-          format: uuid
-        value:
-          type: string
-          description: The opaque token string to use for RPC auth.
-        auth_username:
-          type: string
-        name:
-          type: string
-        rate_tier:
-          type: string
-          enum:
-          - free
-          - tier1
-          - tier2
-          - tier3
-          - dedi
-        is_active:
-          type: boolean
-        deactivation_reasons:
-          type: array
-          items:
-            type: string
-    Endpoint:
-      type: object
-      properties:
-        uuid:
-          type: string
-          format: uuid
-        name:
-          type: string
-        slug:
-          type: string
-        rate_tier:
-          type: string
-          enum:
-          - free
-          - tier1
-          - tier2
-          - tier3
-          - dedi
-        is_active:
-          type: boolean
-        values:
-          type: array
-          items:
-            type: string
-        allowed_origins:
-          type: array
-          items:
-            type: object
-            properties:
-              value:
-                type: string
-              is_active:
-                type: boolean
-    AccountList:
-      type: object
-      properties:
-        accounts:
-          type: array
-          items:
-            $ref: '#/components/schemas/Account'
-        meta:
-          $ref: '#/components/schemas/Meta'
-    AccountEnvelope:
-      type: object
-      properties:
-        account:
-          $ref: '#/components/schemas/Account'
-    Account:
-      type: object
-      properties:
-        uuid:
-          type: string
-          format: uuid
-        name:
-          type: string
-        billing_address1:
-          type: string
-        billing_address2:
-          type: string
-        billing_address3:
-          type: string
-        billing_city:
-          type: string
-        billing_state_or_province:
-          type: string
-        billing_postal_code:
-          type: string
-        billing_country_code:
-          type: string
-        telephone_country_code:
-          type: string
-        telephone:
-          type: string
-        is_active:
-          type: boolean
-        subscriptions:
-          type: array
-          items:
-            $ref: '#/components/schemas/Subscription'
-        deactivation_reasons:
-          type: array
-          items:
-            type: string
     AccountUpdate:
       type: object
       required:
@@ -223,6 +113,15 @@ components:
           type: string
         telephone:
           type: string
+    AccountList:
+      type: object
+      properties:
+        accounts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Account'
+        meta:
+          $ref: '#/components/schemas/Meta'
     Subscription:
       type: object
       properties:
@@ -263,6 +162,74 @@ components:
           type: array
           items:
             type: string
+    AccountEnvelope:
+      type: object
+      properties:
+        account:
+          $ref: '#/components/schemas/Account'
+    Token:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        value:
+          type: string
+          description: The opaque token string to use for RPC auth.
+        auth_username:
+          type: string
+        name:
+          type: string
+        rate_tier:
+          type: string
+          enum:
+          - free
+          - tier1
+          - tier2
+          - tier3
+          - dedi
+        is_active:
+          type: boolean
+        deactivation_reasons:
+          type: array
+          items:
+            type: string
+    Account:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+        billing_address1:
+          type: string
+        billing_address2:
+          type: string
+        billing_address3:
+          type: string
+        billing_city:
+          type: string
+        billing_state_or_province:
+          type: string
+        billing_postal_code:
+          type: string
+        billing_country_code:
+          type: string
+        telephone_country_code:
+          type: string
+        telephone:
+          type: string
+        is_active:
+          type: boolean
+        subscriptions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Subscription'
+        deactivation_reasons:
+          type: array
+          items:
+            type: string
     Meta:
       type: object
       properties:
@@ -282,6 +249,39 @@ components:
           type: integer
         total_count:
           type: integer
+    Endpoint:
+      type: object
+      properties:
+        uuid:
+          type: string
+          format: uuid
+        name:
+          type: string
+        slug:
+          type: string
+        rate_tier:
+          type: string
+          enum:
+          - free
+          - tier1
+          - tier2
+          - tier3
+          - dedi
+        is_active:
+          type: boolean
+        values:
+          type: array
+          items:
+            type: string
+        allowed_origins:
+          type: array
+          items:
+            type: object
+            properties:
+              value:
+                type: string
+              is_active:
+                type: boolean
   parameters:
     AccountUuid:
       name: accountUuid
