@@ -1,4 +1,4 @@
-# Triton One (triton-one)
+# Triton One
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,302 +66,169 @@
 
 Triton One is a high-performance Solana RPC and blockchain infrastructure provider operating globally distributed bare-metal node networks for Solana, Pythnet, Sui, and Monad. Beyond standard Solana JSON-RPC, Triton ships the Yellowstone ecosystem — Dragon's Mouth gRPC streaming, Whirligig WebSockets, Fumarole persistent streams, Old Faithful historical archive, Steamboat custom indexes, Vixen program parsing, Jet QUIC transaction sending, and Shield transaction policies — plus the hosted Metaplex Digital Assets API, Cascade SWQoS transaction delivery, and trading APIs (Pyth Hermes, Jito bundles, Metis, Titan). The Customers REST API at customers.triton.one programmatically manages accounts, subscriptions, endpoints, tokens, address watch lists, and rate tiers. Pricing is a single unified pay-as-you-go model with a $125 prepaid deposit and no tier gating.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/triton-one/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/triton-one/refs/heads/main/apis.yml)
+**Areas:** Solana · RPC · Blockchain · Web3 · Streaming · Yellowstone · Validator · gRPC · Pythnet · Sui · Monad
 
-## Scope
+## Triton One on APIs.io
 
-- **Position:** Consuming
-- **Access:** 3rd-Party
+Everything profiled for Triton One is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/triton-one/](https://apis.io/providers/triton-one/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (12)
 
-- Solana
-- RPC
-- Blockchain
-- Web3
-- Streaming
-- Yellowstone
-- Validator
-- gRPC
-- Pythnet
-- Sui
-- Monad
+- [Triton One Yellowstone gRPC (Dragon's Mouth)](https://apis.io/apis/triton-one/triton-one-yellowstone-grpc/) — Dragon's Mouth — Triton's high-performance Solana streaming gRPC service. Subscribe to slots, blocks, transactions, accounts, and blockmeta updates over a…
+- [Triton One Fumarole Persistent Streams](https://apis.io/apis/triton-one/triton-one-fumarole/) — Fumarole — persistent Yellowstone streams with gap-free reconnect and 4-day server-side cache. Built for consumers that must not miss events across client…
+- [Triton One Whirligig WebSockets](https://apis.io/apis/triton-one/triton-one-whirligig-websockets/) — Whirligig — Triton's enhanced WebSocket layer over Solana RPC. Adds the missing transactionSubscribe stream and hardened account/slot subscribe behaviour…
+- [Triton One Old Faithful Historical Archive](https://apis.io/apis/triton-one/triton-one-old-faithful/) — Old Faithful — content-addressable, queryable archive of all Solana history from genesis. Complete-ledger queries in milliseconds, flat-rate pricing across…
+- [Triton One Cascade Transaction Delivery](https://apis.io/apis/triton-one/triton-one-cascade/) — Cascade — high-performance transaction delivery network leveraging Solana's Stake-Weighted Quality of Service (SWQoS). Routes transactions through reserved,…
+- [Triton One Trading APIs](https://apis.io/apis/triton-one/triton-one-trading-apis/) — Hosted trading APIs available on the Triton platform — Pyth Hermes price feeds, Jito bundle simulation, Metis Swap, and Titan Swap. Metered separately under…
+- [Triton One Accounts API](https://apis.io/apis/triton-one/triton-one-accounts-api/) — Manage customer accounts.
+- [Triton One AddressWatchLists API](https://apis.io/apis/triton-one/triton-one-addresswatchlists-api/) — Manage on-chain address watch lists for collections and Merkle trees.
+- [Triton One Assets API](https://apis.io/apis/triton-one/triton-one-assets-api/) — Read methods for compressed and standard digital assets.
+- [Triton One Endpoints API](https://apis.io/apis/triton-one/triton-one-endpoints-api/) — Manage RPC endpoints attached to subscriptions.
+- [Triton One Subscriptions API](https://apis.io/apis/triton-one/triton-one-subscriptions-api/) — Manage subscriptions (Developer, Mainnet-Shared, Mainnet-Dedicated).
+- [Triton One Tokens API](https://apis.io/apis/triton-one/triton-one-tokens-api/) — Manage RPC consumption tokens.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-05-25
-- **Modified:** 2026-05-25
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Triton One Customers API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-REST API for managing Triton One customer accounts, subscriptions (Developer, Mainnet-Shared, Mainnet-Dedicated), RPC endpoints, RPC consumption tokens, address watch lists, and rate tiers. Token-based authentication via the Authorization header; tokens scope to reseller, operator, or read-only roles. Hosted at customers.triton.one/api/v1.
+- [Triton One Agentic Access](https://apis.io/agentic-access/triton-one/triton-one-agentic-access/)
 
-- **Human URL:** [https://docs.triton.one/account-management/api-access/introduction](https://docs.triton.one/account-management/api-access/introduction)
-- **Base URL:** `https://customers.triton.one/api/v1`
+#### JSON Schema (4)
 
-#### Tags
+The data models the API reads and writes.
 
-- Solana
-- RPC
-- Account Management
-- Customers
+- [Triton One Account](https://apis.io/schemas/triton-one/triton-one-account/)
+- [Triton One RPC Endpoint](https://apis.io/schemas/triton-one/triton-one-endpoint/)
+- [Triton One Subscription](https://apis.io/schemas/triton-one/triton-one-subscription/)
+- [Triton One RPC Token](https://apis.io/schemas/triton-one/triton-one-token/)
 
-#### Properties
+#### JSON-LD (1)
 
-- [Documentation](https://docs.triton.one/account-management/api-access/introduction)
-- [Authentication](https://docs.triton.one/account-management/api-access/auth-and-headers)
-- [Documentation](https://docs.triton.one/account-management/api-access/accounts)
-- [Documentation](https://docs.triton.one/account-management/api-access/subscriptions)
-- [Documentation](https://docs.triton.one/account-management/api-access/endpoints)
-- [Documentation](https://docs.triton.one/account-management/api-access/tokens)
-- [Documentation](https://docs.triton.one/account-management/api-access/address-watch-lists)
-- [Documentation](https://docs.triton.one/account-management/api-access/rate-tiers)
-- [Documentation](https://docs.triton.one/account-management/api-access/subscription-types)
-- [OpenAPI](openapi/triton-one-customers-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/triton-one-customers-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/triton-one-customers-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/triton-one-account-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/triton-one-subscription-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/triton-one-endpoint-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/triton-one-token-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/triton-one-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
+Linked-data contexts for the provider's vocabulary.
 
-### Triton One Solana RPC API
+- [Triton One Context](https://apis.io/jsonld/triton-one/triton-one-context/)
 
-Triton's enhanced Solana JSON-RPC interface. Exposes the full Solana JSON-RPC surface plus Triton's custom extensions — getTransactionsForAddress (single-call address history with slot, blockTime, status, and tokenAccounts filters and pagination) and the percentile-aware getRecentPrioritizationFees. Backed by global bare-metal nodes with GeoDNS routing.
+#### Collections (17)
 
-- **Human URL:** [https://docs.triton.one/chains/solana](https://docs.triton.one/chains/solana)
-- **Base URL:** `https://${endpoint}.rpcpool.com`
+Postman and Open Collection request collections.
 
-#### Tags
+- [Triton One Customers Accounts API](https://apis.io/collections/triton-one/open-triton-one-accounts-api/)
+- [Triton One Customers Accounts AddressWatchLists API](https://apis.io/collections/triton-one/open-triton-one-addresswatchlists-api/)
+- [Triton One Customers Accounts Assets API](https://apis.io/collections/triton-one/open-triton-one-assets-api/)
+- [Triton One Customers API](https://apis.io/collections/triton-one/open-triton-one-customers-api/)
+- [Triton One Digital Assets API](https://apis.io/collections/triton-one/open-triton-one-digital-assets-api/)
+- [Triton One Customers Accounts Endpoints API](https://apis.io/collections/triton-one/open-triton-one-endpoints-api/)
+- [Triton One Solana RPC API](https://apis.io/collections/triton-one/open-triton-one-solana-rpc-api/)
+- [Triton One Customers Accounts Standard API](https://apis.io/collections/triton-one/open-triton-one-standard-api/)
+- [Triton One Customers Accounts Subscriptions API](https://apis.io/collections/triton-one/open-triton-one-subscriptions-api/)
+- [Triton One Customers Accounts Tokens API](https://apis.io/collections/triton-one/open-triton-one-tokens-api/)
+- [Triton One Customers Accounts API](https://apis.io/collections/triton-one/postman-triton-one-accounts-api/)
+- [Triton One Customers Accounts AddressWatchLists API](https://apis.io/collections/triton-one/postman-triton-one-addresswatchlists-api/)
+- [Triton One Customers Accounts Assets API](https://apis.io/collections/triton-one/postman-triton-one-assets-api/)
+- [Triton One Customers Accounts Endpoints API](https://apis.io/collections/triton-one/postman-triton-one-endpoints-api/)
+- [Triton One Customers Accounts Standard API](https://apis.io/collections/triton-one/postman-triton-one-standard-api/)
+- [Triton One Customers Accounts Subscriptions API](https://apis.io/collections/triton-one/postman-triton-one-subscriptions-api/)
+- [Triton One Customers Accounts Tokens API](https://apis.io/collections/triton-one/postman-triton-one-tokens-api/)
 
-- Solana
-- RPC
-- JSON-RPC
-- Priority Fees
-- Streaming
+#### Governance rules (1)
 
-#### Properties
+Spectral rulesets for the provider's contracts.
 
-- [Documentation](https://docs.triton.one/chains/solana)
-- [Documentation](https://docs.triton.one/chains/solana/improved-priority-fees-api)
-- [Documentation](https://docs.triton.one/chains/solana/gettransactionsforaddress)
-- [Documentation](https://docs.triton.one/chains/solana/streaming)
-- [Documentation](https://docs.triton.one/chains/solana/geyser)
-- [Documentation](https://docs.triton.one/chains/solana/cascade)
-- [Documentation](https://docs.triton.one/chains/solana/token-program)
-- [OpenAPI](openapi/triton-one-solana-rpc-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/triton-one-solana-rpc-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/triton-one-solana-rpc-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Triton One — jsonschema rules](https://apis.io/rules/triton-one/triton-one-jsonschema-spectral-rules/)
 
-### Triton One Digital Assets API
+#### Security (2)
 
-Hosted Metaplex Digital Assets Standard (DAS) implementation served from the same Triton RPC endpoint. Read methods for compressed and standard NFTs (getAsset, getAssets, getAssetProof(s), getAssetSignatures, searchAssets, getAssetsBy{Owner,Creator,Authority}, getNftEditions) plus SPL token introspection (getTokenAccounts, getTokenLargestAccounts). Powered by Triton's Photon indexer.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://docs.triton.one/digital-assets-api/introduction](https://docs.triton.one/digital-assets-api/introduction)
-- **Base URL:** `https://${endpoint}.rpcpool.com`
+- [Triton One Authentication](https://apis.io/security/triton-one/triton-one-authentication/)
+- [Triton One Domain Security](https://apis.io/security/triton-one/triton-one-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Solana
-- Digital Assets
-- Metaplex
-- NFT
-- DAS
+Published plans, tiers and prices.
 
-#### Properties
+- [Triton One Plans Pricing](https://apis.io/plans/triton-one/triton-one-plans-pricing/)
 
-- [Documentation](https://docs.triton.one/digital-assets-api/introduction)
-- [Documentation](https://docs.triton.one/digital-assets-api/metaplex-digital-assets-api)
-- [Documentation](https://docs.triton.one/digital-assets-api/fungible-assets)
-- [OpenAPI](openapi/triton-one-digital-assets-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/triton-one-digital-assets-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/triton-one-digital-assets-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Triton One Yellowstone gRPC (Dragon's Mouth)
+Published request limits.
 
-Dragon's Mouth — Triton's high-performance Solana streaming gRPC service. Subscribe to slots, blocks, transactions, accounts, and blockmeta updates over a single bidirectional gRPC stream. Open-source server reference at github.com/rpcpool/yellowstone-grpc (Rust, AGPL-3.0).
+- [Triton One Rate Limits](https://apis.io/rate-limits/triton-one/triton-one-rate-limits/)
 
-- **Human URL:** [https://docs.triton.one/project-yellowstone/dragons-mouth-grpc-subscriptions](https://docs.triton.one/project-yellowstone/dragons-mouth-grpc-subscriptions)
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Solana
-- gRPC
-- Streaming
-- Yellowstone
+- [Triton One Finops](https://apis.io/finops/triton-one/triton-one-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://docs.triton.one/project-yellowstone/introduction)
-- [Documentation](https://docs.triton.one/project-yellowstone/dragons-mouth-grpc-subscriptions)
-- [Source Code](https://github.com/rpcpool/yellowstone-grpc)
-- [SDK](https://github.com/rpcpool/yellowstone-grpc)
-- [Postman Collection](collections/triton-one-customers-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/triton-one-customers-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/triton-one-digital-assets-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/triton-one-digital-assets-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/triton-one-solana-rpc-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/triton-one-solana-rpc-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Triton One Fumarole Persistent Streams
-
-Fumarole — persistent Yellowstone streams with gap-free reconnect and 4-day server-side cache. Built for consumers that must not miss events across client restarts or network blips.
-
-- **Human URL:** [https://docs.triton.one/project-yellowstone/fumarole](https://docs.triton.one/project-yellowstone/fumarole)
-
-#### Tags
-
-- Solana
-- Streaming
-- Yellowstone
-- Fumarole
-
-#### Properties
-
-- [Documentation](https://docs.triton.one/project-yellowstone/fumarole)
-- [Source Code](https://github.com/rpcpool/yellowstone-fumarole)
-- [Postman Collection](collections/triton-one-customers-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/triton-one-customers-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/triton-one-digital-assets-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/triton-one-digital-assets-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/triton-one-solana-rpc-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/triton-one-solana-rpc-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Triton One Whirligig WebSockets
-
-Whirligig — Triton's enhanced WebSocket layer over Solana RPC. Adds the missing transactionSubscribe stream and hardened account/slot subscribe behaviour with stable backpressure.
-
-- **Human URL:** [https://docs.triton.one/project-yellowstone/whirligig-websockets](https://docs.triton.one/project-yellowstone/whirligig-websockets)
-
-#### Tags
-
-- Solana
-- WebSocket
-- Streaming
-- Yellowstone
-
-#### Properties
-
-- [Documentation](https://docs.triton.one/project-yellowstone/whirligig-websockets)
-- [Postman Collection](collections/triton-one-customers-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/triton-one-customers-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/triton-one-digital-assets-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/triton-one-digital-assets-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/triton-one-solana-rpc-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/triton-one-solana-rpc-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Triton One Old Faithful Historical Archive
-
-Old Faithful — content-addressable, queryable archive of all Solana history from genesis. Complete-ledger queries in milliseconds, flat-rate pricing across all epochs and methods. Open-source server at github.com/rpcpool/yellowstone-faithful (Go, AGPL-3.0).
-
-- **Human URL:** [https://docs.triton.one/project-yellowstone/old-faithful-historical-archive](https://docs.triton.one/project-yellowstone/old-faithful-historical-archive)
-
-#### Tags
-
-- Solana
-- Archive
-- Historical Data
-- Yellowstone
-
-#### Properties
-
-- [Documentation](https://docs.triton.one/project-yellowstone/old-faithful-historical-archive)
-- [Documentation](https://docs.triton.one/chains/solana/old-faithful-historical-archive-1)
-- [Source Code](https://github.com/rpcpool/yellowstone-faithful)
-- [Postman Collection](collections/triton-one-customers-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/triton-one-customers-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/triton-one-digital-assets-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/triton-one-digital-assets-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/triton-one-solana-rpc-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/triton-one-solana-rpc-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Triton One Cascade Transaction Delivery
-
-Cascade — high-performance transaction delivery network leveraging Solana's Stake-Weighted Quality of Service (SWQoS). Routes transactions through reserved, private connection pools of staked validators instead of congested public ports. Integrates with Yellowstone Shield for on-chain transaction policies. Open-source sender at github.com/rpcpool/yellowstone-jet.
-
-- **Human URL:** [https://docs.triton.one/chains/solana/cascade](https://docs.triton.one/chains/solana/cascade)
-
-#### Tags
-
-- Solana
-- Transactions
-- SWQoS
-- Cascade
-
-#### Properties
-
-- [Documentation](https://docs.triton.one/chains/solana/cascade)
-- [Documentation](https://docs.triton.one/chains/solana/cascade/sending-txs)
-- [Documentation](https://docs.triton.one/chains/solana/cascade/buying-transaction-bandwidth)
-- [Documentation](https://docs.triton.one/chains/solana/cascade/providing-transaction-bandwidth)
-- [Source Code](https://github.com/rpcpool/yellowstone-jet)
-- [Postman Collection](collections/triton-one-customers-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/triton-one-customers-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/triton-one-digital-assets-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/triton-one-digital-assets-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/triton-one-solana-rpc-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/triton-one-solana-rpc-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Triton One Trading APIs
-
-Hosted trading APIs available on the Triton platform — Pyth Hermes price feeds, Jito bundle simulation, Metis Swap, and Titan Swap. Metered separately under the unified PAYG pricing model.
-
-- **Human URL:** [https://docs.triton.one/trading-apis/introduction](https://docs.triton.one/trading-apis/introduction)
-
-#### Tags
-
-- Solana
-- Trading
-- Swap
-- Pyth
-- Jito
-
-#### Properties
-
-- [Documentation](https://docs.triton.one/trading-apis/introduction)
-- [Documentation](https://docs.triton.one/trading-apis/hermes)
-- [Documentation](https://docs.triton.one/trading-apis/bundle-simulation-with-jito)
-- [Documentation](https://docs.triton.one/trading-apis/metis-swap-api)
-- [Documentation](https://docs.triton.one/trading-apis/titan-swap-api)
-- [Postman Collection](collections/triton-one-customers-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/triton-one-customers-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/triton-one-digital-assets-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/triton-one-digital-assets-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [Postman Collection](collections/triton-one-solana-rpc-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/triton-one-solana-rpc-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Portal](https://triton.one)
+- [Website](https://www.triton.one/)
 - [Documentation](https://docs.triton.one)
+- [Getting started](https://docs.triton.one/getting-started)
 - [Pricing](https://triton.one/pricing)
-- [Status Page](https://status.triton.one)
-- [GitHub Organization](https://github.com/rpcpool)
-- [LinkedIn](https://www.linkedin.com/company/triton-one)
-- [Twitter](https://twitter.com/triton_one)
-- [Support](mailto:support@triton.one)
-- [Getting Started](https://docs.triton.one/getting-started)
-- [Terms of Service](https://triton.one/terms)
-- [Privacy Policy](https://docs.triton.one/core-features/privacy-and-security)
-- [Rate Limits](https://docs.triton.one/core-features/ratelimits)
-- [Authentication](https://docs.triton.one/account-management/api-access/auth-and-headers)
-- [Tiers](https://docs.triton.one/account-management/api-access/rate-tiers)
-- [SDK](https://github.com/rpcpool/yellowstone-grpc)
-- [SDK](https://github.com/rpcpool/yellowstone-vixen)
-- [SDK](https://github.com/rpcpool/yellowstone-jet)
-- [SDK](https://github.com/rpcpool/yellowstone-fumarole)
-- [SDK](https://github.com/rpcpool/yellowstone-faithful)
-- [Tools](https://github.com/rpcpool/solana-rpc-ansible)
-- [Plans](https://plans/triton-one-plans-pricing.yml)
-- [Rate Limits](https://rate-limits/triton-one-rate-limits.yml)
-- [Fin Ops](https://finops/triton-one-finops.yml)
-- [Features](undefined)
+- [Terms of service](https://triton.one/terms)
+- [Privacy policy](https://docs.triton.one/core-features/privacy-and-security)
+- [GitHub](https://github.com/rpcpool)
+- [Status](https://status.triton.one)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** info@apievangelist.com
-**URL:** https://apievangelist.com
+**Kin Score 42.2** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 62.5 |
+| Contract quality | 59.7 |
+| Contract governance | 9.8 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 65.5 |
+| Access clarity | 26.3 |
+
+**Agent readiness 23.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 20.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/triton-one/](https://apis.io/providers/triton-one/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Triton One: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/triton-one/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
